@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Breadcrumbs title="Pengajuan" />
+    <Breadcrumbs title="Status Pengajuan" />
     <!-- Container-fluid starts-->
     <div class="container-fluid">
       <div class="row">
@@ -11,13 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <data-table
-                :items="data"
-                :headers="headers"
-                @add="$router.push({ path: '/main/pengajuan/add' })"
-                @edit="$router.push({ path: '/main/pengajuan/edit' })"
-                @delete="onDelete"
-              />
+              <data-table :items="data" :headers="headers" :hideadd="true" />
             </div>
           </div>
         </div>
