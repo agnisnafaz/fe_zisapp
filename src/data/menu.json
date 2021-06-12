@@ -73,12 +73,12 @@
               "type": "link"
             },
             {
-              "path": "/pelayanan/muzaki/batal-donasi-kantor-layanan",
+              "path": "/main/batal-donasi-kantor-layanan",
               "title": "Batal Donasi Kantor Layanan",
               "type": "link"
             },
             {
-              "path": "/pelayanan/muzaki/penerimaan-kas",
+              "path": "/main/penerimaan-kas",
               "title": "Penerimaan KAS ZISR/FO",
               "type": "link"
             },
