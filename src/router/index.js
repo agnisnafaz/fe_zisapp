@@ -237,6 +237,14 @@ const routes = [
           title: "Status Pengajuan",
         },
       },
+      {
+        path: "donasi-kantor-layanan",
+        name: "donasikantorlayanan",
+        component: () => import("@/pages/donasi-kl/donasi-kl.vue"),
+        meta: {
+          title: "Donasi Kantor Layanan",
+        },
+      },
 
       /**
        *!ini buat contoh

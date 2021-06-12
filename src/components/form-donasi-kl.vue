@@ -44,7 +44,7 @@
                     small
                   >
                   </v-autocomplete>
-              
+                </div>
               </div>
               <div class="form-row">
                 <div class="col-md-4 mb-1">
@@ -54,8 +54,35 @@
                     placeholder="No.Bukti Fisik"
                   ></b-form-input>
                 </div>
+                <div class="col-md-4 ">
+                  <label for="c_form_periode">Periode</label>
+
+                  <b-form-select
+                    v-model="periode"
+                    :options="period"
+                  ></b-form-select>
+                </div>
+                <div class="col-md-4 ">
+                  <label for="datepicker">Tanggal Donasi</label>
+                  <b-form-datepicker id="datepicker" v-model="value">
+                  </b-form-datepicker>
+                </div>
               </div>
-             
+              <div class="form-row">
+                <div class="col-md-6 ">
+                  <label for="c_form_periode">Metode Pembayaran</label>
+
+                  <b-form-select
+                    v-model="metode"
+                    :options="pembayaran"
+                  ></b-form-select>
+                </div>
+                <div class="col-md-6 mb-1">
+                  <label for="c_form_jumlah">Jumlah</label>
+                  <b-form-input type="text" placeholder="Jumlah"></b-form-input>
+                </div>
+              </div>
+
               <b-button type="submit" variant="primary">Simpan</b-button>
             </b-form>
           </div>

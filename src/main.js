@@ -37,6 +37,7 @@ import FormBank from "@/components/form-bank.vue";
 import FormDonasi from "@/components/form-donasi.vue";
 import FormPengajuan from "@/components/form-pengajuan.vue";
 import FormDisposisi from "@/components/form-disposisi.vue";
+import FormDonasikl from "@/components/form-donasi-kl.vue";
 
 import PxCard from "@/components/Pxcard.vue";
 import { Icon } from "leaflet";
@@ -60,6 +61,7 @@ Vue.component("Breadcrumbs", Breadcrumbs);
 Vue.component("FormDonasi", FormDonasi);
 Vue.component("FormPengajuan", FormPengajuan);
 Vue.component("FormDisposisi", FormDisposisi);
+Vue.component("FormDonasikl", FormDonasikl);
 
 Vue.component("apexchart", VueApexCharts);
 
