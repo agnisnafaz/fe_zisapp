@@ -63,7 +63,7 @@
               "type": "link"
             },
             {
-              "path": "/pelayanan/muzaki/donasi-kantor-layanan",
+              "path": "/main/donasi-kantor-layanan",
               "title": "Donasi Kantor Layanan",
               "type": "link"
             },
@@ -106,7 +106,7 @@
               "type": "link"
             },
             {
-              "path": "/main/status-pengajuan",
+              "path": "/main/statuspengajuan",
               "title": "Status Pengajuan",
               "type": "link"
             }
