@@ -37,11 +37,11 @@
                               required=""
                               placeholder="Masukan username anda"
                               :class="{
-                                'is-invalid': submitted && !email,
+                                'is-invalid': submitted && !username,
                               }"
                             />
                             <div
-                              v-show="submitted && !email"
+                              v-show="submitted && !username"
                               class="invalid-feedback"
                             >
                               Email is required
@@ -108,8 +108,8 @@ export default {
   data() {
     return {
       type: "password",
-      email: "test@admin.com",
-      password: "test@123456",
+
+      password: "",
       username: "",
       passwordjwt: "",
       submitted: false,
