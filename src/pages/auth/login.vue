@@ -31,17 +31,17 @@
                           <div class="form-group">
                             <label class="col-form-label">Username</label>
                             <input
-                              v-model="email"
+                              v-model="username"
                               class="form-control"
-                              type="email"
+                              type="text"
                               required=""
-                              placeholder="Test@gmail.com"
+                              placeholder="Masukan username anda"
                               :class="{
-                                'is-invalid': submitted && !email,
+                                'is-invalid': submitted && !username,
                               }"
                             />
                             <div
-                              v-show="submitted && !email"
+                              v-show="submitted && !username"
                               class="invalid-feedback"
                             >
                               Email is required
@@ -81,7 +81,7 @@
                             <button
                               class="btn btn-primary btn-block"
                               type="button"
-                              @click="signUp"
+                              @click="login"
                             >
                               Login
                             </button>
@@ -102,13 +102,14 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   name: "login",
   data() {
     return {
       type: "password",
-      email: "test@admin.com",
-      password: "test@123456",
+
+      password: "",
       username: "",
       passwordjwt: "",
       submitted: false,
@@ -134,11 +135,16 @@ export default {
         this.type = "password";
       }
     },
-    // Firebase login
-    signUp: function() {},
 
     // Auth0 login
-    login() {},
+    login() {
+      API.post("/api/login", {
+        username: this.username,
+        password: this.password,
+      }).then((result) => {
+        console.log(result);
+      });
+    },
   },
 };
 </script>

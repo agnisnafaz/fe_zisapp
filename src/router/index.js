@@ -266,7 +266,16 @@ const routes = [
         name: "penerimaankas",
         component: () => import("@/pages/penerimaan-kas/penerimaan-kas.vue"),
         meta: {
-          title: "Batal Donasi ",
+          title: "Rekap Penerimaan",
+        },
+      },
+      {
+        path: "rekap-penerimaan",
+        name: "penerimaanrekap",
+        component: () =>
+          import("@/pages/rekap-penerimaan/rekap-penerimaan.vue"),
+        meta: {
+          title: "Rekap Penerimaan ",
         },
       },
 

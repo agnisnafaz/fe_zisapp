@@ -1,17 +1,20 @@
 <template>
   <div>
-    <Breadcrumbs title="Muzaki" />
+    <Breadcrumbs title="Rekap Penerimaan" />
     <!-- Container-fluid starts-->
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Edit Muzaki</h5>
+              <h5>Penerimaan Kas Kasir</h5>
+              <span
+                >lorem ipsum dolor sit amet, consectetur adipisicing elit</span
+              >
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormMuzaki></FormMuzaki>
+              <FormPenerimaan></FormPenerimaan>
             </div>
           </div>
         </div>
@@ -26,12 +29,6 @@ export default {
   data: () => {
     return {};
   },
-  methods: {
-    onEdit() {
-      API.put("/api/muzaki", {}).then((result) => {
-        console.log(result);
-      });
-    },
-  },
+  methods: {},
 };
 </script>
