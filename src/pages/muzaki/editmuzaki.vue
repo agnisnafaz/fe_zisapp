@@ -26,6 +26,12 @@ export default {
   data: () => {
     return {};
   },
-  methods: {},
+  methods: {
+    onEdit() {
+      API.put("/api/muzaki", {}).then((result) => {
+        console.log(result);
+      });
+    },
+  },
 };
 </script>

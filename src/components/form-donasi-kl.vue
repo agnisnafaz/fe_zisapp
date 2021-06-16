@@ -110,9 +110,15 @@ export default {
         { value: "", text: "CASH" },
         { value: "", text: "MUTASI BANK" },
       ],
+      muzaki: [],
+      program: [],
+      bank: [],
     };
   },
   methods: {
+    getMuzaki() {},
+    getProgram() {},
+    getBank() {},
     onsubmit() {},
   },
 };

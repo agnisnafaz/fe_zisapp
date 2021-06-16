@@ -7,7 +7,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Data Muzaki</h5>
+              <h5>Ini Data Muzaki</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {
@@ -43,7 +44,11 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {},
+    getData() {
+      API.get("/api/muzaki", {}).then((result) => {
+        console.log(result);
+      });
+    },
 
     onDelete(data) {
       this.$swal({
@@ -56,6 +61,10 @@ export default {
         reverseButtons: true,
       }).then(({ value }) => {
         if (value) {
+          //delete disini
+          API.delete("/api/muzaki").then((result) => {
+            console.log(result);
+          });
         }
       });
     },
