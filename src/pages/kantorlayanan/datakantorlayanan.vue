@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {
@@ -47,7 +48,11 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {},
+    getData() {
+      API.get("/api/kantor", "").then((result) => {
+        console.log(result);
+      });
+    },
 
     onDelete(data) {
       this.$swal({
@@ -60,6 +65,9 @@ export default {
         reverseButtons: true,
       }).then(({ value }) => {
         if (value) {
+          API.delete("/api/kantor", "").then((result) => {
+            console.log(result);
+          });
         }
       });
     },
