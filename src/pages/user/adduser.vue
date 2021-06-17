@@ -22,10 +22,17 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {};
   },
-  methods: {},
+  methods: {
+    OnSimpan() {
+      API.post("/api/pengguna", {}).then((result) => {
+        console.log(result);
+      });
+    },
+  },
 };
 </script>
