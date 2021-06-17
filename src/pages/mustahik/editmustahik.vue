@@ -25,10 +25,17 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {};
   },
-  methods: {},
+  methods: {
+    OnEdit() {
+      API.put("/api/mustahik", {}).then((result) => {
+        console.log(result);
+      });
+    },
+  },
 };
 </script>
