@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {
@@ -43,7 +44,11 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {},
+    getData() {
+      API.get("/api/pengguna", {}).then((Result) => {
+        console.log(result);
+      });
+    },
 
     onDelete(data) {
       this.$swal({
@@ -56,6 +61,9 @@ export default {
         reverseButtons: true,
       }).then(({ value }) => {
         if (value) {
+          Api.delete("/api/pengguna").then((result) => {
+            console.log(result);
+          });
         }
       });
     },

@@ -101,6 +101,7 @@ export default {
         { value: "1", text: "Individu" },
         { value: "2", text: "Kelompok" },
       ],
+      kantorlayanan: [],
     };
   },
   methods: {

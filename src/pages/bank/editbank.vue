@@ -29,6 +29,12 @@ export default {
   data: () => {
     return {};
   },
-  methods: {},
+  methods: {
+    OnEdit() {
+      API.put("/api/bank", {}).then((result) => {
+        console.log(result);
+      });
+    },
+  },
 };
 </script>
