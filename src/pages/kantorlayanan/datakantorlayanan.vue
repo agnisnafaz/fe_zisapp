@@ -36,9 +36,10 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "NO", value: "id" },
-        { text: "Alamat", value: "alamat" },
-        { text: "Nama", value: "nama" },
+        { text: "Nomor", value: "nomor_kantor" },
+        { text: "Nama", value: "nama_kantor" },
+        { text: "Pimpinan", value: "pimpinan" },
+        { text: "Telepon", value: "telepon_kantor" },
         { text: "AKSI", value: "action" },
       ],
       data: [{ id: "1", alamat: "alamat", nama: "nama" }],
@@ -49,8 +50,20 @@ export default {
   },
   methods: {
     getData() {
-      API.get("/api/kantor", "").then((result) => {
-        console.log(result);
+      API.get("/api/kantor").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
       });
     },
 
