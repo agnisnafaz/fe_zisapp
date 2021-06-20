@@ -15,23 +15,10 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="col-md-6 mb-1">
-                  <label for="c_form_kode">Kode Mustahik</label>
+                <div class="col-md-12 mb-1">
+                  <label for="c_form_nama">Nama Mustahik</label>
                   <v-autocomplete
-                    :items="kodemustahik"
-                    item-text="label"
-                    auto-select-first
-                    return-object
-                    outlined
-                    required
-                    small
-                  >
-                  </v-autocomplete>
-                </div>
-                <div class="col-md-6 mb-1">
-                  <label for="c_form_nama">Nama Muzaki</label>
-                  <v-autocomplete
-                    :items="namamuzaki"
+                    :items="namamustahik"
                     item-text="label"
                     auto-select-first
                     return-object
@@ -104,9 +91,11 @@ export default {
         { value: "", text: "Fisabilillah" },
         { value: "", text: "lain-lain" },
       ],
+      namamustahik: [],
     };
   },
   methods: {
+    getNamamustahik() {},
     onsubmit() {},
   },
 };

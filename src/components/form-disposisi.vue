@@ -105,6 +105,7 @@ export default {
         { value: "", text: "CASH" },
         { value: "", text: "MUTASI BANK" },
       ],
+      mustahik: [],
     };
   },
   methods: {

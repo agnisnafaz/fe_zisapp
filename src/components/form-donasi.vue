@@ -21,20 +21,7 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="col-md-6 mb-1">
-                  <label for="c_form_norek">No.Rekening</label>
-                  <v-autocomplete
-                    :items="norek"
-                    item-text="label"
-                    auto-select-first
-                    return-object
-                    outlined
-                    required
-                    small
-                  >
-                  </v-autocomplete>
-                </div>
-                <div class="col-md-6 mb-1">
+                <div class="col-md-12 mb-1">
                   <label for="c_form_bank">Bank</label>
                   <v-autocomplete
                     :items="bank"
@@ -148,9 +135,15 @@ export default {
         { value: "", text: "CASH" },
         { value: "", text: "MUTASI BANK" },
       ],
+      muzaki: [],
+      bank: [],
+      program: [],
     };
   },
   methods: {
+    getMuzaki() {},
+    getBank() {},
+    getProgram() {},
     onsubmit() {},
 
     onTambah() {},

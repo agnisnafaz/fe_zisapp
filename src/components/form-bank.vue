@@ -27,7 +27,7 @@
                   <label for="c_form_kodeakun">Kode Akun</label>
 
                   <v-autocomplete
-                    :items="kode"
+                    :items="kodeakun"
                     item-text="label"
                     auto-select-first
                     return-object
@@ -65,7 +65,7 @@
 export default {
   data() {
     return {
-      kode: [
+      kodeakun: [
         { label: "laki-laki", value: "L" },
         { label: "perempuan", value: "P" },
       ],
@@ -76,6 +76,8 @@ export default {
     };
   },
   methods: {
+    getKodeAkun() {},
+    getKantorLayanan() {},
     onsubmit() {},
   },
 };
