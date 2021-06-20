@@ -101,14 +101,14 @@ export default {
       periode: null,
       period: [
         { value: null, text: "2017" },
-        { value: "", text: "2018" },
-        { value: "", text: "2019" },
+        { value: "1", text: "2018" },
+        { value: "2", text: "2019" },
       ],
       metode: null,
       pembayaran: [
         { value: null, text: "Pilih" },
-        { value: "", text: "CASH" },
-        { value: "", text: "MUTASI BANK" },
+        { value: "1", text: "CASH" },
+        { value: "2", text: "MUTASI BANK" },
       ],
       muzaki: [],
       program: [],
