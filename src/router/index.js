@@ -56,6 +56,7 @@ const routes = [
         component: () => import("@/pages/user/datauser.vue"),
         meta: {
           title: "Data User",
+          reqiresAuth: true,
         },
       },
       {
@@ -64,6 +65,7 @@ const routes = [
         component: () => import("@/pages/user/adduser.vue"),
         meta: {
           title: "Tambah User",
+          reqiresAuth: true,
         },
       },
       {
@@ -72,6 +74,7 @@ const routes = [
         component: () => import("@/pages/user/edituser.vue"),
         meta: {
           title: "Edit User",
+          reqiresAuth: true,
         },
       },
 
@@ -81,6 +84,7 @@ const routes = [
         component: () => import("@/pages/muzaki/datamuzaki.vue"),
         meta: {
           title: "Data Muzaki",
+          reqiresAuth: true,
         },
       },
       {
@@ -89,6 +93,7 @@ const routes = [
         component: () => import("@/pages/muzaki/addmuzaki.vue"),
         meta: {
           title: "Tambah Muzaki",
+          reqiresAuth: true,
         },
       },
       {
@@ -97,6 +102,7 @@ const routes = [
         component: () => import("@/pages/muzaki/editmuzaki.vue"),
         meta: {
           title: "Edit Muzaki",
+          reqiresAuth: true,
         },
       },
       {
@@ -105,6 +111,7 @@ const routes = [
         component: () => import("@/pages/mustahik/datamustahik.vue"),
         meta: {
           title: "Data Mustahik",
+          reqiresAuth: true,
         },
       },
       {
@@ -113,6 +120,7 @@ const routes = [
         component: () => import("@/pages/mustahik/addmustahik.vue"),
         meta: {
           title: "Tambah Mustahik",
+          reqiresAuth: true,
         },
       },
       {
@@ -121,6 +129,7 @@ const routes = [
         component: () => import("@/pages/mustahik/editmustahik.vue"),
         meta: {
           title: "Edit Mustahik",
+          reqiresAuth: true,
         },
       },
       {
@@ -129,6 +138,7 @@ const routes = [
         component: () => import("@/pages/kantorlayanan/datakantorlayanan.vue"),
         meta: {
           title: "Data Kantor Layanan",
+          reqiresAuth: true,
         },
       },
       {
@@ -137,6 +147,7 @@ const routes = [
         component: () => import("@/pages/kantorlayanan/addkantor.vue"),
         meta: {
           title: "Tambah Kantor Layanan",
+          reqiresAuth: true,
         },
       },
       {
@@ -145,6 +156,7 @@ const routes = [
         component: () => import("@/pages/kantorlayanan/editkantor.vue"),
         meta: {
           title: "Edit Kantor Layanan",
+          reqiresAuth: true,
         },
       },
       {
@@ -153,6 +165,7 @@ const routes = [
         component: () => import("@/pages/bank/databank.vue"),
         meta: {
           title: "Data Bank",
+          reqiresAuth: true,
         },
       },
       {
@@ -161,6 +174,7 @@ const routes = [
         component: () => import("@/pages/bank/addbank.vue"),
         meta: {
           title: "Tambah Bank",
+          reqiresAuth: true,
         },
       },
       {
@@ -169,6 +183,7 @@ const routes = [
         component: () => import("@/pages/bank/editbank.vue"),
         meta: {
           title: "Edit Bank",
+          reqiresAuth: true,
         },
       },
       {
@@ -177,6 +192,7 @@ const routes = [
         component: () => import("@/pages/donasi/donasi.vue"),
         meta: {
           title: "Donasi",
+          reqiresAuth: true,
         },
       },
       {
@@ -185,6 +201,7 @@ const routes = [
         component: () => import("@/pages/pengajuan/datapengajuan.vue"),
         meta: {
           title: "Pengajuan",
+          reqiresAuth: true,
         },
       },
       {
@@ -193,6 +210,7 @@ const routes = [
         component: () => import("@/pages/pengajuan/editpengajuan.vue"),
         meta: {
           title: "Pengajuan",
+          reqiresAuth: true,
         },
       },
 
@@ -202,6 +220,7 @@ const routes = [
         component: () => import("@/pages/pengajuan/addpengajuan.vue"),
         meta: {
           title: "Pengajuan",
+          reqiresAuth: true,
         },
       },
       {
@@ -210,6 +229,7 @@ const routes = [
         component: () => import("@/pages/disposisi/datadisposisi.vue"),
         meta: {
           title: "Disposisi",
+          reqiresAuth: true,
         },
       },
       {
@@ -218,6 +238,7 @@ const routes = [
         component: () => import("@/pages/disposisi/adddisposisi.vue"),
         meta: {
           title: "Tambah Disposisi",
+          reqiresAuth: true,
         },
       },
       {
@@ -226,6 +247,7 @@ const routes = [
         component: () => import("@/pages/disposisi/editdisposisi.vue"),
         meta: {
           title: "Edit Disposisi",
+          reqiresAuth: true,
         },
       },
       {
@@ -235,6 +257,7 @@ const routes = [
           import("@/pages/status-pengajuan/status-pengajuan.vue"),
         meta: {
           title: "Status Pengajuan",
+          reqiresAuth: true,
         },
       },
       {
@@ -243,6 +266,7 @@ const routes = [
         component: () => import("@/pages/donasi-kl/donasi-kl.vue"),
         meta: {
           title: "Donasi Kantor Layanan",
+          reqiresAuth: true,
         },
       },
       {
@@ -251,6 +275,7 @@ const routes = [
         component: () => import("@/pages/batal-donasi/batal-donasi.vue"),
         meta: {
           title: "Batal Donasi ",
+          reqiresAuth: true,
         },
       },
       {
@@ -259,6 +284,7 @@ const routes = [
         component: () => import("@/pages/batal-donasi/batal-donasi.vue"),
         meta: {
           title: "Batal Donasi ",
+          reqiresAuth: true,
         },
       },
       {
@@ -267,6 +293,7 @@ const routes = [
         component: () => import("@/pages/penerimaan-kas/penerimaan-kas.vue"),
         meta: {
           title: "Rekap Penerimaan",
+          reqiresAuth: true,
         },
       },
       {
@@ -276,6 +303,7 @@ const routes = [
           import("@/pages/rekap-penerimaan/rekap-penerimaan.vue"),
         meta: {
           title: "Rekap Penerimaan ",
+          reqiresAuth: true,
         },
       },
 
@@ -339,13 +367,11 @@ router.beforeEach((to, from, next) => {
   const user = getUser();
   if (to.meta.title) document.title = to.meta.title;
   if (to.meta.reqiresAuth) {
-    // if (user) {
-    //   next();
-    // } else {
-    //   next();
-    //   //next({ path: "/login" });
-    // }
-    next();
+    if (user) {
+      next();
+    } else {
+      next({ path: "/login" });
+    }
   } else {
     next();
   }

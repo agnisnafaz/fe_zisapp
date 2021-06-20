@@ -33,8 +33,11 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Nama", value: "id" },
-        { text: "Jabatan", value: "id" },
+        { text: "Kode", value: "kode_pengguna" },
+        { text: "Nama", value: "nama_pengguna" },
+        { text: "Status", value: "status_pengguna" },
+        { text: "Level", value: "leveluser" },
+
         { text: "AKSI", value: "action" },
       ],
       data: [],
@@ -45,8 +48,20 @@ export default {
   },
   methods: {
     getData() {
-      API.get("/api/pengguna", {}).then((Result) => {
-        console.log(result);
+      API.get("/api/pengguna").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
       });
     },
 

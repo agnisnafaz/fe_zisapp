@@ -25,17 +25,17 @@
 </template>
 
 <script>
-import API from ("@/services/api.service")
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {};
   },
   methods: {
     OnSimpan() {
-    API.post("/api/kantor", {}).then((result)=> {
-    console.log(result);
-})
-    }
+      API.post("/api/kantor", {}).then((result) => {
+        console.log(result);
+      });
+    },
   },
 };
 </script>

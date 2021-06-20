@@ -36,8 +36,11 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "NO", value: "id" },
-        { text: "NPWP", value: "id" },
+        { text: "Kode", value: "kode_mustahik" },
+        { text: "Nama", value: "nama_mustahik" },
+        { text: "Asnaf", value: "asnaf" },
+        { text: "Kategori", value: "kategori_mustahik" },
+
         { text: "AKSI", value: "action" },
       ],
       data: [],
@@ -48,11 +51,22 @@ export default {
   },
   methods: {
     getData() {
-      API.get("/api/mustahik", {}).then((result) => {
-        console.log(result);
+      API.get("/api/mustahik").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
       });
     },
-
     onDelete(data) {
       this.$swal({
         text: this.$t("Delete Message", { who: "" }),

@@ -7,7 +7,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Ini Data Muzaki</h5>
+              <h5>Data Muzaki</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
@@ -33,8 +33,10 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "NO", value: "id" },
-        { text: "NPWP", value: "id" },
+        { text: "NO", value: "id_muzaki" },
+        { text: "NPWZ", value: "npwz" },
+        { text: "Nama", value: "nama_muzaki" },
+        { text: "Jenis Kelamin", value: "jk" },
         { text: "AKSI", value: "action" },
       ],
       data: [],
@@ -45,8 +47,20 @@ export default {
   },
   methods: {
     getData() {
-      API.get("/api/muzaki", {}).then((result) => {
-        console.log(result);
+      API.get("/api/muzaki").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
       });
     },
 

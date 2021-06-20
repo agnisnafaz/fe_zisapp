@@ -20,10 +20,10 @@
                   />
                 </a>
               </div>
-              <div class="login-main">
+              <div class="login-main ">
                 <px-card :actions="false">
-                  <div slot="with-padding">
-                    <b-card no-body>
+                  <div>
+                    <b-card no-body class=" p-50">
                       <b-card-text>
                         <form class="theme-form">
                           <h4>Sign in to account</h4>
@@ -72,12 +72,6 @@
                             </div>
                           </div>
                           <div class="form-group mb-0">
-                            <div class="checkbox p-0">
-                              <input id="checkbox1" type="checkbox" />
-                              <label class="text-muted" for="checkbox1"
-                                >Remember password</label
-                              >
-                            </div>
                             <button
                               class="btn btn-primary btn-block"
                               type="button"
@@ -103,6 +97,7 @@
 
 <script>
 import API from "@/services/api.service";
+import { setUser } from "@/services/jwt.service";
 export default {
   name: "login",
   data() {
@@ -141,8 +136,44 @@ export default {
       API.post("/api/login", {
         username: this.username,
         password: this.password,
-      }).then((result) => {
-        console.log(result);
+      }).then(({ status, data }) => {
+        console.log(status);
+        if (status == 200 || status == 201) {
+          //jika respon dari backend berhasil
+          //const { data, message, status } = data; //ambil hasilnya
+
+          if (data.status) {
+            setUser(data.data);
+            this.$toasted.show("Login Berhasil", {
+              theme: "bubble",
+              position: "top-right",
+              type: "success",
+              duration: 2000,
+            });
+            setTimeout(() => {
+              //proses pindah halaman
+              this.$router.push({ path: "/main/dashboard" });
+            }, 500);
+
+            console.log(data, data);
+          } else {
+            //notif gagal
+            this.$toasted.show("Login Gagal", {
+              theme: "bubble",
+              position: "top-right",
+              type: "error", //"success" kalau sukses
+              duration: 2000,
+            });
+          }
+        } else {
+          //notif gagal
+          this.$toasted.show("Login Gagal", {
+            theme: "bubble",
+            position: "top-right",
+            type: "error", //"success" kalau su
+            duration: 2000,
+          });
+        }
       });
     },
   },

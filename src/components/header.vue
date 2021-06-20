@@ -211,6 +211,7 @@ import { mapActions, mapState } from "vuex";
 import { getUser } from "../services/jwt.service";
 import { LOGOUT } from "../store/modules/auth";
 import { localeOptions } from "../constants/config";
+import { dropUser } from "@/services/jwt.service";
 // import Bookmark from "./bookmark";
 export default {
   name: "Search",
@@ -272,7 +273,7 @@ export default {
     search_close() {
       this.searchOpen = false;
     },
-    searchterm: function () {
+    searchterm: function() {
       this.$store.dispatch("menu/searchTerm", this.terms);
     },
     changeLocale(locale) {
@@ -320,9 +321,8 @@ export default {
       this.$store.dispatch("layout/setLayout", val);
     },
     logOut() {
-      this.$store.dispatch(`auth/${LOGOUT}`).then(() => {
-        this.$router.replace({ name: "login" });
-      });
+      dropUser();
+      this.$router.replace({ name: "login" });
     },
   },
   watch: {
@@ -333,7 +333,7 @@ export default {
         this.$router.go(this.$route.path);
       }
     },
-    menuItems: function () {
+    menuItems: function() {
       this.terms ? this.addFix() : this.removeFix();
       if (!this.menuItems.length) this.searchResultEmpty = true;
       else this.searchResultEmpty = false;
