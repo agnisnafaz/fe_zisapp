@@ -31,8 +31,8 @@
                 <div class="col-md-4 mb-3">
                   <label for="c_form_jeniskelamin">Jenis Kelamin</label>
                   <b-form-select
-                    v-model="jeniskelamin"
-                    :options="jk"
+                    v-model="form.jk"
+                    :options="optionjk"
                   ></b-form-select>
                 </div>
               </div>
@@ -60,15 +60,15 @@
                 <div class="col-md-4 mb-3">
                   <label for="c_form_kategori">Kategori</label>
                   <b-form-select
-                    v-model="kategori"
-                    :options="ktg"
+                    v-model="form.kategori_muzaki"
+                    :options="optionkategori"
                   ></b-form-select>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="c_form_kategori">Status</label>
                   <b-form-select
-                    v-model="statusmuzaki"
-                    :options="status"
+                    v-model="form.status_muzaki"
+                    :options="optionstatus"
                   ></b-form-select>
                 </div>
               </div>
@@ -82,27 +82,14 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data() {
     return {
-      jeniskelamin: 9,
-      jk: [
-        { value: "9", text: "Pilih" },
-        { value: "1", text: "Laki-laki" },
-        { value: "2", text: "Perempuan" },
-      ],
-      kategori: 9,
-      ktg: [
-        { value: "9", text: "Pilih" },
-        { value: "1", text: "Individu" },
-        { value: "2", text: "Entitas" },
-      ],
-      statusmuzaki: 9,
-      status: [
-        { value: "9", text: "Pilih" },
-        { value: "1", text: "Aktif" },
-        { value: "2", text: "Tidak Aktif" },
-      ],
+      form: {},
+      optionjk: [],
+      optionkategori: [],
+      optionstatus: [],
     };
   },
   methods: {
