@@ -78,7 +78,7 @@ export default {
       form: {},
       optionasnaf: [],
       optionjenispengajuan: [],
-      namamustahik: [],
+      mustahik: [],
     };
   },
   methods: {
