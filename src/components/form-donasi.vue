@@ -21,20 +21,7 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="col-md-6 mb-1">
-                  <label for="c_form_norek">No.Rekening</label>
-                  <v-autocomplete
-                    :items="norek"
-                    item-text="label"
-                    auto-select-first
-                    return-object
-                    outlined
-                    required
-                    small
-                  >
-                  </v-autocomplete>
-                </div>
-                <div class="col-md-6 mb-1">
+                <div class="col-md-12 mb-1">
                   <label for="c_form_bank">Bank</label>
                   <v-autocomplete
                     :items="bank"
@@ -61,8 +48,8 @@
                   <label for="c_form_periode">Periode</label>
 
                   <b-form-select
-                    v-model="periode"
-                    :options="period"
+                    v-model="form.periode"
+                    :options="optionperiode"
                   ></b-form-select>
                 </div>
                 <div class="col-md-3 ">
@@ -74,8 +61,8 @@
                   <label for="c_form_periode">Metode Pembayaran</label>
 
                   <b-form-select
-                    v-model="metode"
-                    :options="pembayaran"
+                    v-model="form.metode_pembayaran"
+                    :options="optionmetode"
                   ></b-form-select>
                 </div>
               </div>
@@ -132,25 +119,71 @@
 
 <script>
 import Pxcard from "./Pxcard.vue";
+import API from "@/services/api.service";
 export default {
   components: { Pxcard },
   data() {
     return {
-      periode: null,
-      period: [
-        { value: null, text: "2017" },
-        { value: "", text: "2018" },
-        { value: "", text: "2019" },
-      ],
-      metode: null,
-      pembayaran: [
-        { value: null, text: "Pilih" },
-        { value: "", text: "CASH" },
-        { value: "", text: "MUTASI BANK" },
-      ],
+      form: {},
+      optionmetode: [],
+      optionperiode: [],
+      muzaki: [],
+      bank: [],
+      program: [],
     };
   },
   methods: {
+    getMuzaki() {
+      API.get("/api/muzaki").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
+    getProgram() {
+      API.get("/api/program").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
+    getBank() {
+      API.get("/api/bank").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
     onsubmit() {},
 
     onTambah() {},

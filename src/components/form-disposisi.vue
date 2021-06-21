@@ -42,8 +42,8 @@
                 <div class="col-md-4 mb-3">
                   <label for="c_form_kategori">Tujuan</label>
                   <b-form-select
-                    v-model="disposisi"
-                    :options="tujuan"
+                    v-model="form.tujuan_disposisi"
+                    :options="optiontujuan"
                   ></b-form-select>
                 </div>
               </div>
@@ -89,25 +89,35 @@
 
 <script>
 import Pxcard from "./Pxcard.vue";
+import API from "@/services/api.service";
 export default {
   components: { Pxcard },
   data() {
     return {
-      periode: null,
-      period: [
-        { value: null, text: "2017" },
-        { value: "", text: "2018" },
-        { value: "", text: "2019" },
-      ],
-      metode: null,
-      pembayaran: [
-        { value: null, text: "Pilih" },
-        { value: "", text: "CASH" },
-        { value: "", text: "MUTASI BANK" },
-      ],
+      form: {},
+      optiontujuan: [],
+
+      mustahik: [],
     };
   },
   methods: {
+    getMustahik() {
+      API.get("/api/mustahik").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
     onsubmit() {},
   },
 };

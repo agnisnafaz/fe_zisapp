@@ -27,20 +27,7 @@ import Pxcard from "./Pxcard.vue";
 export default {
   components: { Pxcard },
   data() {
-    return {
-      periode: null,
-      period: [
-        { value: null, text: "2017" },
-        { value: "", text: "2018" },
-        { value: "", text: "2019" },
-      ],
-      metode: null,
-      pembayaran: [
-        { value: null, text: "Pilih" },
-        { value: "", text: "CASH" },
-        { value: "", text: "MUTASI BANK" },
-      ],
-    };
+    return {};
   },
   methods: {
     onsubmit() {},

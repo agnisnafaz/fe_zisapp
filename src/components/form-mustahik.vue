@@ -37,22 +37,22 @@
                 <div class="col-md-4 mb-3">
                   <label for="c_form_kategori">Kategori</label>
                   <b-form-select
-                    v-model="ktgmustahik"
-                    :options="kategori"
+                    v-model="form.kategori_mustahik"
+                    :options="optionkategori"
                   ></b-form-select>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="c_form_status">Status</label>
                   <b-form-select
-                    v-model="statusmustahik"
-                    :options="status"
+                    v-model="form.statu_smustahik"
+                    :options="optionstatus"
                   ></b-form-select>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="c_form_status">Asnaf</label>
                   <b-form-select
-                    v-model="mustasnaf"
-                    :options="asnaf"
+                    v-model="form.asnaf"
+                    :options="optionasnaf"
                   ></b-form-select>
                 </div>
               </div>
@@ -80,32 +80,36 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data() {
     return {
-      jeniskelamin: null,
-      jk: [
-        { value: null, text: "Pilih" },
-        { value: "1", text: "Laki-laki" },
-        { value: "2", text: "Perempuan" },
-      ],
-      kategori: null,
-      kategori: [
-        { value: null, text: "Pilih" },
-        { value: "1", text: "Individu" },
-        { value: "2", text: "Kelompok" },
-      ],
-      aktif: null,
-      aktif: [
-        { value: null, text: "Pilih" },
-        { value: "1", text: "Individu" },
-        { value: "2", text: "Kelompok" },
-      ],
+      form: {},
+      optionkategori: [],
+      optionstatus: [],
+      optionasnaf: [],
       kantorlayanan: [],
     };
   },
   methods: {
-    onsubmit() {},
+    getKantorlayanan() {
+      API.get("/api/kantor").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
   },
+  onsubmit() {},
 };
 </script>

@@ -8,11 +8,19 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="c_form_koder">Kode </label>
-                  <b-form-input type="text" placeholder="Kode"></b-form-input>
+                  <b-form-input
+                    type="text"
+                    v-model="form.kode_pengguna"
+                    placeholder="Kode"
+                  ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="c_form_namauser">Nama</label>
-                  <b-form-input type="text" placeholder="Nama"></b-form-input>
+                  <b-form-input
+                    type="text"
+                    v-model="form.nama_pengguna"
+                    placeholder="Nama"
+                  ></b-form-input>
                   <b-form-valid-feedback>Lock Good</b-form-valid-feedback>
                 </div>
               </div>
@@ -20,7 +28,11 @@
               <div class="form-row">
                 <div class="col-md-12 mb-3">
                   <label for="c_form_alamat">Alamat</label>
-                  <b-form-input type="text" placeholder="Alamat"></b-form-input>
+                  <b-form-input
+                    type="text"
+                    v-model="form.alamat_pengguna"
+                    placeholder="Alamat"
+                  ></b-form-input>
                 </div>
               </div>
               <div class="form-row">
@@ -28,18 +40,22 @@
                   <label for="c_form_telepon">Telepon</label>
                   <b-form-input
                     type="text"
+                    v-model="form.telepon_pengguna"
                     placeholder="Telepon"
                   ></b-form-input>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="c_form_pimpinan">Level</label>
-                  <b-form-select v-model="level" :options="lvl"></b-form-select>
+                  <b-form-select
+                    v-model="form.leveluser"
+                    :options="optionlevel"
+                  ></b-form-select>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="c_form_statususer">Status</label>
                   <b-form-select
-                    v-model="status"
-                    :options="statususer"
+                    v-model="form.status_pengguna"
+                    :options="optionstatus"
                   ></b-form-select>
                 </div>
               </div>
@@ -49,6 +65,7 @@
                   <label for="c_form_username">Username</label>
                   <b-form-input
                     type="text"
+                    v-model="form.username"
                     placeholder="Username"
                   ></b-form-input>
                 </div>
@@ -56,6 +73,7 @@
                   <label for="c_form_password">Password</label>
                   <b-form-input
                     type="text"
+                    v-model="form.password"
                     placeholder="Password"
                   ></b-form-input>
                 </div>
@@ -65,9 +83,10 @@
                   <label for="c_form_kantorl">Kantor Layanan</label>
                   <v-autocomplete
                     :items="kantorlayanan"
-                    item-text="label"
+                    item-text="nama_kantor"
+                    item-value="id_kantor"
+                    v-model="form.id_kantor"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -130,16 +149,37 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data() {
     return {
-      kantorlayanan: [
-        { label: "laki-laki", value: "L" },
-        { label: "perempuan", value: "P" },
-      ],
+      form: {},
+      optionlevel: [],
+      optionstatus: [],
+      kantorlayanan: [],
     };
   },
+  created() {
+    this.getKantorLayanan();
+  },
   methods: {
+    getKantorLayanan() {
+      API.get("/api/kantor").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
     onsubmit() {},
   },
 };

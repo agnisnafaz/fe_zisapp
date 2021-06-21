@@ -27,7 +27,7 @@
                   <label for="c_form_kodeakun">Kode Akun</label>
 
                   <v-autocomplete
-                    :items="kode"
+                    :items="kodeakun"
                     item-text="label"
                     auto-select-first
                     return-object
@@ -62,21 +62,52 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data() {
     return {
-      kode: [
-        { label: "laki-laki", value: "L" },
-        { label: "perempuan", value: "P" },
-      ],
-      kantorlayanan: [
-        { label: "Trisna Cantik", value: "L" },
-        { label: "Trisna Manis", value: "P" },
-      ],
+      kodeakun: [],
+      kantorlayanan: [],
     };
   },
   methods: {
-    onsubmit() {},
+    getKodeAkun() {
+      API.get("/api/akun").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
+
+    getKantorLayanan() {
+      API.get("/api/kantor").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
   },
+
+  onsubmit() {},
 };
 </script>

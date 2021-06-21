@@ -15,23 +15,10 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="col-md-6 mb-1">
-                  <label for="c_form_kode">Kode Mustahik</label>
+                <div class="col-md-12 mb-1">
+                  <label for="c_form_nama">Mustahik</label>
                   <v-autocomplete
-                    :items="kodemustahik"
-                    item-text="label"
-                    auto-select-first
-                    return-object
-                    outlined
-                    required
-                    small
-                  >
-                  </v-autocomplete>
-                </div>
-                <div class="col-md-6 mb-1">
-                  <label for="c_form_nama">Nama Muzaki</label>
-                  <v-autocomplete
-                    :items="namamuzaki"
+                    :items="mustahik"
                     item-text="label"
                     auto-select-first
                     return-object
@@ -60,16 +47,16 @@
                   <label for="c_form_jenis">Jenis</label>
 
                   <b-form-select
-                    v-model="jenis"
-                    :options="pengajuan"
+                    v-model="form.jenis_pengajuan"
+                    :options="optionjenispengajuan"
                   ></b-form-select>
                 </div>
                 <div class="col-md-6 ">
                   <label for="c_form_asnaf">Asnaf</label>
 
                   <b-form-select
-                    v-model="asnaf"
-                    :options="jenisasnaf"
+                    v-model="form.asnaf"
+                    :options="optionasnaf"
                   ></b-form-select>
                 </div>
               </div>
@@ -84,29 +71,34 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data() {
     return {
-      jenis: null,
-      pengajuan: [
-        { value: null, text: "Pilih" },
-        { value: "", text: "Konsumtif" },
-        { value: "", text: "Produktif" },
-      ],
-      asnaf: null,
-      jenisasnaf: [
-        { value: null, text: "Pilih" },
-        { value: "", text: "Fakir-Miskin" },
-        { value: "", text: "Riqob" },
-        { value: "", text: "Ibnu Sabil" },
-        { value: "", text: "Ghorimin" },
-        { value: "", text: "Amil" },
-        { value: "", text: "Fisabilillah" },
-        { value: "", text: "lain-lain" },
-      ],
+      form: {},
+      optionasnaf: [],
+      optionjenispengajuan: [],
+      mustahik: [],
     };
   },
   methods: {
+    getMustahik() {
+      API.get("/api/mustahik").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.kantorlayanan = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
     onsubmit() {},
   },
 };
