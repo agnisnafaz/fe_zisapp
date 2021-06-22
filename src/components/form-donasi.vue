@@ -10,13 +10,30 @@
                   <label for="c_form_muzaki">Muzaki</label>
                   <v-autocomplete
                     :items="muzaki"
-                    item-text="label"
+                    item-text="npwz"
+                    item-value="nama_muzaki"
+                    v-model="form.nama_muzaki"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
                   >
+                    <template v-slot:item="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.npwz + " - " + item.nama_muzaki }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
+                    <template v-slot:selection="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.npwz + " - " + item.nama_muzaki }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
                   </v-autocomplete>
                 </div>
               </div>
@@ -25,13 +42,30 @@
                   <label for="c_form_bank">Bank</label>
                   <v-autocomplete
                     :items="bank"
-                    item-text="label"
+                    item-text="nama_bank"
+                    item-value="no_rek"
+                    v-model="form.no_rek"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
                   >
+                    <template v-slot:item="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.nama_bank + " - " + item.no_rek }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
+                    <template v-slot:selection="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.nama_bank + " - " + item.no_rek }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
                   </v-autocomplete>
                 </div>
               </div>
@@ -78,9 +112,10 @@
                   <label for="c_form_program">Program</label>
                   <v-autocomplete
                     :items="program"
-                    item-text="label"
+                    item-text="nama_program"
+                    item-value="id_program"
+                    v-model="form.id_program"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -132,6 +167,12 @@ export default {
       program: [],
     };
   },
+  created() {
+    this.getMuzaki();
+    this.getProgram();
+    this.getBank();
+  },
+
   methods: {
     getMuzaki() {
       API.get("/api/muzaki").then(({ status, data }) => {
@@ -141,7 +182,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.muzaki = data.data;
           } else {
             //notifikasi gagal
           }
@@ -158,7 +199,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.program = data.data;
           } else {
             //notifikasi gagal
           }
@@ -175,7 +216,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.bank = data.data;
           } else {
             //notifikasi gagal
           }
