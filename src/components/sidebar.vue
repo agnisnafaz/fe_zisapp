@@ -4,11 +4,11 @@
       <router-link to="/">
         <img
           class="img-fluid for-light"
-          width="30px"
+          width="80px"
           src="../assets/images/logo/logo.png"
           alt=""
         /><img
-          width="30px"
+          width="px"
           class="img-fluid for-dark"
           src="../assets/images/logo/logo_dark.png"
           alt=""
@@ -271,8 +271,8 @@
                       <label
                         :class="
                           'badge badge-' +
-                          childrenSubItem.badgeType +
-                          ' pull-right'
+                            childrenSubItem.badgeType +
+                            ' pull-right'
                         "
                         v-if="childrenSubItem.badgeType"
                         >{{ childrenSubItem.badgeValue }}</label
@@ -292,8 +292,8 @@
                       <label
                         :class="
                           'badge badge-' +
-                          childrenSubItem.badgeType +
-                          ' pull-right'
+                            childrenSubItem.badgeType +
+                            ' pull-right'
                         "
                         v-if="childrenSubItem.badgeType"
                         >{{ childrenSubItem.badgeValue }}</label
@@ -314,8 +314,8 @@
                       <label
                         :class="
                           'badge badge-' +
-                          childrenSubItem.badgeType +
-                          ' pull-right'
+                            childrenSubItem.badgeType +
+                            ' pull-right'
                         "
                         v-if="childrenSubItem.badgeType"
                         >{{ childrenSubItem.badgeValue }}</label
@@ -335,8 +335,8 @@
                       <label
                         :class="
                           'badge badge-' +
-                          childrenSubItem.badgeType +
-                          ' pull-right'
+                            childrenSubItem.badgeType +
+                            ' pull-right'
                         "
                         v-if="childrenSubItem.badgeType"
                         >{{ childrenSubItem.badgeValue }}</label

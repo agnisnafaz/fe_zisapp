@@ -10,9 +10,10 @@
                   <label for="c_form_muzaki">Muzaki</label>
                   <v-autocomplete
                     :items="muzaki"
-                    item-text="label"
+                    item-text="nama_muzaki"
+                    item-value="id_muzaki"
+                    v-model="form.id_muzaki"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -25,9 +26,10 @@
                   <label for="c_form_bank">Bank</label>
                   <v-autocomplete
                     :items="bank"
-                    item-text="label"
+                    item-text="nama_bank"
+                    item-value="no_rek"
+                    v-model="form.no_rek"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -78,9 +80,10 @@
                   <label for="c_form_program">Program</label>
                   <v-autocomplete
                     :items="program"
-                    item-text="label"
+                    item-text="nama_program"
+                    item-value="id_program"
+                    v-model="form.id_program"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -132,6 +135,12 @@ export default {
       program: [],
     };
   },
+  created() {
+    this.getMuzaki();
+    this.getProgram();
+    this.getBank();
+  },
+
   methods: {
     getMuzaki() {
       API.get("/api/muzaki").then(({ status, data }) => {
@@ -141,7 +150,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.muzaki = data.data;
           } else {
             //notifikasi gagal
           }
@@ -158,7 +167,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.program = data.data;
           } else {
             //notifikasi gagal
           }
@@ -175,7 +184,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.bank = data.data;
           } else {
             //notifikasi gagal
           }
