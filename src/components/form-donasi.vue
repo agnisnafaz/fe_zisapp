@@ -10,14 +10,30 @@
                   <label for="c_form_muzaki">Muzaki</label>
                   <v-autocomplete
                     :items="muzaki"
-                    item-text="nama_muzaki"
-                    item-value="id_muzaki"
-                    v-model="form.id_muzaki"
+                    item-text="npwz"
+                    item-value="nama_muzaki"
+                    v-model="form.nama_muzaki"
                     auto-select-first
                     outlined
                     required
                     small
                   >
+                    <template v-slot:item="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.npwz + " - " + item.nama_muzaki }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
+                    <template v-slot:selection="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.npwz + " - " + item.nama_muzaki }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
                   </v-autocomplete>
                 </div>
               </div>
@@ -34,6 +50,22 @@
                     required
                     small
                   >
+                    <template v-slot:item="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.nama_bank + " - " + item.no_rek }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
+                    <template v-slot:selection="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.nama_bank + " - " + item.no_rek }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
                   </v-autocomplete>
                 </div>
               </div>
