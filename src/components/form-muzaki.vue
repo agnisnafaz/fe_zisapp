@@ -93,7 +93,9 @@ export default {
     };
   },
   methods: {
-    onsubmit() {},
+    onsubmit() {
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>

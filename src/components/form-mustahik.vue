@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <px-card :actions="false">
           <div slot="with-padding">
-            <b-form class="needs-validation" @submit="onsubmit">
+            <b-form class="needs-validation" @submit.prevent="onsubmit">
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="c_form_kode">Kode </label>
@@ -15,8 +15,11 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="c_form_nama">Nama</label>
-                  <b-form-input type="text" placeholder="Nama"></b-form-input>
-                  <b-form-valid-feedback>Lock Good</b-form-valid-feedback>
+                  <b-form-input
+                    type="text"
+                    placeholder="Nama"
+                    v-model="form.nama_mustahik"
+                  ></b-form-input>
                 </div>
               </div>
 
@@ -30,6 +33,7 @@
                   <b-form-input
                     type="text"
                     placeholder="Telepon"
+                    v-model="form.alamat_mustahik"
                   ></b-form-input>
                 </div>
               </div>
@@ -44,7 +48,7 @@
                 <div class="col-md-4 mb-3">
                   <label for="c_form_status">Status</label>
                   <b-form-select
-                    v-model="form.statu_smustahik"
+                    v-model="form.status_smustahik"
                     :options="optionstatus"
                   ></b-form-select>
                 </div>
@@ -86,9 +90,20 @@ export default {
   data() {
     return {
       form: {},
-      optionkategori: [],
-      optionstatus: [],
-      optionasnaf: [],
+      optionkategori: [
+        { value: "1", text: "fakir miskin" },
+        { value: "1", text: "fisaabilillah" },
+        { value: "1", text: "fakir miskin" },
+      ],
+      optionstatus: [
+        { value: "1", text: "aktif" },
+        { value: "1", text: "tidak aktif" },
+      ],
+      optionasnaf: [
+        { value: "1", text: "fakir miskin" },
+        { value: "1", text: "fisaabilillah" },
+        { value: "1", text: "fakir miskin" },
+      ],
       kantorlayanan: [],
     };
   },
@@ -113,7 +128,9 @@ export default {
         }
       });
     },
-    onsubmit() {},
+    onsubmit() {
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>
