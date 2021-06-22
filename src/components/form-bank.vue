@@ -11,6 +11,7 @@
                   <b-form-input
                     type="text"
                     placeholder="No.Rekening"
+                    v-model="form.no_rek"
                   ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-1">
@@ -18,6 +19,7 @@
                   <b-form-input
                     type="text"
                     placeholder="Nama Bank"
+                    v-model="form.nama_bank"
                   ></b-form-input>
                 </div>
               </div>
@@ -28,9 +30,10 @@
 
                   <v-autocomplete
                     :items="kodeakun"
-                    item-text="label"
+                    item-text="nama_akun"
+                    item-value="kode_akun"
+                    v-model="form.kode_akun"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -112,7 +115,9 @@ export default {
         }
       });
     },
-    onsubmit() {},
+    onsubmit() {
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>
