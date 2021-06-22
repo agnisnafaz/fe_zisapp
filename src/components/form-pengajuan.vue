@@ -19,13 +19,30 @@
                   <label for="c_form_nama">Mustahik</label>
                   <v-autocomplete
                     :items="mustahik"
-                    item-text="label"
+                    item-text="nama_mustahik"
+                    item-value="kode_mustahik"
+                    v-model="form.kode_mustahik"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
                   >
+                    <template v-slot:item="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.kode_mustahik + " - " + item.nama_mustahik }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
+                    <template v-slot:selection="{ item }">
+                      <v-list-tile-content>
+                        <!-- Highlight output item.name -->
+                        <v-list-tile-title>
+                          {{ item.kode_mustahik + " - " + item.nama_mustahik }}
+                        </v-list-tile-title>
+                      </v-list-tile-content>
+                    </template>
                   </v-autocomplete>
                 </div>
               </div>
@@ -81,6 +98,9 @@ export default {
       mustahik: [],
     };
   },
+  created() {
+    this.getMustahik();
+  },
   methods: {
     getMustahik() {
       API.get("/api/mustahik").then(({ status, data }) => {
@@ -90,7 +110,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.mustahik = data.data;
           } else {
             //notifikasi gagal
           }
