@@ -42,9 +42,10 @@
                   <label for="c_form_kantor">Kantor Layanan</label>
                   <v-autocomplete
                     :items="kantorlayanan"
-                    item-text="label"
+                    item-text="nama_kantor"
+                    item-value="id_kantor"
+                    v-model="form.id_kantor"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -66,9 +67,14 @@ import API from "@/services/api.service";
 export default {
   data() {
     return {
+      form: {},
       kodeakun: [],
       kantorlayanan: [],
     };
+  },
+  created() {
+    this.getKantorLayanan();
+    this.getKodeAkun();
   },
   methods: {
     getKodeAkun() {
@@ -79,7 +85,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.kodeakun = data.data;
           } else {
             //notifikasi gagal
           }
@@ -106,8 +112,7 @@ export default {
         }
       });
     },
+    onsubmit() {},
   },
-
-  onsubmit() {},
 };
 </script>
