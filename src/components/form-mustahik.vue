@@ -61,9 +61,10 @@
                   <label for="c_form_kantorlayanan">Kantor Layanan </label>
                   <v-autocomplete
                     :items="kantorlayanan"
-                    item-text="label"
+                    item-text="nama_kantor"
+                    item-value="id_kantor"
+                    v-model="form.id_kantor"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -91,6 +92,9 @@ export default {
       kantorlayanan: [],
     };
   },
+  created() {
+    this.getKantorlayanan();
+  },
   methods: {
     getKantorlayanan() {
       API.get("/api/kantor").then(({ status, data }) => {
@@ -109,7 +113,7 @@ export default {
         }
       });
     },
+    onsubmit() {},
   },
-  onsubmit() {},
 };
 </script>
