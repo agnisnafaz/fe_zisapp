@@ -71,7 +71,7 @@ export default {
       this.$swal({
         text: this.$t("Delete Message", { who: "" }),
         showCancelButton: true,
-        confirmButtonText: "Hapus",
+        confirmButtonText: "Anda yakin ingin menghapus?",
         confirmButtonColor: "#4466f2",
         cancelButtonText: "Batal",
         cancelButtonColor: "#efefef",

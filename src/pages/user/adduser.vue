@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormUser />
+              <FormUser @submit="OnSimpan" />
             </div>
           </div>
         </div>
@@ -28,10 +28,51 @@ export default {
     return {};
   },
   methods: {
-    OnSimpan() {
-      API.post("/api/pengguna", {}).then((result) => {
-        console.log(result);
-      });
+    OnSimpan(form) {
+      console.log(form);
+      API.post("/api/pengguna", form)
+        .then(({ status, data }) => {
+          console.log(data);
+          if (status == 200 || status == 201) {
+            // reponse dari be jika berhasil
+
+            if (data.status) {
+              //berhasil
+              this.$toasted.show("Data Berhasil Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "success", //"success" kalau su
+                duration: 2000,
+              });
+              this.$router.push({ path: "/pages/user/datauser" });
+            } else {
+              //notifikasi gagal
+              this.$toasted.show("Data Gagal Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
+            }
+          } else {
+            //notifikasi gagal
+            this.$toasted.show("Data Gagal Disimpan", {
+              theme: "bubble",
+              position: "top-right",
+              type: "error", //"success" kalau su
+              duration: 2000,
+            });
+          }
+        })
+        .catch((error) => {
+          //gagal
+          this.$toasted.show("Data Gagal Disimpan", {
+            theme: "bubble",
+            position: "top-right",
+            type: "error", //"success" kalau su
+            duration: 2000,
+          });
+        });
     },
   },
 };

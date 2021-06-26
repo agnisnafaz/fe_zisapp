@@ -11,6 +11,7 @@
                   <b-form-input
                     type="text"
                     placeholder="No.Rekening"
+                    v-model="form.no_rek"
                   ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-1">
@@ -18,6 +19,7 @@
                   <b-form-input
                     type="text"
                     placeholder="Nama Bank"
+                    v-model="form.nama_bank"
                   ></b-form-input>
                 </div>
               </div>
@@ -28,9 +30,10 @@
 
                   <v-autocomplete
                     :items="kodeakun"
-                    item-text="label"
+                    item-text="nama_akun"
+                    item-value="kode_akun"
+                    v-model="form.kode_akun"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -42,9 +45,10 @@
                   <label for="c_form_kantor">Kantor Layanan</label>
                   <v-autocomplete
                     :items="kantorlayanan"
-                    item-text="label"
+                    item-text="nama_kantor"
+                    item-value="id_kantor"
+                    v-model="form.id_kantor"
                     auto-select-first
-                    return-object
                     outlined
                     required
                     small
@@ -66,9 +70,14 @@ import API from "@/services/api.service";
 export default {
   data() {
     return {
+      form: {},
       kodeakun: [],
       kantorlayanan: [],
     };
+  },
+  created() {
+    this.getKantorLayanan();
+    this.getKodeAkun();
   },
   methods: {
     getKodeAkun() {
@@ -79,7 +88,7 @@ export default {
 
           if (data.status) {
             //berhasil
-            this.kantorlayanan = data.data;
+            this.kodeakun = data.data;
           } else {
             //notifikasi gagal
           }
@@ -106,8 +115,9 @@ export default {
         }
       });
     },
+    onsubmit() {
+      this.$emit("submit", this.form);
+    },
   },
-
-  onsubmit() {},
 };
 </script>

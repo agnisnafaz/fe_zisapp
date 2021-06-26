@@ -8,25 +8,37 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="c_form_first_name">NPWZ</label>
-                  <b-form-input type="text" placeholder="NPWZ"></b-form-input>
+                  <b-form-input
+                    type="text"
+                    placeholder="NPWZ"
+                    v-model="form.npwz"
+                  ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="c_form_last_name">NPWP</label>
-                  <b-form-input type="text" placeholder="NPWP"></b-form-input>
-                  <b-form-valid-feedback>Lock Good</b-form-valid-feedback>
+                  <b-form-input
+                    type="text"
+                    placeholder="NPWP"
+                    v-model="form.npwp"
+                  ></b-form-input>
                 </div>
               </div>
               <div class="form-row">
                 <div class="col-md-4 mb-3">
                   <label for="c_form_city">NIK</label>
-                  <b-form-input type="text" placeholder="NIK"></b-form-input>
+                  <b-form-input
+                    type="text"
+                    placeholder="NIK"
+                    v-model="form.nik"
+                  ></b-form-input>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="c_form_nama">Nama</label>
-                  <b-form-input type="text" placeholder="Nama"></b-form-input>
-                  <b-form-invalid-feedback
-                    >Please provide a valid state.</b-form-invalid-feedback
-                  >
+                  <b-form-input
+                    type="text"
+                    placeholder="Nama"
+                    v-model="form.nama_muzaki"
+                  ></b-form-input>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="c_form_jeniskelamin">Jenis Kelamin</label>
@@ -39,13 +51,18 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="c_form_alamat">Alamat</label>
-                  <b-form-input type="text" placeholder="Alamat"></b-form-input>
+                  <b-form-input
+                    type="text"
+                    placeholder="Alamat"
+                    v-model="form.alamat_muzaki"
+                  ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="c_form_profesi">Profesi</label>
                   <b-form-input
                     type="text"
                     placeholder="profesi"
+                    v-model="form.profesi"
                   ></b-form-input>
                 </div>
               </div>
@@ -55,6 +72,7 @@
                   <b-form-input
                     type="text"
                     placeholder="Telepon"
+                    v-model="form.telepon_muzaki"
                   ></b-form-input>
                 </div>
                 <div class="col-md-4 mb-3">
@@ -87,13 +105,24 @@ export default {
   data() {
     return {
       form: {},
-      optionjk: [],
-      optionkategori: [],
-      optionstatus: [],
+      optionjk: [
+        { value: "1", text: "laki-laki" },
+        { value: "2", text: "perempuan" },
+      ],
+      optionkategori: [
+        { value: "1", text: "individu" },
+        { value: "2", text: "kelompok" },
+      ],
+      optionstatus: [
+        { value: "1", text: "aktif" },
+        { value: "2", text: "tidak aktif" },
+      ],
     };
   },
   methods: {
-    onsubmit() {},
+    onsubmit() {
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>

@@ -180,7 +180,9 @@ export default {
         }
       });
     },
-    onsubmit() {},
+    onsubmit() {
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>
