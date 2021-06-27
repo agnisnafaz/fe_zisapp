@@ -132,33 +132,7 @@ const routes = [
           reqiresAuth: true,
         },
       },
-      {
-        path: "kantorlayanan",
-        name: "kantorlayanan",
-        component: () => import("@/pages/kantorlayanan/datakantorlayanan.vue"),
-        meta: {
-          title: "Data Kantor Layanan",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "kantorlayanan/add",
-        name: "addkantorlayanan",
-        component: () => import("@/pages/kantorlayanan/addkantor.vue"),
-        meta: {
-          title: "Tambah Kantor Layanan",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "kantorlayanan/edit",
-        name: "editkantorlayanan",
-        component: () => import("@/pages/kantorlayanan/editkantor.vue"),
-        meta: {
-          title: "Edit Kantor Layanan",
-          reqiresAuth: true,
-        },
-      },
+
       {
         path: "bank",
         name: "bank",
@@ -169,20 +143,29 @@ const routes = [
         },
       },
       {
-        path: "bank/add",
-        name: "addbank",
-        component: () => import("@/pages/bank/addbank.vue"),
+        path: "program",
+        name: "program",
+        component: () => import("@/pages/program/dataprogram.vue"),
         meta: {
-          title: "Tambah Bank",
+          title: "Data Program",
           reqiresAuth: true,
         },
       },
       {
-        path: "bank/edit",
-        name: "editbank",
-        component: () => import("@/pages/bank/editbank.vue"),
+        path: "program/add",
+        name: "addprogram",
+        component: () => import("@/pages/program/addprogram.vue"),
         meta: {
-          title: "Edit Bank",
+          title: "Tambah Program",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "program/edit",
+        name: "editprogram",
+        component: () => import("@/pages/program/editprogram.vue"),
+        meta: {
+          title: "Edit Program",
           reqiresAuth: true,
         },
       },
@@ -220,89 +203,6 @@ const routes = [
         component: () => import("@/pages/pengajuan/addpengajuan.vue"),
         meta: {
           title: "Pengajuan",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "disposisi",
-        name: "disposisi",
-        component: () => import("@/pages/disposisi/datadisposisi.vue"),
-        meta: {
-          title: "Disposisi",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "disposisi/add",
-        name: "adddisposisi",
-        component: () => import("@/pages/disposisi/adddisposisi.vue"),
-        meta: {
-          title: "Tambah Disposisi",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "disposisi/edit",
-        name: "editdisposisi",
-        component: () => import("@/pages/disposisi/editdisposisi.vue"),
-        meta: {
-          title: "Edit Disposisi",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "statuspengajuan",
-        name: "statuspengajuan",
-        component: () =>
-          import("@/pages/status-pengajuan/status-pengajuan.vue"),
-        meta: {
-          title: "Status Pengajuan",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "donasi-kantor-layanan",
-        name: "donasikantorlayanan",
-        component: () => import("@/pages/donasi-kl/donasi-kl.vue"),
-        meta: {
-          title: "Donasi Kantor Layanan",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "batal-donasi",
-        name: "bataldonasi",
-        component: () => import("@/pages/batal-donasi/batal-donasi.vue"),
-        meta: {
-          title: "Batal Donasi ",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "batal-donasi-kantor-layanan",
-        name: "bataldonasikantorkl",
-        component: () => import("@/pages/batal-donasi/batal-donasi.vue"),
-        meta: {
-          title: "Batal Donasi ",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "penerimaan-kas",
-        name: "penerimaankas",
-        component: () => import("@/pages/penerimaan-kas/penerimaan-kas.vue"),
-        meta: {
-          title: "Rekap Penerimaan",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "rekap-penerimaan",
-        name: "penerimaanrekap",
-        component: () =>
-          import("@/pages/rekap-penerimaan/rekap-penerimaan.vue"),
-        meta: {
-          title: "Rekap Penerimaan ",
           reqiresAuth: true,
         },
       },

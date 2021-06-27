@@ -1,20 +1,17 @@
 <template>
   <div>
-    <Breadcrumbs title="Rekap Penerimaan" />
+    <Breadcrumbs title="Program" />
     <!-- Container-fluid starts-->
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Penerimaan Kas Kasir</h5>
-              <span
-                >lorem ipsum dolor sit amet, consectetur adipisicing elit</span
-              >
+              <h5>Data Program</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormPenerimaan></FormPenerimaan>
+              <FormProgram />
             </div>
           </div>
         </div>

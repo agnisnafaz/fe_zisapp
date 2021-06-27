@@ -34,14 +34,15 @@
           "title": "Mustahik",
           "type": "link"
         },
-        {
-          "path": "/main/kantorlayanan",
-          "title": "Kantor Layanan",
-          "type": "link"
-        },
+
         {
           "path": "/main/bank",
           "title": "Bank",
+          "type": "link"
+        },
+        {
+          "path": "/main/program",
+          "title": "Program",
           "type": "link"
         }
       ]
@@ -53,71 +54,25 @@
       "active": false,
       "children": [
         {
-          "title": "Muzaki",
-          "type": "sub",
-          "active": false,
-          "children": [
-            {
-              "path": "/main/donasi",
-              "title": "Donasi",
-              "type": "link"
-            },
-            {
-              "path": "/main/donasi-kantor-layanan",
-              "title": "Donasi Kantor Layanan",
-              "type": "link"
-            },
-            {
-              "path": "/main/batal-donasi",
-              "title": "Batal Donasi",
-              "type": "link"
-            },
-            {
-              "path": "/main/batal-donasi-kantor-layanan",
-              "title": "Batal Donasi Kantor Layanan",
-              "type": "link"
-            },
-            {
-              "path": "/main/penerimaan-kas",
-              "title": "Penerimaan KAS ZISR/FO",
-              "type": "link"
-            },
-            {
-              "path": "/main/rekap-penerimaan",
-              "title": "Rekap Penerimaan",
-              "type": "link"
-            }
-          ]
+          "title": "Donasi",
+          "path": "/main/donasi",
+          "type": "link",
+          "active": false
         },
         {
-          "title": "Mustahik",
-          "icon": "codesandbox",
-          "type": "sub",
-          "active": false,
-          "children": [
-            {
-              "path": "/main/pengajuan",
-              "title": "Pengajuan",
-              "type": "link"
-            },
-            {
-              "path": "/main/disposisi",
-              "title": "Disposisi",
-              "type": "link"
-            },
-            {
-              "path": "/main/statuspengajuan",
-              "title": "Status Pengajuan",
-              "type": "link"
-            }
-          ]
-        },
-        {
-          "path": "/main/get-donasi",
-          "title": "GET DONASI",
-          "type": "link"
+          "title": "Pengajuan",
+          "path": "/main/pengajuan",
+          "type": "link",
+          "active": false
         }
       ]
+    },
+    {
+      "path": "/main/laporan",
+      "title": "Laporan",
+      "icon": "printer",
+      "type": "link",
+      "active": false
     }
   ]
 }

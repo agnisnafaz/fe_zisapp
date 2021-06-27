@@ -24,38 +24,6 @@
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="col-md-12 ">
-                  <label for="c_form_kodeakun">Kode Akun</label>
-
-                  <v-autocomplete
-                    :items="kodeakun"
-                    item-text="nama_akun"
-                    item-value="kode_akun"
-                    v-model="form.kode_akun"
-                    auto-select-first
-                    outlined
-                    required
-                    small
-                  ></v-autocomplete>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-md-12 mb-3">
-                  <label for="c_form_kantor">Kantor Layanan</label>
-                  <v-autocomplete
-                    :items="kantorlayanan"
-                    item-text="nama_kantor"
-                    item-value="id_kantor"
-                    v-model="form.id_kantor"
-                    auto-select-first
-                    outlined
-                    required
-                    small
-                  ></v-autocomplete>
-                </div>
-              </div>
-
               <b-button type="submit" variant="primary">Simpan</b-button>
             </b-form>
           </div>
