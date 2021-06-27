@@ -7,13 +7,14 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Master Data Akad</h5>
+              <h5>Master Data Program</h5>
               <span
                 >lorem ipsum dolor sit amet, consectetur adipisicing elit</span
               >
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
+              <FormProgram />
             </div>
           </div>
         </div>

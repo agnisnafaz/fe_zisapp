@@ -31,15 +31,12 @@ import ApiService from "@/services/api.service";
 import DataTable from "@/components/datatable.vue";
 import FormMuzaki from "@/components/form-muzaki.vue";
 import FormMustahik from "@/components/form-mustahik.vue";
-import FormKantorLayanan from "@/components/form-kantorlayanan.vue";
+
 import FormUser from "@/components/form-user.vue";
 import FormBank from "@/components/form-bank.vue";
 import FormDonasi from "@/components/form-donasi.vue";
 import FormPengajuan from "@/components/form-pengajuan.vue";
-import FormDisposisi from "@/components/form-disposisi.vue";
-import FormDonasikl from "@/components/form-donasi-kl.vue";
-import FormKas from "@/components/form-penerimaan-kas.vue";
-import FormPenerimaan from "@/components/form-rekap-penerimaan";
+import FormProgram from "@/components/form-program.vue";
 
 import PxCard from "@/components/Pxcard.vue";
 import { Icon } from "leaflet";
@@ -56,16 +53,13 @@ const messages = { en: en, es: es, id: id };
 Vue.component("data-table", DataTable);
 Vue.component("FormMuzaki", FormMuzaki);
 Vue.component("FormMustahik", FormMustahik);
-Vue.component("FormKantorLayanan", FormKantorLayanan);
+
 Vue.component("FormUser", FormUser);
 Vue.component("FormBank", FormBank);
+Vue.component("FormProgram", FormProgram);
 Vue.component("Breadcrumbs", Breadcrumbs);
 Vue.component("FormDonasi", FormDonasi);
 Vue.component("FormPengajuan", FormPengajuan);
-Vue.component("FormDisposisi", FormDisposisi);
-Vue.component("FormDonasikl", FormDonasikl);
-Vue.component("FormKas", FormKas);
-Vue.component("FormPenerimaan", FormPenerimaan);
 
 Vue.component("apexchart", VueApexCharts);
 
