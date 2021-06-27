@@ -3,16 +3,21 @@
     <div class="logo-wrapper">
       <router-link to="/">
         <img
+          style="margin-left: 30px"
           class="img-fluid for-light"
-          width="80px"
+          width="50px"
           src="../assets/images/logo/logo.png"
           alt=""
-        /><img
+        />
+
+        <img
+          style="margin-left: 30px"
           width="px"
           class="img-fluid for-dark"
           src="../assets/images/logo/logo_dark.png"
           alt=""
         />
+        <span style="margin-left: 10px">ZISAPP</span>
       </router-link>
       <div class="back-btn" @click="toggle_sidebar">
         <i class="fa fa-angle-left"></i>
