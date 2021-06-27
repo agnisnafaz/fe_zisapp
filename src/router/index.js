@@ -151,24 +151,7 @@ const routes = [
           reqiresAuth: true,
         },
       },
-      {
-        path: "program/add",
-        name: "addprogram",
-        component: () => import("@/pages/program/addprogram.vue"),
-        meta: {
-          title: "Tambah Program",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "program/edit",
-        name: "editprogram",
-        component: () => import("@/pages/program/editprogram.vue"),
-        meta: {
-          title: "Edit Program",
-          reqiresAuth: true,
-        },
-      },
+
       {
         path: "donasi",
         name: "donasi",

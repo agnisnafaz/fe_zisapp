@@ -15,8 +15,18 @@
               <data-table
                 :items="data"
                 :headers="headers"
-                @add="formProgram = true"
-                @edit="$router.push({ path: '/main/program/edit' })"
+                @add="
+                  {
+                    formProgram = true;
+                    isEdit = false;
+                  }
+                "
+                @edit="
+                  {
+                    formProgram = true;
+                    isEdit = true;
+                  }
+                "
                 @delete="onDelete"
               />
             </div>
@@ -25,17 +35,28 @@
       </div>
     </div>
     <!-- Container-fluid Ends-->
-    <FormProgram :show="formProgram" :body="body" />
+    <FormProgram
+      :show="formProgram"
+      :body="body"
+      @tutup="formProgram = false"
+    />
   </div>
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {
-      headers: [{ text: "NO", value: "id" }],
-      formProgram: true,
+      headers: [
+        { text: "NO", value: "id" },
+        { text: "Kode", value: "kode_program" },
+        { text: "Program", value: "nama_program" },
+        { text: "AKSI", value: "action" },
+      ],
+      formProgram: false,
       body: {},
+      isEdit: false,
       data: [],
     };
   },
@@ -43,7 +64,58 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {},
+    onSubmit(form) {
+      if (this.isEdit) {
+        API.put("/api/program", form).then(({ status, data }) => {
+          console.log(data);
+          if (status == 200 || status == 201) {
+            // reponse dari be jika berhasil
+
+            if (data.status) {
+              //berhasil
+              this.data = data.data;
+            } else {
+              //notifikasi gagal
+            }
+          } else {
+            //notifikasi gagal
+          }
+        });
+      } else {
+        API.post("/api/program", form).then(({ status, data }) => {
+          console.log(data);
+          if (status == 200 || status == 201) {
+            // reponse dari be jika berhasil
+
+            if (data.status) {
+              //berhasil
+              this.data = data.data;
+            } else {
+              //notifikasi gagal
+            }
+          } else {
+            //notifikasi gagal
+          }
+        });
+      }
+    },
+    getData() {
+      API.get("/api/program").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
 
     onDelete(data) {
       this.$swal({
@@ -56,6 +128,10 @@ export default {
         reverseButtons: true,
       }).then(({ value }) => {
         if (value) {
+          //delete disini
+          API.delete("/api/program").then((result) => {
+            console.log(result);
+          });
         }
       });
     },

@@ -34,7 +34,7 @@
           <v-btn
             color="blue darken-1"
             text
-            @click="$emit('Tutup', dialog.value)"
+            @click="$emit('tutup', dialog.value)"
           >
             Close
           </v-btn>
