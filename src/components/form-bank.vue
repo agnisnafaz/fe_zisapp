@@ -1,89 +1,69 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="col-sm-12">
-        <px-card :actions="false">
-          <div slot="with-padding">
-            <b-form class="needs-validation" @submit="onsubmit">
-              <div class="form-row">
-                <div class="col-md-6 mb-1">
-                  <label for="c_form_norek">No.Rekening</label>
-                  <b-form-input
-                    type="text"
-                    placeholder="No.Rekening"
-                    v-model="form.no_rek"
-                  ></b-form-input>
-                </div>
-                <div class="col-md-6 mb-1">
-                  <label for="c_form_nama">Nama Bank</label>
-                  <b-form-input
-                    type="text"
-                    placeholder="Nama Bank"
-                    v-model="form.nama_bank"
-                  ></b-form-input>
-                </div>
-              </div>
-
-              <b-button type="submit" variant="primary">Simpan</b-button>
-            </b-form>
-          </div>
-        </px-card>
-      </div>
-    </div>
-  </div>
+  <v-dialog
+    transition="dialog-bottom-transition"
+    max-width="600"
+    v-model="show"
+    persistent
+  >
+    <template v-slot:default="dialog">
+      <v-card>
+        <v-toolbar color="primary" dark>Form Bank</v-toolbar>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="form.no_rek"
+                  label="No. Rekening"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="form.nama_bank"
+                  label="Nama Bank"
+                  required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions class="justify-end">
+          <v-spacer></v-spacer>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="$emit('tutup', dialog.value)"
+          >
+            Close
+          </v-btn>
+          <v-btn color="blue darken-1" text @click="submit"> Simpan </v-btn>
+        </v-card-actions>
+      </v-card>
+    </template>
+  </v-dialog>
 </template>
-
 <script>
-import API from "@/services/api.service";
 export default {
-  data() {
+  props: ["show", "body"],
+  data: () => {
     return {
-      form: {},
-      kodeakun: [],
-      kantorlayanan: [],
+      form: {
+        no_rek: "",
+        nama_bank: "",
+
+        active: 1,
+      },
     };
   },
-  created() {
-    this.getKantorLayanan();
-    this.getKodeAkun();
+  watch: {
+    body: function(newVal) {
+      this.form = newVal;
+    },
   },
   methods: {
-    getKodeAkun() {
-      API.get("/api/akun").then(({ status, data }) => {
-        console.log(data);
-        if (status == 200 || status == 201) {
-          // reponse dari be jika berhasil
-
-          if (data.status) {
-            //berhasil
-            this.kodeakun = data.data;
-          } else {
-            //notifikasi gagal
-          }
-        } else {
-          //notifikasi gagal
-        }
-      });
-    },
-
-    getKantorLayanan() {
-      API.get("/api/kantor").then(({ status, data }) => {
-        console.log(data);
-        if (status == 200 || status == 201) {
-          // reponse dari be jika berhasil
-
-          if (data.status) {
-            //berhasil
-            this.kantorlayanan = data.data;
-          } else {
-            //notifikasi gagal
-          }
-        } else {
-          //notifikasi gagal
-        }
-      });
-    },
-    onsubmit() {
+    submit() {
       this.$emit("submit", this.form);
     },
   },
