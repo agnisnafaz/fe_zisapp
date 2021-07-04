@@ -78,7 +78,7 @@
                   ></b-form-input>
                 </div>
               </div>
-              <div class="form-row">
+              <!-- <div class="form-row">
                 <div class="col-md-12 mb-1">
                   <label for="c_form_kantorl">Kantor Layanan</label>
                   <v-autocomplete
@@ -92,7 +92,7 @@
                     small
                   ></v-autocomplete>
                 </div>
-              </div>
+              </div> -->
               <b-button type="submit" variant="primary">Simpan</b-button>
             </b-form>
           </b-card-text>
