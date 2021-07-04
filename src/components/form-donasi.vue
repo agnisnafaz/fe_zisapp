@@ -71,27 +71,20 @@
               </div>
 
               <div class="form-row">
-                <div class="col-md-3 ">
+                <div class="col-md-4 ">
                   <label for="c_form_nobukti">No Bukti Fisik</label>
                   <b-form-input
                     type="text"
                     placeholder="No Bukti Fisik"
                   ></b-form-input>
                 </div>
-                <div class="col-md-3 ">
-                  <label for="c_form_periode">Periode</label>
 
-                  <b-form-select
-                    v-model="form.periode"
-                    :options="optionperiode"
-                  ></b-form-select>
-                </div>
-                <div class="col-md-3 ">
+                <div class="col-md-4 ">
                   <label for="datepicker">Tanggal Donasi</label>
                   <b-form-datepicker id="datepicker" v-model="value">
                   </b-form-datepicker>
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-4">
                   <label for="c_form_periode">Metode Pembayaran</label>
 
                   <b-form-select
@@ -100,13 +93,6 @@
                   ></b-form-select>
                 </div>
               </div>
-            </b-form>
-          </div>
-        </px-card>
-
-        <px-card :actions="false">
-          <div slot="with-padding">
-            <b-form class="needs-validation" @submit="onsubmit">
               <div class="form-row">
                 <div class="col-md-12 mb-1">
                   <label for="c_form_program">Program</label>
@@ -136,6 +122,13 @@
                   <b-form-input type="text" placeholder="Jumlah"></b-form-input>
                 </div>
               </div>
+            </b-form>
+          </div>
+        </px-card>
+
+        <px-card :actions="false">
+          <div slot="with-padding">
+            <b-form class="needs-validation" @submit="onsubmit">
               <data-table
                 :items="data"
                 :headers="headers"
@@ -159,6 +152,12 @@ export default {
   components: { Pxcard },
   data() {
     return {
+      headers: [
+        { text: "No", value: "id" },
+        { text: "Mustahik", value: "nama_mustahik" },
+        { text: "Bank", value: "nama_bank" },
+        { text: "Program", value: "nama_program" },
+      ],
       form: {},
       optionmetode: [],
       optionperiode: [],

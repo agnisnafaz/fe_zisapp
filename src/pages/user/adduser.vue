@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormUser @submit="OnSimpan" />
+              <FormUser @submit="OnSimpan" :hidestatus="hidestatus" />
             </div>
           </div>
         </div>
@@ -25,7 +25,9 @@
 import API from "@/services/api.service";
 export default {
   data: () => {
-    return {};
+    return {
+      hidestatus: false,
+    };
   },
   methods: {
     OnSimpan(form) {

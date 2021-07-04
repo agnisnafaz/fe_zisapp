@@ -45,23 +45,6 @@
               </div>
               <div class="form-row">
                 <div class="col-md-6 mb-3">
-                  <label for="c_form_pimpinan">Level</label>
-                  <b-form-select
-                    v-model="form.leveluser"
-                    :options="optionlevel"
-                  ></b-form-select>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="c_form_statususer">Status</label>
-                  <b-form-select
-                    v-model="form.status_pengguna"
-                    :options="optionstatus"
-                  ></b-form-select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="col-md-6 mb-3">
                   <label for="c_form_username">Username</label>
                   <b-form-input
                     type="text"
@@ -78,6 +61,23 @@
                   ></b-form-input>
                 </div>
               </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="c_form_pimpinan">Level</label>
+                  <b-form-select
+                    v-model="form.leveluser"
+                    :options="optionlevel"
+                  ></b-form-select>
+                </div>
+                <div class="col-md-6 mb-3" v-show="hidestatus">
+                  <label for="c_form_statususer">Status</label>
+                  <b-form-select
+                    v-model="form.status_pengguna"
+                    :options="optionstatus"
+                  ></b-form-select>
+                </div>
+              </div>
+
               <!-- <div class="form-row">
                 <div class="col-md-12 mb-1">
                   <label for="c_form_kantorl">Kantor Layanan</label>
@@ -151,6 +151,7 @@
 <script>
 import API from "@/services/api.service";
 export default {
+  props: ["hidestatus"],
   data() {
     return {
       form: {},
