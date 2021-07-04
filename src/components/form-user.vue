@@ -26,7 +26,7 @@
               </div>
 
               <div class="form-row">
-                <div class="col-md-12 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="c_form_alamat">Alamat</label>
                   <b-form-input
                     type="text"
@@ -34,9 +34,7 @@
                     placeholder="Alamat"
                   ></b-form-input>
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="c_form_telepon">Telepon</label>
                   <b-form-input
                     type="text"
@@ -44,14 +42,16 @@
                     placeholder="Telepon"
                   ></b-form-input>
                 </div>
-                <div class="col-md-4 mb-3">
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
                   <label for="c_form_pimpinan">Level</label>
                   <b-form-select
                     v-model="form.leveluser"
                     :options="optionlevel"
                   ></b-form-select>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="c_form_statususer">Status</label>
                   <b-form-select
                     v-model="form.status_pengguna"
@@ -78,7 +78,7 @@
                   ></b-form-input>
                 </div>
               </div>
-              <div class="form-row">
+              <!-- <div class="form-row">
                 <div class="col-md-12 mb-1">
                   <label for="c_form_kantorl">Kantor Layanan</label>
                   <v-autocomplete
@@ -92,7 +92,7 @@
                     small
                   ></v-autocomplete>
                 </div>
-              </div>
+              </div> -->
               <b-button type="submit" variant="primary">Simpan</b-button>
             </b-form>
           </b-card-text>
@@ -154,8 +154,15 @@ export default {
   data() {
     return {
       form: {},
-      optionlevel: [],
-      optionstatus: [],
+      optionlevel: [
+        { value: "1", text: "admin" },
+        { value: "1", text: "customer service" },
+        { value: "1", text: "direktur" },
+      ],
+      optionstatus: [
+        { value: "1", text: "aktif" },
+        { value: "1", text: "tidak aktif" },
+      ],
       kantorlayanan: [],
     };
   },

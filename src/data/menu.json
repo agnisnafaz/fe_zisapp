@@ -67,6 +67,15 @@
         }
       ]
     },
+
+    {
+      "path": "/main/direktur",
+      "title": "Direktur",
+      "icon": "user",
+      "type": "link",
+      "active": false
+    },
+
     {
       "path": "/main/laporan",
       "title": "Laporan",

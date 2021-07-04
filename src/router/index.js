@@ -189,6 +189,24 @@ const routes = [
           reqiresAuth: true,
         },
       },
+      {
+        path: "direktur",
+        name: "datapenyaluran",
+        component: () => import("@/pages/direktur/datapenyalura.vue"),
+        meta: {
+          title: "Data Penyaluran",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "direktur/edit",
+        name: "editpenyaluran",
+        component: () => import("@/pages/direktur/editpenyaluran.vue"),
+        meta: {
+          title: "Edit Penyaluran",
+          reqiresAuth: true,
+        },
+      },
 
       /**
        *!ini buat contoh

@@ -60,7 +60,7 @@
                   ></b-form-select>
                 </div>
               </div>
-              <div class="form-row">
+              <!-- <div class="form-row">
                 <div class="col-md-12 mb-1">
                   <label for="c_form_kantorlayanan">Kantor Layanan </label>
                   <v-autocomplete
@@ -74,7 +74,7 @@
                     small
                   ></v-autocomplete>
                 </div>
-              </div>
+              </div> -->
               <b-button type="submit" variant="primary">Simpan</b-button>
             </b-form>
           </div>
