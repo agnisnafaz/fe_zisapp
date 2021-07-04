@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormUser v-model="OnEdit"></FormUser>
+              <FormUser v-model="OnEdit" :hidestatus="hidestatus"></FormUser>
             </div>
           </div>
         </div>
@@ -25,7 +25,9 @@
 import API from "@/services/api.service";
 export default {
   data: () => {
-    return {};
+    return {
+      hidestatus: true,
+    };
   },
   methods: {
     OnEdit(form) {
