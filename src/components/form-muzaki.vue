@@ -24,7 +24,7 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="c_form_city">NIK</label>
                   <b-form-input
                     type="text"
@@ -32,20 +32,13 @@
                     v-model="form.nik"
                   ></b-form-input>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="c_form_nama">Nama</label>
                   <b-form-input
                     type="text"
                     placeholder="Nama"
                     v-model="form.nama_muzaki"
                   ></b-form-input>
-                </div>
-                <div class="col-md-4 mb-3">
-                  <label for="c_form_jeniskelamin">Jenis Kelamin</label>
-                  <b-form-select
-                    v-model="form.jk"
-                    :options="optionjk"
-                  ></b-form-select>
                 </div>
               </div>
               <div class="form-row">
@@ -58,6 +51,23 @@
                   ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-3">
+                  <label for="c_form_jeniskelamin">Jenis Kelamin</label>
+                  <b-form-select
+                    v-model="form.jk"
+                    :options="optionjk"
+                  ></b-form-select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="c_form_telepon">Telepon</label>
+                  <b-form-input
+                    type="text"
+                    placeholder="Telepon"
+                    v-model="form.telepon_muzaki"
+                  ></b-form-input>
+                </div>
+                <div class="col-md-6 mb-3">
                   <label for="c_form_profesi">Profesi</label>
                   <b-form-input
                     type="text"
@@ -67,22 +77,14 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="c_form_telepon">Telepon</label>
-                  <b-form-input
-                    type="text"
-                    placeholder="Telepon"
-                    v-model="form.telepon_muzaki"
-                  ></b-form-input>
-                </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="c_form_kategori">Kategori</label>
                   <b-form-select
                     v-model="form.kategori_muzaki"
                     :options="optionkategori"
                   ></b-form-select>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="c_form_kategori">Status</label>
                   <b-form-select
                     v-model="form.status_muzaki"
