@@ -154,8 +154,15 @@ export default {
   data() {
     return {
       form: {},
-      optionlevel: [],
-      optionstatus: [],
+      optionlevel: [
+        { value: "1", text: "admin" },
+        { value: "1", text: "customer service" },
+        { value: "1", text: "direktur" },
+      ],
+      optionstatus: [
+        { value: "1", text: "aktif" },
+        { value: "1", text: "tidak aktif" },
+      ],
       kantorlayanan: [],
     };
   },
