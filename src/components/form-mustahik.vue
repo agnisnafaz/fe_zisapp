@@ -97,17 +97,17 @@ export default {
       form: {},
       optionkategori: [
         { value: "1", text: "fakir miskin" },
-        { value: "1", text: "fisaabilillah" },
-        { value: "1", text: "fakir miskin" },
+        { value: "2", text: "fisaabilillah" },
+        { value: "3", text: "fakir miskin" },
       ],
       optionstatus: [
         { value: "1", text: "aktif" },
-        { value: "1", text: "tidak aktif" },
+        { value: "2", text: "tidak aktif" },
       ],
       optionasnaf: [
         { value: "1", text: "fakir miskin" },
-        { value: "1", text: "fisaabilillah" },
-        { value: "1", text: "fakir miskin" },
+        { value: "2", text: "fisaabilillah" },
+        { value: "3", text: "fakir miskin" },
       ],
     };
   },

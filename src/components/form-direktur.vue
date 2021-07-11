@@ -118,7 +118,7 @@ export default {
       optionasnaf: [],
       optionjenispengajuan: [],
       optionstatuspengajuan: [
-        { value: "1", text: "Ditolak" },
+        { value: "0", text: "Ditolak" },
         { value: "1", text: "Diterima" },
       ],
       mustahik: [],

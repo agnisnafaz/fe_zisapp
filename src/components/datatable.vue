@@ -26,6 +26,25 @@
     </v-card-title>
 
     <v-data-table flat :headers="headers" :items="items" :search="search">
+      <template v-slot:[`item.jk`]="{ item }">
+        {{ getJK(item.jk) }}
+      </template>
+      <template v-slot:[`item.asnaf`]="{ item }">
+        {{ getAsnaf(item.asnaf) }}
+      </template>
+      <template v-slot:[`item.status_pengguna`]="{ item }">
+        {{ item.status_pengguna == 1 ? "Aktif" : "Tidak Aktif" }}
+      </template>
+      <template v-slot:[`item.status_pengajuan`]="{ item }">
+        {{ item.status_pengajuan == 1 ? "Diterima" : "Ditolak" }}
+      </template>
+      <template v-slot:[`item.leveluser`]="{ item }">{{
+        getLevel(item.leveluser)
+      }}</template>
+      <template v-slot:[`item.kategori_mustahik`]="{ item }">
+        {{ getKetgoriMustahik(item.kategori_musatahik) }}
+      </template>
+
       <template v-slot:[`item.action`]="{ item }">
         <b-button-toolbar
           aria-label="Toolbar with button groups and dropdown menu"
@@ -71,6 +90,28 @@ export default {
     ...mapState({
       theme: (state) => state.layout.isDark,
     }),
+  },
+  methods: {
+    getAsnaf(val) {
+      if (val == 1) return "fakir miskin";
+      if (val == 2) return "fisaabilillah";
+      if (val == 3) return "fakir miskin";
+    },
+    getJK(val) {
+      console.log(val);
+      if (val == 1) return "Laki-Laki";
+      if (val == 2) return "Perempuan";
+    },
+    getLevel(level) {
+      if (level == 1) return "Admin";
+      if (level == 2) return "Front Office";
+      if (level == 3) return "Direktur";
+    },
+    getKetgoriMustahik(cat) {
+      if (cat == 1) return "fakir miskin";
+      if (cat == 2) return "fisaabilillah";
+      if (cat == 3) return "fakir miskin";
+    },
   },
 };
 </script>
