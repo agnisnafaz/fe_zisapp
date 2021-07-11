@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <px-card :actions="false">
           <div slot="with-padding">
-            <b-form class="needs-validation" @submit="onsubmit">
+            <b-form class="needs-validation" @submit.prevent="onsubmit">
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="c_form_first_name">NPWZ</label>
@@ -87,6 +87,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="c_form_kategori">Status</label>
                   <b-form-select
+                    :disabled="!isEdit"
                     v-model="form.status_muzaki"
                     :options="optionstatus"
                   ></b-form-select>
@@ -104,6 +105,7 @@
 <script>
 import API from "@/services/api.service";
 export default {
+  props: ["isEdit"],
   data() {
     return {
       form: {},
@@ -120,6 +122,11 @@ export default {
         { value: "2", text: "tidak aktif" },
       ],
     };
+  },
+  created() {
+    if (!this.isEdit) {
+      this.form.status_muzaki = 1;
+    }
   },
   methods: {
     onsubmit() {
