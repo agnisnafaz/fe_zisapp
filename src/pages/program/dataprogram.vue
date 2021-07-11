@@ -178,7 +178,6 @@ export default {
             ({ status, data }) => {
               if (status == 200 || status == 201) {
                 // reponse dari be jika berhasil
-
                 if (data.status) {
                   this.getData();
                   //berhasil
