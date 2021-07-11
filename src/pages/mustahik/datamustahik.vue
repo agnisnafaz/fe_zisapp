@@ -18,7 +18,7 @@
                 :items="data"
                 :headers="headers"
                 @add="$router.push({ path: '/main/mustahik/add' })"
-                @edit="$router.push({ path: '/main/mustahik/edit' })"
+                @edit="editMustahik"
                 @delete="onDelete"
               />
             </div>
@@ -66,6 +66,9 @@ export default {
           //notifikasi gagal
         }
       });
+    },
+    editMustahik(data) {
+      this.$router.push({ path: "/main/mustahik/edit/" + data.id_mustahik });
     },
     onDelete(data) {
       this.$swal({

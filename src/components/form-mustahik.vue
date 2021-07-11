@@ -53,6 +53,7 @@
                 <div class="col-md-4 mb-3">
                   <label for="c_form_status">Status</label>
                   <b-form-select
+                    :disabled="!isEdit"
                     v-model="form.status_smustahik"
                     :options="optionstatus"
                   ></b-form-select>
@@ -91,7 +92,9 @@
 
 <script>
 import API from "@/services/api.service";
+import { getUser } from "@/services/jwt.service";
 export default {
+  props: ["isEdit", "body"],
   data() {
     return {
       form: {},
@@ -102,7 +105,7 @@ export default {
       ],
       optionstatus: [
         { value: "1", text: "aktif" },
-        { value: "1", text: "tidak aktif" },
+        { value: "2", text: "tidak aktif" },
       ],
       optionasnaf: [
         { value: "1", text: "fakir miskin" },
@@ -111,7 +114,25 @@ export default {
       ],
     };
   },
-  created() {},
+  created() {
+    if (!this.isEdit) {
+      this.form.status_mustahik = 1;
+    }
+
+    const user = getUser();
+    this.form.id_pengguna = user.id_pengguna;
+  },
+  watch: {
+    isEdit: function(newVal) {
+      if (newVal) {
+        this.form.status_mustahik = 1;
+      }
+    },
+    body: function(newVal) {
+      console.log(newVal);
+      this.form = newVal;
+    },
+  },
   methods: {
     onsubmit() {
       this.$emit("submit", this.form);

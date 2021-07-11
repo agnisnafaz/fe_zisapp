@@ -14,7 +14,11 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormMustahik @submit="OnEdit"></FormMustahik>
+              <FormMustahik
+                @submit="OnEdit"
+                :body="body"
+                :isEdit="true"
+              ></FormMustahik>
             </div>
           </div>
         </div>
@@ -28,9 +32,34 @@
 import API from "@/services/api.service";
 export default {
   data: () => {
-    return {};
+    return {
+      body: {},
+    };
+  },
+  created() {
+    if (this.$route.params.id) {
+      this.getMustahikById(this.$route.params.id);
+    }
   },
   methods: {
+    getMustahikById(id) {
+      API.get(`/api/mustahik/${id}`)
+        .then(({ status, data }) => {
+          if (status == 200 || status == 201) {
+            if (data.status) {
+              this.body = data.data;
+            }
+          }
+        })
+        .catch((e) => {
+          this.$toasted.show("Data Tidak Ditemukan", {
+            theme: "bubble",
+            position: "top-right",
+            type: "error", //"success" kalau su
+            duration: 2000,
+          });
+        });
+    },
     OnEdit(form) {
       console.log(form);
       API.put("/api/mustahik", form)
@@ -47,7 +76,6 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/pages/mustahik/datamustahik" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
