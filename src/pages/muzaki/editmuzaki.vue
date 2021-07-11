@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormMuzaki @submit="OnEdit"></FormMuzaki>
+              <FormMuzaki @submit="OnEdit" :isEdit="true"></FormMuzaki>
             </div>
           </div>
         </div>
