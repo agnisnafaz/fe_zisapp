@@ -52,7 +52,6 @@ export default {
       form: {
         kode_program: "",
         nama_program: "",
-
         active: 1,
       },
     };

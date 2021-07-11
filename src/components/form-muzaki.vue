@@ -6,15 +6,7 @@
           <div slot="with-padding">
             <b-form class="needs-validation" @submit.prevent="onsubmit">
               <div class="form-row">
-                <div class="col-md-6 mb-3">
-                  <label for="c_form_first_name">NPWZ</label>
-                  <b-form-input
-                    type="text"
-                    placeholder="NPWZ"
-                    v-model="form.npwz"
-                  ></b-form-input>
-                </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-12 mb-3">
                   <label for="c_form_last_name">NPWP</label>
                   <b-form-input
                     type="text"
@@ -125,7 +117,6 @@ export default {
     };
   },
   created() {
-
     if (!this.isEdit) {
       this.form.status_muzaki = 1;
     }

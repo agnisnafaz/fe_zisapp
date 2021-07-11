@@ -21,12 +21,7 @@
                     isEdit = false;
                   }
                 "
-                @edit="
-                  {
-                    formProgram = true;
-                    isEdit = true;
-                  }
-                "
+                @edit="onEdit"
                 @delete="onDelete"
               />
             </div>
@@ -39,6 +34,7 @@
       :show="formProgram"
       :body="body"
       @tutup="formProgram = false"
+      @submit="onSubmit"
     />
   </div>
 </template>
@@ -64,49 +60,98 @@ export default {
     this.getData();
   },
   methods: {
+    onEdit(data) {
+      console.log(data);
+      this.formProgram = true;
+      this.isEdit = true;
+      this.body = data;
+    },
     onSubmit(form) {
       if (this.isEdit) {
-        API.put("/api/program", form).then(({ status, data }) => {
-          console.log(data);
-          if (status == 200 || status == 201) {
-            // reponse dari be jika berhasil
+        API.put(`/api/program/${this.body.id_program}`, form).then(
+          ({ status, data }) => {
+            console.log(data);
+            if (status == 200 || status == 201) {
+              // reponse dari be jika berhasil
 
-            if (data.status) {
-              //berhasil
-              this.data = data.data;
+              if (data.status) {
+                this.formProgram = false;
+                this.body = {};
+                //berhasil
+                this.$toasted.show("Data Berhasil Disimpan", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "success", //"success" kalau su
+                  duration: 2000,
+                });
+
+                this.getData();
+              } else {
+                //notifikasi gagal
+                this.$toasted.show("Data Gagal Disimpan", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "error", //"success" kalau su
+                  duration: 2000,
+                });
+              }
             } else {
               //notifikasi gagal
+              this.$toasted.show("Data Gagal Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
             }
-          } else {
-            //notifikasi gagal
           }
-        });
+        );
       } else {
         API.post("/api/program", form).then(({ status, data }) => {
-          console.log(data);
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
+              this.formProgram = false;
+              this.body = {};
               //berhasil
-              this.data = data.data;
+              this.$toasted.show("Data Berhasil Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "success", //"success" kalau su
+                duration: 2000,
+              });
+
+              this.getData();
             } else {
               //notifikasi gagal
+              this.$toasted.show("Data Gagal Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
             }
           } else {
             //notifikasi gagal
+            this.$toasted.show("Data Gagal Disimpan", {
+              theme: "bubble",
+              position: "top-right",
+              type: "error", //"success" kalau su
+              duration: 2000,
+            });
           }
         });
       }
     },
     getData() {
       API.get("/api/program").then(({ status, data }) => {
-        console.log(data);
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
           if (data.status) {
-            //berhasil
+            //berhasil\
+
             this.data = data.data;
           } else {
             //notifikasi gagal
@@ -129,9 +174,40 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete("/api/program").then((result) => {
-            console.log(result);
-          });
+          API.delete(`/api/program/${data.id_program}`).then(
+            ({ status, data }) => {
+              if (status == 200 || status == 201) {
+                // reponse dari be jika berhasil
+
+                if (data.status) {
+                  this.getData();
+                  //berhasil
+                  this.$toasted.show("Data Berhasil Disimpan", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "success", //"success" kalau su
+                    duration: 2000,
+                  });
+                } else {
+                  //notifikasi gagal
+                  this.$toasted.show("Data Gagal Disimpan", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "error", //"success" kalau su
+                    duration: 2000,
+                  });
+                }
+              } else {
+                //notifikasi gagal
+                this.$toasted.show("Data Gagal Disimpan", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "error", //"success" kalau su
+                  duration: 2000,
+                });
+              }
+            }
+          );
         }
       });
     },
