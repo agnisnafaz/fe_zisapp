@@ -96,7 +96,7 @@ export default {
       }
     },
     getData() {
-      API.get("/api/program").then(({ status, data }) => {
+      API.get("/api/bank").then(({ status, data }) => {
         console.log(data);
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil

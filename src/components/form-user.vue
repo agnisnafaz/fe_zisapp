@@ -4,7 +4,7 @@
       <b-tabs card>
         <b-tab title="User" active>
           <b-card-text>
-            <b-form class="needs-validation" @submit="onsubmit">
+            <b-form class="needs-validation" @submit.prevent="onsubmit">
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="c_form_koder">Kode </label>

@@ -124,6 +124,7 @@ export default {
     };
   },
   created() {
+
     if (!this.isEdit) {
       this.form.status_muzaki = 1;
     }

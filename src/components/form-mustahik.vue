@@ -11,6 +11,7 @@
                   <b-form-input
                     type="text"
                     placeholder="Kode Mustahik"
+                    v-model="form.kode_mustahik"
                   ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-3">
@@ -26,14 +27,18 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="c_form_alamat">Alamat</label>
-                  <b-form-input type="text" placeholder="Alamat"></b-form-input>
+                  <b-form-input
+                    type="text"
+                    placeholder="Alamat"
+                    v-model="form.alamat_mustahik"
+                  ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="c_form_telepon">Telepon</label>
                   <b-form-input
                     type="text"
                     placeholder="Telepon"
-                    v-model="form.alamat_mustahik"
+                    v-model="form.telepon_mustahik"
                   ></b-form-input>
                 </div>
               </div>
@@ -104,30 +109,10 @@ export default {
         { value: "1", text: "fisaabilillah" },
         { value: "1", text: "fakir miskin" },
       ],
-      kantorlayanan: [],
     };
   },
-  created() {
-    this.getKantorlayanan();
-  },
+  created() {},
   methods: {
-    getKantorlayanan() {
-      API.get("/api/kantor").then(({ status, data }) => {
-        console.log(data);
-        if (status == 200 || status == 201) {
-          // reponse dari be jika berhasil
-
-          if (data.status) {
-            //berhasil
-            this.kantorlayanan = data.data;
-          } else {
-            //notifikasi gagal
-          }
-        } else {
-          //notifikasi gagal
-        }
-      });
-    },
     onsubmit() {
       this.$emit("submit", this.form);
     },
