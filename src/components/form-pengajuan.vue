@@ -10,7 +10,8 @@
                   <label for="c_form_no-pengajuan">No. Pengajuan</label>
                   <b-form-input
                     type="text"
-                    placeholder="No. Pengajuan"
+                    placeholder="No.Pengajuan"
+                    v-model="form.no_pengajuan"
                   ></b-form-input>
                 </div>
               </div>
@@ -52,11 +53,16 @@
                   <b-form-input
                     type="text"
                     placeholder="Kegiatan"
+                    v-model="form.pengajuan_kegiatan"
                   ></b-form-input>
                 </div>
                 <div class="col-md-6 ">
                   <label for="c_form_jumlah">Jumlah</label>
-                  <b-form-input type="text" placeholder="Jumlah"></b-form-input>
+                  <b-form-input
+                    type="text"
+                    placeholder="Jumlah"
+                    v-model="form.jumlah_pengajuan"
+                  ></b-form-input>
                 </div>
               </div>
               <div class="form-row">

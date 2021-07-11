@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Breadcrumbs title="Donasi" />
+    <Breadcrumbs title="Transaksi Zakat Infaq dan Sodaqoh" />
     <!-- Container-fluid starts-->
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Transaksi Zakat Infaq dan Sodaqoh</h5>
+              <h5>Donasi</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->

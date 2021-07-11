@@ -76,50 +76,22 @@
                   <b-form-input
                     type="text"
                     placeholder="No Bukti Fisik"
+                    v-model="form.no_bukti"
                   ></b-form-input>
                 </div>
 
                 <div class="col-md-4 ">
                   <label for="datepicker">Tanggal Donasi</label>
-                  <b-form-datepicker id="datepicker" v-model="value">
+                  <b-form-datepicker id="datepicker" v-model="form.tgl_donasi">
                   </b-form-datepicker>
                 </div>
                 <div class="col-md-4">
                   <label for="c_form_periode">Metode Pembayaran</label>
 
                   <b-form-select
-                    v-model="form.metode_pembayaran"
+                    v-model="form.metode"
                     :options="optionmetode"
                   ></b-form-select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-md-12 mb-1">
-                  <label for="c_form_program">Program</label>
-                  <v-autocomplete
-                    :items="program"
-                    item-text="nama_program"
-                    item-value="id_program"
-                    v-model="form.id_program"
-                    auto-select-first
-                    outlined
-                    required
-                    small
-                  >
-                  </v-autocomplete>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-md-6 ">
-                  <label for="c_form_keterangan">Keterangan</label>
-                  <b-form-input
-                    type="text"
-                    placeholder="Keterangan"
-                  ></b-form-input>
-                </div>
-                <div class="col-md-6 ">
-                  <label for="c_form_jumlah">Jumlah</label>
-                  <b-form-input type="text" placeholder="Jumlah"></b-form-input>
                 </div>
               </div>
             </b-form>
@@ -128,6 +100,40 @@
 
         <px-card :actions="false">
           <div slot="with-padding">
+            <div class="form-row">
+              <div class="col-md-12 mb-1">
+                <label for="c_form_program">Program</label>
+                <v-autocomplete
+                  :items="program"
+                  item-text="nama_program"
+                  item-value="id_program"
+                  v-model="form.id_program"
+                  auto-select-first
+                  outlined
+                  requiredgit
+                  small
+                >
+                </v-autocomplete>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 ">
+                <label for="c_form_keterangan">Keterangan</label>
+                <b-form-input
+                  type="text"
+                  placeholder="Keterangan"
+                  v-model="form.keterangan"
+                ></b-form-input>
+              </div>
+              <div class="col-md-6 ">
+                <label for="c_form_jumlah">Jumlah</label>
+                <b-form-input
+                  type="text"
+                  placeholder="Jumlah"
+                  v-model="form.jumlah_donasi"
+                ></b-form-input>
+              </div>
+            </div>
             <b-form class="needs-validation" @submit="onsubmit">
               <data-table
                 :items="data"
