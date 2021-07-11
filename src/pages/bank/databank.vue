@@ -21,12 +21,7 @@
                     isEdit = false;
                   }
                 "
-                @edit="
-                  {
-                    formBank = true;
-                    isEdit = true;
-                  }
-                "
+                @edit="onEdit"
                 @delete="onDelete"
               />
             </div>
@@ -35,7 +30,12 @@
       </div>
     </div>
     <!-- Container-fluid Ends-->
-    <FormBank :show="formBank" :body="body" @tutup="formBank = false" />
+    <FormBank
+      :show="formBank"
+      :body="body"
+      @tutup="formBank = false"
+      @submit="onSubmit"
+    />
   </div>
 </template>
 
@@ -45,7 +45,6 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "NO", value: "id" },
         { text: "No. Rekening", value: "no_rek" },
         { text: "Bank", value: "nama_bank" },
         { text: "AKSI", value: "action" },
@@ -60,49 +59,98 @@ export default {
     this.getData();
   },
   methods: {
+    onEdit(data) {
+      console.log(data);
+      this.formBank = true;
+      this.isEdit = true;
+      this.body = data;
+    },
     onSubmit(form) {
       if (this.isEdit) {
-        API.put("/api/bank", form).then(({ status, data }) => {
-          console.log(data);
-          if (status == 200 || status == 201) {
-            // reponse dari be jika berhasil
+        API.put(`/api/bank/${this.body.id_bank}`, form).then(
+          ({ status, data }) => {
+            console.log(data);
+            if (status == 200 || status == 201) {
+              // reponse dari be jika berhasil
 
-            if (data.status) {
-              //berhasil
-              this.data = data.data;
+              if (data.status) {
+                this.formBank = false;
+                this.body = {};
+                //berhasil
+                this.$toasted.show("Data Berhasil Diedit", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "success", //"success" kalau su
+                  duration: 2000,
+                });
+
+                this.getData();
+              } else {
+                //notifikasi gagal
+                this.$toasted.show("Data Gagal Diedit", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "error", //"success" kalau su
+                  duration: 2000,
+                });
+              }
             } else {
               //notifikasi gagal
+              this.$toasted.show("Data Gagal Diedit", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
             }
-          } else {
-            //notifikasi gagal
           }
-        });
+        );
       } else {
         API.post("/api/bank", form).then(({ status, data }) => {
-          console.log(data);
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
+              this.formBank = false;
+              this.body = {};
               //berhasil
-              this.data = data.data;
+              this.$toasted.show("Data Berhasil Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "success", //"success" kalau su
+                duration: 2000,
+              });
+
+              this.getData();
             } else {
               //notifikasi gagal
+              this.$toasted.show("Data Gagal Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
             }
           } else {
             //notifikasi gagal
+            this.$toasted.show("Data Gagal Disimpan", {
+              theme: "bubble",
+              position: "top-right",
+              type: "error", //"success" kalau su
+              duration: 2000,
+            });
           }
         });
       }
     },
     getData() {
       API.get("/api/bank").then(({ status, data }) => {
-        console.log(data);
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
           if (data.status) {
-            //berhasil
+            //berhasil\
+
             this.data = data.data;
           } else {
             //notifikasi gagal
@@ -115,7 +163,7 @@ export default {
 
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: `${data.no_rek}` }),
+        text: this.$t("Delete Message", { who: `${data.nama_bank}` }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -125,8 +173,36 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete("/api/bank").then((result) => {
-            console.log(result);
+          API.delete(`/api/bank/${data.id_bank}`).then(({ status, data }) => {
+            if (status == 200 || status == 201) {
+              // reponse dari be jika berhasil
+              if (data.status) {
+                this.getData();
+                //berhasil
+                this.$toasted.show("Data Berhasil Dihapus", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "success", //"success" kalau su
+                  duration: 2000,
+                });
+              } else {
+                //notifikasi gagal
+                this.$toasted.show("Data Gagal Dihapus", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "error", //"success" kalau su
+                  duration: 2000,
+                });
+              }
+            } else {
+              //notifikasi gagal
+              this.$toasted.show("Data Gagal Dihapus", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
+            }
           });
         }
       });

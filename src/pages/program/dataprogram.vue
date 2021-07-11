@@ -45,7 +45,6 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "NO", value: "id" },
         { text: "Kode", value: "kode_program" },
         { text: "Program", value: "nama_program" },
         { text: "AKSI", value: "action" },
@@ -78,7 +77,7 @@ export default {
                 this.formProgram = false;
                 this.body = {};
                 //berhasil
-                this.$toasted.show("Data Berhasil Disimpan", {
+                this.$toasted.show("Data Berhasil Diedit", {
                   theme: "bubble",
                   position: "top-right",
                   type: "success", //"success" kalau su
@@ -88,7 +87,7 @@ export default {
                 this.getData();
               } else {
                 //notifikasi gagal
-                this.$toasted.show("Data Gagal Disimpan", {
+                this.$toasted.show("Data Gagal Diedit", {
                   theme: "bubble",
                   position: "top-right",
                   type: "error", //"success" kalau su
@@ -97,7 +96,7 @@ export default {
               }
             } else {
               //notifikasi gagal
-              this.$toasted.show("Data Gagal Disimpan", {
+              this.$toasted.show("Data Gagal Diedit", {
                 theme: "bubble",
                 position: "top-right",
                 type: "error", //"success" kalau su
@@ -181,7 +180,7 @@ export default {
                 if (data.status) {
                   this.getData();
                   //berhasil
-                  this.$toasted.show("Data Berhasil Disimpan", {
+                  this.$toasted.show("Data Berhasil Dihapus", {
                     theme: "bubble",
                     position: "top-right",
                     type: "success", //"success" kalau su
@@ -189,7 +188,7 @@ export default {
                   });
                 } else {
                   //notifikasi gagal
-                  this.$toasted.show("Data Gagal Disimpan", {
+                  this.$toasted.show("Data Gagal Dihapus", {
                     theme: "bubble",
                     position: "top-right",
                     type: "error", //"success" kalau su
@@ -198,7 +197,7 @@ export default {
                 }
               } else {
                 //notifikasi gagal
-                this.$toasted.show("Data Gagal Disimpan", {
+                this.$toasted.show("Data Gagal Dihapus", {
                   theme: "bubble",
                   position: "top-right",
                   type: "error", //"success" kalau su

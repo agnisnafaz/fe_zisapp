@@ -13,6 +13,7 @@
             <v-row>
               <v-col cols="12">
                 <v-text-field
+                  disabled
                   v-model="form.kode_program"
                   label="Kode Program"
                   required
