@@ -104,8 +104,9 @@
 
 <script>
 import API from "@/services/api.service";
+import { getUser } from "@/services/jwt.service";
 export default {
-  props: ["isEdit"],
+  props: ["isEdit", "body"],
   data() {
     return {
       form: {},
@@ -127,9 +128,24 @@ export default {
     if (!this.isEdit) {
       this.form.status_muzaki = 1;
     }
+
+    const user = getUser();
+    this.form.id_pengguna = user.id_pengguna;
+  },
+  watch: {
+    isEdit: function(newVal) {
+      if (newVal) {
+        this.form.status_muzaki = 1;
+      }
+    },
+    body: function(newVal) {
+      console.log(newVal);
+      this.form = newVal;
+    },
   },
   methods: {
     onsubmit() {
+      console.log(this.form);
       this.$emit("submit", this.form);
     },
   },

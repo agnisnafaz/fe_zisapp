@@ -15,7 +15,7 @@
                 :items="data"
                 :headers="headers"
                 @add="$router.push({ path: '/main/muzaki/add' })"
-                @edit="$router.push({ path: '/main/muzaki/edit' })"
+                @edit="editMuzaki"
                 @delete="onDelete"
               />
             </div>
@@ -63,10 +63,12 @@ export default {
         }
       });
     },
-
+    editMuzaki(data) {
+      this.$router.push({ path: "/main/muzaki/edit/" + data.id_muzaki });
+    },
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: "" }),
+        text: this.$t("Delete Message", { who: data.nama_muzaki }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -76,9 +78,40 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete("/api/muzaki").then((result) => {
-            console.log(result);
-          });
+          API.delete(`/api/muzaki/${data.id_muzaki}`).then(
+            ({ status, data }) => {
+              if (status == 200 || status == 201) {
+                // reponse dari be jika berhasil
+
+                if (data.status) {
+                  //berhasil
+                  this.$toasted.show("Data Berhasil Diedit", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "success", //"success" kalau su
+                    duration: 2000,
+                  });
+                } else {
+                  //notifikasi gagal
+                  this.$toasted.show("Data Gagal Disimpan", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "error", //"success" kalau su
+                    duration: 2000,
+                  });
+                }
+                this.getData();
+              } else {
+                //notifikasi gagal
+                this.$toasted.show("Data Gagal Diedit", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "error", //"success" kalau su
+                  duration: 2000,
+                });
+              }
+            }
+          );
         }
       });
     },

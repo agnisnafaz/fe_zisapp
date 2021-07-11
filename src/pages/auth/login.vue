@@ -143,7 +143,7 @@ export default {
           //const { data, message, status } = data; //ambil hasilnya
 
           if (data.status) {
-            setUser(data.data);
+            setUser(data.data[0]);
             this.$toasted.show("Login Berhasil", {
               theme: "bubble",
               position: "top-right",

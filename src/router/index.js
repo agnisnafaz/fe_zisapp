@@ -97,7 +97,7 @@ const routes = [
         },
       },
       {
-        path: "muzaki/edit",
+        path: "muzaki/edit/:id",
         name: "editmuzaki",
         component: () => import("@/pages/muzaki/editmuzaki.vue"),
         meta: {

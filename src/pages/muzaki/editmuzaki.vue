@@ -11,7 +11,11 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormMuzaki @submit="OnEdit" :isEdit="true"></FormMuzaki>
+              <FormMuzaki
+                @submit="OnEdit"
+                :body="body"
+                :isEdit="true"
+              ></FormMuzaki>
             </div>
           </div>
         </div>
@@ -25,12 +29,36 @@
 import API from "@/services/api.service";
 export default {
   data: () => {
-    return {};
+    return {
+      body: {},
+    };
+  },
+  created() {
+    if (this.$route.params.id) {
+      this.getMuzakiById(this.$route.params.id);
+    }
   },
   methods: {
+    getMuzakiById(id) {
+      API.get(`/api/muzaki/${id}`)
+        .then(({ status, data }) => {
+          if (status == 200 || status == 201) {
+            if (data.status) {
+              this.body = data.data;
+            }
+          }
+        })
+        .catch((e) => {
+          this.$toasted.show("Data Tidak Ditemukan", {
+            theme: "bubble",
+            position: "top-right",
+            type: "error", //"success" kalau su
+            duration: 2000,
+          });
+        });
+    },
     OnEdit(form) {
-      console.log(form);
-      API.put("/api/muzaki", form)
+      API.put(`/api/muzaki/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
           console.log(data);
           if (status == 200 || status == 201) {
@@ -44,7 +72,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/pages/muzaki/datamuzaki" });
+              this.$router.push({ path: "/main/muzaki" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {

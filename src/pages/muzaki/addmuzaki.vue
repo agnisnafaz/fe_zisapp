@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormMuzaki @submit="onSimpan" :isEdit="false" />
+              <FormMuzaki @submit="onSimpan" :body="{}" :isEdit="isEdit" />
             </div>
           </div>
         </div>
@@ -25,7 +25,9 @@
 import API from "@/services/api.service";
 export default {
   data: () => {
-    return {};
+    return {
+      isEdit: false,
+    };
   },
   methods: {
     onSimpan(form) {
@@ -44,7 +46,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/pages/muzaki/datamuzaki" });
+              this.$router.push({ path: "/main/muzaki" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
