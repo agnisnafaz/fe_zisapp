@@ -48,7 +48,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/pages/mustahik/datamustahik" });
+              this.$router.push({ path: "/main/mustahik" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
