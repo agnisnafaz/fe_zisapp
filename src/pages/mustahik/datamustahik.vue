@@ -81,9 +81,40 @@ export default {
         reverseButtons: true,
       }).then(({ value }) => {
         if (value) {
-          API.delete("/api/mustahik").then((result) => {
-            console.log(result);
-          });
+          API.delete(`/api/mustahik/${data.id_mustahik}`).then(
+            ({ status, data }) => {
+              if (status == 200 || status == 201) {
+                // reponse dari be jika berhasil
+
+                if (data.status) {
+                  //berhasil
+                  this.$toasted.show("Data Berhasil Dihapus", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "success", //"success" kalau su
+                    duration: 2000,
+                  });
+                } else {
+                  //notifikasi gagal
+                  this.$toasted.show("Data Gagal Dihapus", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "error", //"success" kalau su
+                    duration: 2000,
+                  });
+                }
+                this.getData();
+              } else {
+                //notifikasi gagal
+                this.$toasted.show("Data Gagal Dihapus", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "error", //"success" kalau su
+                  duration: 2000,
+                });
+              }
+            }
+          );
         }
       });
     },

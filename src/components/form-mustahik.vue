@@ -9,6 +9,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="c_form_kode">Kode </label>
                   <b-form-input
+                    :disabled="!isEdit"
                     type="text"
                     placeholder="Kode Mustahik"
                     v-model="form.kode_mustahik"
@@ -54,7 +55,7 @@
                   <label for="c_form_status">Status</label>
                   <b-form-select
                     :disabled="!isEdit"
-                    v-model="form.status_smustahik"
+                    v-model="form.status_mustahik"
                     :options="optionstatus"
                   ></b-form-select>
                 </div>

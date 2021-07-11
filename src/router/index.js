@@ -124,7 +124,7 @@ const routes = [
         },
       },
       {
-        path: "mustahik/edit",
+        path: "mustahik/edit/:id",
         name: "editmustahik",
         component: () => import("@/pages/mustahik/editmustahik.vue"),
         meta: {
