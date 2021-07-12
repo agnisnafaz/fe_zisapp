@@ -146,16 +146,21 @@ export default {
   data() {
     return {
       headers: [
-        { text: "No", value: "id" },
-        { text: "Mustahik", value: "nama_mustahik" },
-        { text: "Bank", value: "nama_bank" },
+        { text: "Kode", value: "id" },
+
         { text: "Program", value: "nama_program" },
+        { text: "Keterangan", value: "keterangan" },
+        { text: "Jumlah", value: "jumlah_donasi" },
+        { text: "AKSI", value: "action" },
       ],
       form: {
         detail_donasi: [],
       },
       form_detail: {},
-      optionmetode: [],
+      optionmetode: [
+        { value: "1", text: "CASH" },
+        { value: "2", text: "MUTASI BANK" },
+      ],
       optionperiode: [],
       muzaki: [],
       bank: [],
@@ -224,6 +229,7 @@ export default {
 
     onTambah() {
       this.form.detail_donasi.push(this.form_detail);
+      this.form_detail = {};
     },
 
     onSimpan() {},

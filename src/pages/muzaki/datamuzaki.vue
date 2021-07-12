@@ -85,7 +85,7 @@ export default {
 
                 if (data.status) {
                   //berhasil
-                  this.$toasted.show("Data Berhasil Diedit", {
+                  this.$toasted.show("Data Berhasil Dihapus", {
                     theme: "bubble",
                     position: "top-right",
                     type: "success", //"success" kalau su
@@ -93,7 +93,7 @@ export default {
                   });
                 } else {
                   //notifikasi gagal
-                  this.$toasted.show("Data Gagal Disimpan", {
+                  this.$toasted.show("Data Gagal Dihapus", {
                     theme: "bubble",
                     position: "top-right",
                     type: "error", //"success" kalau su
@@ -103,7 +103,7 @@ export default {
                 this.getData();
               } else {
                 //notifikasi gagal
-                this.$toasted.show("Data Gagal Diedit", {
+                this.$toasted.show("Data Gagal Dihapus", {
                   theme: "bubble",
                   position: "top-right",
                   type: "error", //"success" kalau su

@@ -78,7 +78,7 @@ export default {
               });
             } else {
               //notifikasi gagal
-              this.$toasted.show("Data Gagal Disimpan", {
+              this.$toasted.show("Data Gagal Diedit", {
                 theme: "bubble",
                 position: "top-right",
                 type: "error", //"success" kalau su
