@@ -9,6 +9,7 @@
                 <div class="col-md-12 mb-1">
                   <label for="c_form_no-pengajuan">No. Pengajuan</label>
                   <b-form-input
+                    disabled
                     type="text"
                     placeholder="No.Pengajuan"
                     v-model="form.no_pengajuan"
@@ -99,7 +100,10 @@ export default {
   data() {
     return {
       form: {},
-      optionasnaf: [],
+      optionasnaf: [
+        { value: "1", text: "aktif" },
+        { value: "2", text: "tidak aktif" },
+      ],
       optionjenispengajuan: [],
       mustahik: [],
     };

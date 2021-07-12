@@ -26,8 +26,12 @@
                     <b-card no-body class=" p-50">
                       <b-card-text>
                         <form class="theme-form">
-                          <h4>Sign in to account</h4>
-                          <p>Enter your email & password to login</p>
+                          <p align="center">
+                            <font face="Times New Roman" color="black" size="5"
+                              >LOGIN</font
+                            >
+                          </p>
+
                           <div class="form-group">
                             <label class="col-form-label">Username</label>
                             <input
