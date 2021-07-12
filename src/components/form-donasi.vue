@@ -8,8 +8,8 @@
             <v-autocomplete
               :items="muzaki"
               item-text="npwz"
-              item-value="nama_muzaki"
-              v-model="form.nama_muzaki"
+              item-value="id_muzaki"
+              v-model="form.id_muzaki"
               auto-select-first
               outlined
               required
@@ -17,20 +17,20 @@
               small
             >
               <template v-slot:item="{ item }">
-                <v-list-tile-content>
-                  <!-- Highlight output item.name -->
-                  <v-list-tile-title>
-                    {{ item.npwz + " - " + item.nama_muzaki }}
-                  </v-list-tile-title>
-                </v-list-tile-content>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{
+                      item.npwz + " - " + item.nama_muzaki
+                    }}</v-list-item-title
+                  >
+                </v-list-item-content>
               </template>
               <template v-slot:selection="{ item }">
-                <v-list-tile-content>
-                  <!-- Highlight output item.name -->
-                  <v-list-tile-title>
+                <v-list-item-content>
+                  <v-list-item-title>
                     {{ item.npwz + " - " + item.nama_muzaki }}
-                  </v-list-tile-title>
-                </v-list-tile-content>
+                  </v-list-item-title>
+                </v-list-item-content>
               </template>
             </v-autocomplete>
           </div>
@@ -39,8 +39,8 @@
             <v-autocomplete
               :items="bank"
               item-text="nama_bank"
-              item-value="no_rek"
-              v-model="form.no_rek"
+              item-value="id_bank"
+              v-model="form.id_bank"
               auto-select-first
               outlined
               required
@@ -48,20 +48,20 @@
               small
             >
               <template v-slot:item="{ item }">
-                <v-list-tile-content>
-                  <!-- Highlight output item.name -->
-                  <v-list-tile-title>
-                    {{ item.nama_bank + " - " + item.no_rek }}
-                  </v-list-tile-title>
-                </v-list-tile-content>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{
+                      item.nama_bank + " - " + item.no_rek
+                    }}</v-list-item-title
+                  >
+                </v-list-item-content>
               </template>
               <template v-slot:selection="{ item }">
-                <v-list-tile-content>
-                  <!-- Highlight output item.name -->
-                  <v-list-tile-title>
+                <v-list-item-content>
+                  <v-list-item-title>
                     {{ item.nama_bank + " - " + item.no_rek }}
-                  </v-list-tile-title>
-                </v-list-tile-content>
+                  </v-list-item-title>
+                </v-list-item-content>
               </template>
             </v-autocomplete>
           </div>
@@ -142,6 +142,7 @@
 
 <script>
 import API from "@/services/api.service";
+import { getUser } from "@/services/jwt.service";
 export default {
   data() {
     return {
@@ -155,6 +156,7 @@ export default {
       ],
       form: {
         detail_donasi: [],
+        total_donasi: 1200,
       },
       form_detail: {},
       optionmetode: [
@@ -171,6 +173,8 @@ export default {
     this.getMuzaki();
     this.getProgram();
     this.getBank();
+    const user = getUser();
+    this.form.id_pengguna = user.id_pengguna;
   },
 
   methods: {
@@ -232,7 +236,11 @@ export default {
       this.form_detail = {};
     },
 
-    onSimpan() {},
+    onSimpan() {
+      this.$emit("submit", this.form);
+    },
+
+    onDelete() {},
   },
 };
 </script>
