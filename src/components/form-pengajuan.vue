@@ -26,24 +26,23 @@
                     v-model="form.kode_mustahik"
                     auto-select-first
                     outlined
-                    required
                     small
                   >
                     <template v-slot:item="{ item }">
-                      <v-list-tile-content>
-                        <!-- Highlight output item.name -->
-                        <v-list-tile-title>
-                          {{ item.kode_mustahik + " - " + item.nama_mustahik }}
-                        </v-list-tile-title>
-                      </v-list-tile-content>
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          {{
+                            item.kode_mustahik + " - " + item.nama_mustahik
+                          }}</v-list-item-title
+                        >
+                      </v-list-item-content>
                     </template>
                     <template v-slot:selection="{ item }">
-                      <v-list-tile-content>
-                        <!-- Highlight output item.name -->
-                        <v-list-tile-title>
+                      <v-list-item-content>
+                        <v-list-item-title>
                           {{ item.kode_mustahik + " - " + item.nama_mustahik }}
-                        </v-list-tile-title>
-                      </v-list-tile-content>
+                        </v-list-item-title>
+                      </v-list-item-content>
                     </template>
                   </v-autocomplete>
                 </div>
