@@ -101,10 +101,18 @@ export default {
     return {
       form: {},
       optionasnaf: [
-        { value: "1", text: "aktif" },
-        { value: "2", text: "tidak aktif" },
+        { value: "1", text: "Fakir Miskin" },
+        { value: "2", text: "Riqob" },
+        { value: "3", text: "Ibnu Sabil" },
+        { value: "4", text: "Ghorimin" },
+        { value: "5", text: "Amil" },
+        { value: "6", text: "Fisabilillah" },
+        { value: "7", text: "Lan-lain" },
       ],
-      optionjenispengajuan: [],
+      optionjenispengajuan: [
+        { value: "1", text: "Konsumtif" },
+        { value: "2", text: "Produktif" },
+      ],
       mustahik: [],
     };
   },
@@ -129,7 +137,11 @@ export default {
         }
       });
     },
-    onsubmit() {},
+
+    onsubmit() {
+      console.log(this.form);
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>

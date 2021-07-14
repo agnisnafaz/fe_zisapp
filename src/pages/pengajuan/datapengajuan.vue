@@ -43,11 +43,30 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {},
+    getData() {
+      API.get("/api/pengajuan").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
+    editPengajuan(data) {
+      this.$router.push({ path: "/main/pengajuan/edit/" + data.no_pengajuan });
+    },
 
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: "" }),
+        text: this.$t("Delete Message", { who: data.no_pengajuan }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -56,6 +75,41 @@ export default {
         reverseButtons: true,
       }).then(({ value }) => {
         if (value) {
+          //delete disini
+          API.delete(`/api/muzaki/${data.no_pengajuan}`).then(
+            ({ status, data }) => {
+              if (status == 200 || status == 201) {
+                // reponse dari be jika berhasil
+
+                if (data.status) {
+                  //berhasil
+                  this.$toasted.show("Data Berhasil Dihapus", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "success", //"success" kalau su
+                    duration: 2000,
+                  });
+                } else {
+                  //notifikasi gagal
+                  this.$toasted.show("Data Gagal Dihapus", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "error", //"success" kalau su
+                    duration: 2000,
+                  });
+                }
+                this.getData();
+              } else {
+                //notifikasi gagal
+                this.$toasted.show("Data Gagal Dihapus", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "error", //"success" kalau su
+                  duration: 2000,
+                });
+              }
+            }
+          );
         }
       });
     },
