@@ -259,8 +259,8 @@ export default {
     },
 
     onDelete(data) {
-      var index = this.form.detail_donasi.map((akad)=> akad.idx).indexOf(data.idx)
-      this.form.detail_donasi.splice(index)
+      var index = this.detail_donasi.map((akad)=> akad.idx).indexOf(data.idx)
+      this.detail_donasi.splice(index)
     },
   },
 };
