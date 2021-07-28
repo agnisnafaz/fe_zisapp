@@ -59,7 +59,6 @@ export default {
     OnEdit(form) {
       API.put(`/api/pengajuan/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
-          console.log(data);
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
