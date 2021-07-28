@@ -132,7 +132,7 @@
           :headers="headers"
           :hidesimpan="false"
           :hideadd="false"
-          :hideupdate="true"
+
           @simpan="onSimpan"
           @add="onTambah"
           @delete="onDelete"

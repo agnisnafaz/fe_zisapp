@@ -38,7 +38,6 @@ export default {
       console.log(form);
       API.post("/api/pengajuan", form)
         .then(({ status, data }) => {
-          console.log(data);
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
