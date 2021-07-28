@@ -44,7 +44,8 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/main/donasi" });
+              //pindah ke cetak
+             // this.$router.push({ path: "/main/donasi" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
@@ -64,7 +65,7 @@ export default {
             });
           }
         })
-        .catch((error) => {
+        .catch(() => {
           //gagal
           this.$toasted.show("Data Gagal Disimpan", {
             theme: "bubble",
@@ -159,7 +160,7 @@ export default {
             });
           }
         })
-        .catch((error) => {
+        .catch(() => {
           //gagal
           this.$toasted.show("Data Gagal Disimpan", {
             theme: "bubble",

@@ -99,8 +99,8 @@
             <v-autocomplete
               :items="program"
               item-text="nama_program"
-              item-value="id_program"
-              v-model="form_detail.id_program"
+              return-object
+              v-model="programselected"
               auto-select-first
               outlined
               required
@@ -128,9 +128,11 @@
         </div>
 
         <data-table
-          :items="form.detail_donasi"
+          :items="detail_donasi"
           :headers="headers"
-          :hidesimpan="true"
+          :hidesimpan="false"
+          :hideadd="false"
+          :hideupdate="true"
           @simpan="onSimpan"
           @add="onTambah"
           @delete="onDelete"
@@ -146,17 +148,16 @@ import { getUser } from "@/services/jwt.service";
 export default {
   data() {
     return {
+      programselected:{},
       headers: [
-        { text: "Kode", value: "id" },
-
         { text: "Program", value: "nama_program" },
         { text: "Keterangan", value: "keterangan" },
         { text: "Jumlah", value: "jumlah_donasi" },
         { text: "AKSI", value: "action" },
       ],
+      detail_donasi: [],
       form: {
-        detail_donasi: [],
-        total_donasi: 1200,
+        total_donasi: 0,
       },
       form_detail: {},
       optionmetode: [
@@ -180,7 +181,7 @@ export default {
   methods: {
     getMuzaki() {
       API.get("/api/muzaki").then(({ status, data }) => {
-        console.log(data);
+
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -197,8 +198,8 @@ export default {
     },
     getProgram() {
       API.get("/api/program").then(({ status, data }) => {
-        console.log(data);
-        if (status == 200 || status == 201) {
+
+        if (status === 200 || status === 201) {
           // reponse dari be jika berhasil
 
           if (data.status) {
@@ -214,7 +215,7 @@ export default {
     },
     getBank() {
       API.get("/api/bank").then(({ status, data }) => {
-        console.log(data);
+
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -232,15 +233,35 @@ export default {
     onsubmit() {},
 
     onTambah() {
-      this.form.detail_donasi.push(this.form_detail);
-      this.form_detail = {};
+
+      this.form.total_donasi = this.form.total_donasi+this.form_detail.jumlah_donasi;
+      this.detail_donasi.push({
+        idx:this.detail_donasi.length++,
+        nama_program:this.programselected.nama_program,
+        id_program:this.programselected.id_program,
+        kode_program:this.programselected.kode_program,
+        jumlah_donasi:this.form_detail.jumlah_donasi,
+        keterangan:this.form_detail.keterangan
+      });
+
+
     },
 
     onSimpan() {
+      const user = getUser();
+      this.form.id_pengguna = user.id_pengguna;
+      this.form.detail_donasi = this.detail_donasi.filter(item=>{
+        return item != null
+      })
+
+      console.log(this.form)
       this.$emit("submit", this.form);
     },
 
-    onDelete() {},
+    onDelete(data) {
+      var index = this.form.detail_donasi.map((akad)=> akad.idx).indexOf(data.idx)
+      this.form.detail_donasi.splice(index)
+    },
   },
 };
 </script>

@@ -3,7 +3,7 @@
     <v-card-title>
       <v-btn
         data-testid="button"
-        v-show="hideadd"
+        v-show="!hideadd"
         @click="$emit('add', true)"
         color="primary"
         >{{ "tambah" }}</v-btn
@@ -11,7 +11,7 @@
       <v-btn
         class="ml-4"
         data-testid="button"
-        v-show="hidesimpan"
+        v-show="!hidesimpan"
         @click="$emit('simpan', true)"
         color="primary"
         >{{ "simpan" }}</v-btn
