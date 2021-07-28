@@ -15,6 +15,7 @@
               <data-table
                 :items="data"
                 :headers="headers"
+                :hideadd="true"
                 @add="
                   {
                     formBank = true;

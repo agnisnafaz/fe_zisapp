@@ -17,6 +17,7 @@
               <data-table
                 :items="data"
                 :headers="headers"
+                :hideadd="true"
                 @add="$router.push({ path: '/main/mustahik/add' })"
                 @edit="editMustahik"
                 @delete="onDelete"

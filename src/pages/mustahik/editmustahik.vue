@@ -62,7 +62,7 @@ export default {
     },
     OnEdit(form) {
       console.log(form);
-      API.put("/api/mustahik", form)
+      API.put(`/api/mustahik/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
           console.log(data);
           if (status == 200 || status == 201) {
@@ -76,6 +76,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
+              this.$router.push({ path: "/main/mustahik" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Diedit", {

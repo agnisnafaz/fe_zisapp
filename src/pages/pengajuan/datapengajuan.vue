@@ -14,6 +14,7 @@
               <data-table
                 :items="data"
                 :headers="headers"
+                :hideadd="true"
                 @add="$router.push({ path: '/main/pengajuan/add' })"
                 @edit="$router.push({ path: '/main/pengajuan/edit' })"
                 @delete="onDelete"
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {

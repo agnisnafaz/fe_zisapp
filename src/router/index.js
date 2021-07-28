@@ -69,7 +69,7 @@ const routes = [
         },
       },
       {
-        path: "user/edit",
+        path: "user/edit/:id",
         name: "edituser",
         component: () => import("@/pages/user/edituser.vue"),
         meta: {
@@ -204,6 +204,15 @@ const routes = [
         component: () => import("@/pages/direktur/editpenyaluran.vue"),
         meta: {
           title: "Edit Penyaluran",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "laporan",
+        name: "laporan",
+        component: () => import("@/pages/laporan/laporan.vue"),
+        meta: {
+          title: "Laporan",
           reqiresAuth: true,
         },
       },

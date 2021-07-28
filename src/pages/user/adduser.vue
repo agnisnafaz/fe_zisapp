@@ -46,7 +46,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/pages/user/datauser" });
+              this.$router.push({ path: "/main/user" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {

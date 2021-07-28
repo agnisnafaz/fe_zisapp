@@ -9,7 +9,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="c_form_kode">Kode </label>
                   <b-form-input
-                    :disabled="!isEdit"
+                    disabled
                     type="text"
                     placeholder="Kode Mustahik"
                     v-model="form.kode_mustahik"
