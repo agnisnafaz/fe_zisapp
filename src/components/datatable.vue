@@ -3,7 +3,7 @@
     <v-card-title>
       <v-btn
         data-testid="button"
-        v-show="!hideadd"
+        v-show="hideadd"
         @click="$emit('add', true)"
         color="primary"
         >{{ "tambah" }}</v-btn

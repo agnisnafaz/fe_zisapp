@@ -26,24 +26,23 @@
                     v-model="form.kode_mustahik"
                     auto-select-first
                     outlined
-                    required
                     small
                   >
                     <template v-slot:item="{ item }">
-                      <v-list-tile-content>
-                        <!-- Highlight output item.name -->
-                        <v-list-tile-title>
-                          {{ item.kode_mustahik + " - " + item.nama_mustahik }}
-                        </v-list-tile-title>
-                      </v-list-tile-content>
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          {{
+                            item.kode_mustahik + " - " + item.nama_mustahik
+                          }}</v-list-item-title
+                        >
+                      </v-list-item-content>
                     </template>
                     <template v-slot:selection="{ item }">
-                      <v-list-tile-content>
-                        <!-- Highlight output item.name -->
-                        <v-list-tile-title>
+                      <v-list-item-content>
+                        <v-list-item-title>
                           {{ item.kode_mustahik + " - " + item.nama_mustahik }}
-                        </v-list-tile-title>
-                      </v-list-tile-content>
+                        </v-list-item-title>
+                      </v-list-item-content>
                     </template>
                   </v-autocomplete>
                 </div>
@@ -101,10 +100,18 @@ export default {
     return {
       form: {},
       optionasnaf: [
-        { value: "1", text: "aktif" },
-        { value: "2", text: "tidak aktif" },
+        { value: "1", text: "Fakir Miskin" },
+        { value: "2", text: "Riqob" },
+        { value: "3", text: "Ibnu Sabil" },
+        { value: "4", text: "Ghorimin" },
+        { value: "5", text: "Amil" },
+        { value: "6", text: "Fisabilillah" },
+        { value: "7", text: "Lan-lain" },
       ],
-      optionjenispengajuan: [],
+      optionjenispengajuan: [
+        { value: "1", text: "Konsumtif" },
+        { value: "2", text: "Produktif" },
+      ],
       mustahik: [],
     };
   },
@@ -129,7 +136,11 @@ export default {
         }
       });
     },
-    onsubmit() {},
+
+    onsubmit() {
+      console.log(this.form);
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>

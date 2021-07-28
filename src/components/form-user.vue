@@ -9,6 +9,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="c_form_koder">Kode </label>
                   <b-form-input
+                    disabled
                     type="text"
                     v-model="form.kode_pengguna"
                     placeholder="Kode"
@@ -100,44 +101,19 @@
         <b-tab title="Rubah Password">
           <b-card-text>
             <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label for="c_form_koder">Kode </label>
-                <b-form-input type="text" placeholder="Kode"></b-form-input>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="c_form_namauser">Nama</label>
-                <b-form-input type="text" placeholder="Nama"></b-form-input>
-                <b-form-valid-feedback>Lock Good</b-form-valid-feedback>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="c_form_username">Username</label>
-                <b-form-input type="text" placeholder="username"></b-form-input>
-                <b-form-valid-feedback>Lock Good</b-form-valid-feedback>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
+              <div class="col-md-6 mb-3">
                 <label for="c_form_password">Password Lama </label>
                 <b-form-input
                   type="password"
                   placeholder="Password Lama"
                 ></b-form-input>
               </div>
-              <div class="col-md-4 mb-3">
+              <div class="col-md-6 mb-3">
                 <label for="c_form_passwordbaru">Password Baru</label>
                 <b-form-input
                   type="password"
                   placeholder="Password Baru"
                 ></b-form-input>
-                <b-form-valid-feedback>Lock Good</b-form-valid-feedback>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="c_form_konfpass">Konfirmasi Password Baru</label>
-                <b-form-input
-                  type="password"
-                  placeholder="Konfirmasi Password Baru"
-                ></b-form-input>
-                <b-form-valid-feedback>Lock Good</b-form-valid-feedback>
               </div>
             </div>
             <b-button type="submit" variant="primary">Simpan</b-button>
@@ -151,18 +127,18 @@
 <script>
 import API from "@/services/api.service";
 export default {
-  props: ["hidestatus"],
+  props: ["hidestatus", "body", "isEdit"],
   data() {
     return {
       form: {},
       optionlevel: [
         { value: "1", text: "admin" },
-        { value: "1", text: "customer service" },
-        { value: "1", text: "direktur" },
+        { value: "2", text: "customer service" },
+        { value: "3", text: "direktur" },
       ],
       optionstatus: [
         { value: "1", text: "aktif" },
-        { value: "1", text: "tidak aktif" },
+        { value: "2", text: "tidak aktif" },
       ],
       kantorlayanan: [],
     };
@@ -170,6 +146,13 @@ export default {
   created() {
     this.getKantorLayanan();
   },
+  watch: {
+    body: function(newVal) {
+      console.log(newVal);
+      this.form = newVal;
+    },
+  },
+
   methods: {
     getKantorLayanan() {
       API.get("/api/kantor").then(({ status, data }) => {

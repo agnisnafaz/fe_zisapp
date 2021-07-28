@@ -13,6 +13,7 @@
               <!-- TAMBAHIN KONTENYA DISINI -->
               <data-table
                 :items="data"
+                :hideadd="true"
                 :headers="headers"
                 @add="$router.push({ path: '/main/muzaki/add' })"
                 @edit="editMuzaki"

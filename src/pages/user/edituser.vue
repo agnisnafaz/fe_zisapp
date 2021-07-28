@@ -11,7 +11,12 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormUser v-model="OnEdit" :hidestatus="hidestatus"></FormUser>
+              <FormUser
+                @submit="OnEdit"
+                :body="body"
+                :isEdit="true"
+                :hidestatus="hidestatus"
+              ></FormUser>
             </div>
           </div>
         </div>
@@ -27,12 +32,37 @@ export default {
   data: () => {
     return {
       hidestatus: true,
+      body: {},
     };
   },
+  created() {
+    if (this.$route.params.id) {
+      this.getUserById(this.$route.params.id);
+    }
+  },
   methods: {
+    getUserById(id) {
+      API.get(`/api/pengguna/${id}`)
+        .then(({ status, data }) => {
+          console.log(data);
+          if (status == 200 || status == 201) {
+            if (data.status) {
+              this.body = data.data;
+            }
+          }
+        })
+        .catch((e) => {
+          this.$toasted.show("Data Tidak Ditemukan", {
+            theme: "bubble",
+            position: "top-right",
+            type: "error", //"success" kalau su
+            duration: 2000,
+          });
+        });
+    },
     OnEdit(form) {
       console.log(form);
-      API.put("/api/pengguna", form)
+      API.put(`/api/pengguna/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
           console.log(data);
           if (status == 200 || status == 201) {
@@ -46,7 +76,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/pages/user/datauser" });
+              this.$router.push({ path: "/main/user" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {

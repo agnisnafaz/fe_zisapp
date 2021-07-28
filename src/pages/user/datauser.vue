@@ -14,8 +14,9 @@
               <data-table
                 :items="data"
                 :headers="headers"
+                :hideadd="true"
                 @add="$router.push({ path: '/main/user/add' })"
-                @edit="$router.push({ path: '/main/user/edit' })"
+                @edit="editUser"
                 @delete="onDelete"
               />
             </div>
@@ -64,7 +65,9 @@ export default {
         }
       });
     },
-
+    editUser(data) {
+      this.$router.push({ path: "/main/user/edit/" + data.id_pengguna });
+    },
     onDelete(data) {
       this.$swal({
         text: this.$t("Delete Message", { who: "" }),

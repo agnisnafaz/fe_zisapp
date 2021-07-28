@@ -11,7 +11,11 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormPengajuan></FormPengajuan>
+              <FormPengajuan
+                @submit="onSimpan"
+                :body="{}"
+                :isEdit="isEdit"
+              ></FormPengajuan>
             </div>
           </div>
         </div>
@@ -22,10 +26,60 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
-    return {};
+    return {
+      isEdit: false,
+    };
   },
-  methods: {},
+  methods: {
+    onSimpan(form) {
+      console.log(form);
+      API.post("/api/pengajuan", form)
+        .then(({ status, data }) => {
+          console.log(data);
+          if (status == 200 || status == 201) {
+            // reponse dari be jika berhasil
+
+            if (data.status) {
+              //berhasil
+              this.$toasted.show("Data Berhasil Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "success", //"success" kalau su
+                duration: 2000,
+              });
+              this.$router.push({ path: "/main/pengajuan" });
+            } else {
+              //notifikasi gagal
+              this.$toasted.show("Data Gagal Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
+            }
+          } else {
+            //notifikasi gagal
+            this.$toasted.show("Data Gagal Disimpan", {
+              theme: "bubble",
+              position: "top-right",
+              type: "error", //"success" kalau su
+              duration: 2000,
+            });
+          }
+        })
+        .catch((error) => {
+          //gagal
+          this.$toasted.show("Data Gagal Disimpan", {
+            theme: "bubble",
+            position: "top-right",
+            type: "error", //"success" kalau su
+            duration: 2000,
+          });
+        });
+    },
+  },
 };
 </script>
