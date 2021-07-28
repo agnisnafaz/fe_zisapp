@@ -1,4 +1,4 @@
-# bank-falah-syariah
+# Sizapp
 
 ### Customize configuration
 
@@ -8,7 +8,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### project structure
 
-```java
+````text
 public
 src
   assets
