@@ -17,6 +17,9 @@
               <data-table
                 :items="data"
                 :headers="headers"
+                :hideupdate="true"
+                :hidesimpan="true"
+                :hideadd="false"
                 @add="$router.push({ path: '/main/akad/add' })"
                 @edit="$router.push({ path: '/main/akad/edit/1' })"
                 @delete="onDelete"

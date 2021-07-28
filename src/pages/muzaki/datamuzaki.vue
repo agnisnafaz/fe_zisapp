@@ -13,8 +13,8 @@
               <!-- TAMBAHIN KONTENYA DISINI -->
               <data-table
                 :items="data"
-                :hideadd="true"
                 :headers="headers"
+                :hidesimpan="true"
                 @add="$router.push({ path: '/main/muzaki/add' })"
                 @edit="editMuzaki"
                 @delete="onDelete"

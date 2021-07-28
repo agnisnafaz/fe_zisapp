@@ -14,7 +14,7 @@
               <data-table
                 :items="data"
                 :headers="headers"
-                :hideadd="true"
+                :hidesimpan="true"
                 @add="$router.push({ path: '/main/user/add' })"
                 @edit="editUser"
                 @delete="onDelete"
