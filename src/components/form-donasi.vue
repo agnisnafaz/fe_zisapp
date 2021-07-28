@@ -130,6 +130,7 @@
         <data-table
           :items="form.detail_donasi"
           :headers="headers"
+          :hideadd="true"
           :hidesimpan="true"
           @simpan="onSimpan"
           @add="onTambah"

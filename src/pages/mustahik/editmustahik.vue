@@ -64,7 +64,6 @@ export default {
       console.log(form);
       API.put(`/api/mustahik/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
-          console.log(data);
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 

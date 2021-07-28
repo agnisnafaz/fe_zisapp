@@ -47,7 +47,6 @@ export default {
   methods: {
     getData() {
       API.get("/api/pengajuan").then(({ status, data }) => {
-        console.log(data);
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
