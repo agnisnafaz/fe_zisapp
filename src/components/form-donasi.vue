@@ -132,7 +132,6 @@
           :headers="headers"
           :hidesimpan="false"
           :hideadd="false"
-
           @simpan="onSimpan"
           @add="onTambah"
           @delete="onDelete"
@@ -148,7 +147,7 @@ import { getUser } from "@/services/jwt.service";
 export default {
   data() {
     return {
-      programselected:{},
+      programselected: {},
       headers: [
         { text: "Program", value: "nama_program" },
         { text: "Keterangan", value: "keterangan" },
@@ -181,7 +180,6 @@ export default {
   methods: {
     getMuzaki() {
       API.get("/api/muzaki").then(({ status, data }) => {
-
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -198,7 +196,6 @@ export default {
     },
     getProgram() {
       API.get("/api/program").then(({ status, data }) => {
-
         if (status === 200 || status === 201) {
           // reponse dari be jika berhasil
 
@@ -215,7 +212,6 @@ export default {
     },
     getBank() {
       API.get("/api/bank").then(({ status, data }) => {
-
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -233,34 +229,34 @@ export default {
     onsubmit() {},
 
     onTambah() {
-
-      this.form.total_donasi = this.form.total_donasi+this.form_detail.jumlah_donasi;
+      this.form.total_donasi =
+        this.form.total_donasi + this.form_detail.jumlah_donasi;
       this.detail_donasi.push({
-        idx:this.detail_donasi.length++,
-        nama_program:this.programselected.nama_program,
-        id_program:this.programselected.id_program,
-        kode_program:this.programselected.kode_program,
-        jumlah_donasi:this.form_detail.jumlah_donasi,
-        keterangan:this.form_detail.keterangan
+        idx: this.detail_donasi.length++,
+        nama_program: this.programselected.nama_program,
+        id_program: this.programselected.id_program,
+        kode_program: this.programselected.kode_program,
+        jumlah_donasi: this.form_detail.jumlah_donasi,
+        keterangan: this.form_detail.keterangan,
       });
-
-
     },
 
     onSimpan() {
       const user = getUser();
       this.form.id_pengguna = user.id_pengguna;
-      this.form.detail_donasi = this.detail_donasi.filter(item=>{
-        return item != null
-      })
+      this.form.detail_donasi = this.detail_donasi.filter((item) => {
+        return item != null;
+      });
 
-      console.log(this.form)
+      console.log(this.form);
       this.$emit("submit", this.form);
     },
 
     onDelete(data) {
-      var index = this.detail_donasi.map((akad)=> akad.idx).indexOf(data.idx)
-      this.detail_donasi.splice(index)
+      var index = this.detail_donasi
+        .map((donasi) => donasi.idx)
+        .indexOf(data.idx);
+      this.detail_donasi.splice(index);
     },
   },
 };

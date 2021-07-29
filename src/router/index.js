@@ -192,7 +192,16 @@ const routes = [
       {
         path: "direktur",
         name: "datapenyaluran",
-        component: () => import("@/pages/direktur/datapenyalura.vue"),
+        component: () => import("@/pages/direktur/datapenyaluran.vue"),
+        meta: {
+          title: "Data Penyaluran",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "direktur/realisasi",
+        name: "realisasidirektur",
+        component: () => import("@/pages/direktur/realisasipenyaluran.vue"),
         meta: {
           title: "Data Penyaluran",
           reqiresAuth: true,
@@ -201,7 +210,7 @@ const routes = [
       {
         path: "direktur/edit",
         name: "editpenyaluran",
-        component: () => import("@/pages/direktur/editpenyaluran.vue"),
+        component: () => import("@/pages/direktur/realisasipenyaluran.vue"),
         meta: {
           title: "Edit Penyaluran",
           reqiresAuth: true,

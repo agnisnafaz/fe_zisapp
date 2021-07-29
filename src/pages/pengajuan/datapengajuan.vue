@@ -15,7 +15,7 @@
                 :items="data"
                 :headers="headers"
                 :hidesimpan="true"
-                :hideadd="true"
+                :hideadd="false"
                 @add="$router.push({ path: '/main/pengajuan/add' })"
                 @edit="$router.push({ path: '/main/pengajuan/edit' })"
                 @delete="onDelete"

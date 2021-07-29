@@ -15,7 +15,7 @@
                 :items="data"
                 :headers="headers"
                 :hidesimpan="true"
-                @add="$router.push({ path: '/main/pengajuan/add' })"
+                @add="$router.push({ path: '/main/direktur/realisasi' })"
                 @edit="$router.push({ path: '/main/pengajuan/edit' })"
                 @delete="onDelete"
               />
