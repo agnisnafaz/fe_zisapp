@@ -9,8 +9,10 @@
                 <div class="col-md-12 mb-1">
                   <label for="c_form_no-pengajuan">No. Pengajuan</label>
                   <b-form-input
+                    disabled
+                    v-model="form.no_pengajuan"
                     type="text"
-                    placeholder="No. Pengajuan"
+                    placeholder="No.Pengajuan"
                   ></b-form-input>
                 </div>
               </div>
@@ -18,6 +20,7 @@
                 <div class="col-md-12 mb-1">
                   <label for="c_form_nama">Mustahik</label>
                   <v-autocomplete
+                    disabled
                     :items="mustahik"
                     item-text="nama_mustahik"
                     item-value="kode_mustahik"
@@ -48,22 +51,29 @@
               </div>
               <div class="form-row">
                 <div class="col-md-6 ">
-                  <label for="c_form_kegiatan">Kegiatan</label>
+                  <label for="c_form_kegiatan">Keterangan</label>
                   <b-form-input
+                    disabled
+                    v-model="form.detail_keterangan"
                     type="text"
-                    placeholder="Kegiatan"
+                    placeholder="Keterangan"
                   ></b-form-input>
                 </div>
                 <div class="col-md-6 ">
                   <label for="c_form_jumlah">Jumlah</label>
-                  <b-form-input type="text" placeholder="Jumlah"></b-form-input>
+                  <b-form-input
+                    disabled
+                    v-model="form.jumlah_donasi"
+                    type="text"
+                    placeholder="Jumlah"
+                  ></b-form-input>
                 </div>
               </div>
               <div class="form-row">
                 <div class="col-md-6 ">
                   <label for="c_form_jenis">Jenis</label>
-
                   <b-form-select
+                    disabled
                     v-model="form.jenis_pengajuan"
                     :options="optionjenispengajuan"
                   ></b-form-select>
@@ -72,6 +82,7 @@
                   <label for="c_form_asnaf">Asnaf</label>
 
                   <b-form-select
+                    disabled
                     v-model="form.asnaf"
                     :options="optionasnaf"
                   ></b-form-select>
@@ -80,11 +91,18 @@
               <div class="form-row">
                 <div class="col-md-4 ">
                   <label for="c_form_jumlah">Jumlah Realisasi</label>
-                  <b-form-input type="text" placeholder="Jumlah"></b-form-input>
+                  <b-form-input
+                    v-model="form.jumlah_realisasi"
+                    type="text"
+                    placeholder="Jumlah"
+                  ></b-form-input>
                 </div>
                 <div class="col-md-4 ">
-                  <label for="datepicker">Tanggal Donasi</label>
-                  <b-form-datepicker id="datepicker" v-model="value">
+                  <label for="datepicker">Tanggal Realisasi</label>
+                  <b-form-datepicker
+                    id="datepicker"
+                    v-model="form.tgl_realisasi"
+                  >
                   </b-form-datepicker>
                 </div>
                 <div class="col-md-4 ">

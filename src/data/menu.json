@@ -64,6 +64,12 @@
           "path": "/main/pengajuan",
           "type": "link",
           "active": false
+        },
+        {
+          "title": "Data Donasi",
+          "path": "/main/datadonasi",
+          "type": "link",
+          "active": false
         }
       ]
     },
