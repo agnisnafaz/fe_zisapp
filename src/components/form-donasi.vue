@@ -4,7 +4,7 @@
       <div slot="with-padding">
         <div class="form-row">
           <div class="col-md-6">
-            <label for="c_form_muzaki">Muzaki</label>
+            <label >Muzaki</label>
             <v-autocomplete
               :items="muzaki"
               item-text="npwz"
@@ -35,7 +35,7 @@
             </v-autocomplete>
           </div>
           <div class="col-md-6">
-            <label for="c_form_bank">Bank</label>
+            <label >Bank</label>
             <v-autocomplete
               :items="bank"
               item-text="nama_bank"
@@ -66,7 +66,7 @@
             </v-autocomplete>
           </div>
           <div class="col-md-4">
-            <label for="c_form_nobukti">No Bukti Fisik</label>
+            <label >No Bukti Fisik</label>
             <b-form-input
               type="text"
               placeholder="No Bukti Fisik"
@@ -75,12 +75,12 @@
           </div>
 
           <div class="col-md-4 ">
-            <label for="datepicker">Tanggal Donasi</label>
+            <label>Tanggal Donasi</label>
             <b-form-datepicker id="datepicker" v-model="form.tgl_donasi">
             </b-form-datepicker>
           </div>
           <div class="col-md-4">
-            <label for="c_form_periode">Metode Pembayaran</label>
+            <label >Metode Pembayaran</label>
 
             <b-form-select
               v-model="form.metode"
@@ -95,7 +95,7 @@
 
         <div class="form-row">
           <div class="col-md-4">
-            <label for="c_form_program">Program</label>
+            <label >Program</label>
             <v-autocomplete
               :items="program"
               item-text="nama_program"
@@ -110,7 +110,7 @@
             </v-autocomplete>
           </div>
           <div class="col-md-4 ">
-            <label for="c_form_keterangan">Keterangan</label>
+            <label >Keterangan</label>
             <b-form-input
               type="text"
               placeholder="Keterangan"
@@ -118,7 +118,7 @@
             ></b-form-input>
           </div>
           <div class="col-md-4 ">
-            <label for="c_form_jumlah">Jumlah</label>
+            <label >Jumlah</label>
             <b-form-input
               type="text"
               placeholder="Jumlah"
@@ -180,7 +180,7 @@ export default {
   methods: {
     getMuzaki() {
       API.get("/api/muzaki").then(({ status, data }) => {
-        if (status == 200 || status == 201) {
+        if (status === 200 || status === 201) {
           // reponse dari be jika berhasil
 
           if (data.status) {
@@ -212,7 +212,7 @@ export default {
     },
     getBank() {
       API.get("/api/bank").then(({ status, data }) => {
-        if (status == 200 || status == 201) {
+        if (status === 200 || status === 201) {
           // reponse dari be jika berhasil
 
           if (data.status) {
@@ -229,8 +229,7 @@ export default {
     onsubmit() {},
 
     onTambah() {
-      this.form.total_donasi =
-        this.form.total_donasi + this.form_detail.jumlah_donasi;
+      this.form.total_donasi = parseInt(this.form.total_donasi) + parseInt(this.form_detail.jumlah_donasi);
       this.detail_donasi.push({
         idx: this.detail_donasi.length++,
         nama_program: this.programselected.nama_program,
