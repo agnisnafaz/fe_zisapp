@@ -35,8 +35,10 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "NO", value: "id" },
-        { text: "NPWP", value: "id" },
+        { text: "No.Pengajuan", value: "no_pengajuan" },
+        { text: "Nama Mustahik", value: "nama_mustahik" },
+        { text: "Kegiatan", value: "pengajuan_kegiatan" },
+        { text: "Jumlah", value: "jumlah_pengajuan" },
         { text: "AKSI", value: "action" },
       ],
       data: [],
@@ -78,7 +80,7 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete(`/api/muzaki/${data.no_pengajuan}`).then(
+          API.delete(`/api/pengajuan/${data.no_pengajuan}`).then(
             ({ status, data }) => {
               if (status == 200 || status == 201) {
                 // reponse dari be jika berhasil

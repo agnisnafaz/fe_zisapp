@@ -22,8 +22,8 @@
                   <v-autocomplete
                     :items="mustahik"
                     item-text="nama_mustahik"
-                    item-value="kode_mustahik"
-                    v-model="form.kode_mustahik"
+                    item-value="id_mustahik"
+                    v-model="form.id_mustahik"
                     auto-select-first
                     outlined
                     small
