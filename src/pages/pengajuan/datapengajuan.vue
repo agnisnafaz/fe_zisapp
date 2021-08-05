@@ -16,8 +16,9 @@
                 :headers="headers"
                 :hidesimpan="true"
                 :hideadd="false"
+                :hideupdate="true"
                 @add="$router.push({ path: '/main/pengajuan/add' })"
-                @edit="$router.push({ path: '/main/pengajuan/edit' })"
+                @edit="editPengajuan"
                 @delete="onDelete"
               />
             </div>
@@ -36,9 +37,10 @@ export default {
     return {
       headers: [
         { text: "No.Pengajuan", value: "no_pengajuan" },
-        { text: "Nama Mustahik", value: "nama_mustahik" },
+        { text: "Mustahik", value: "nama_mustahik" },
         { text: "Kegiatan", value: "pengajuan_kegiatan" },
         { text: "Jumlah", value: "jumlah_pengajuan" },
+        { text: "Status", value: "status_pengajuan" },
         { text: "AKSI", value: "action" },
       ],
       data: [],
@@ -65,12 +67,12 @@ export default {
       });
     },
     editPengajuan(data) {
-      this.$router.push({ path: "/main/pengajuan/edit/" + data.no_pengajuan });
+      this.$router.push({ path: "/main/pengajuan/edit/" + data.id_pengajuan });
     },
 
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: data.no_pengajuan }),
+        text: this.$t("Delete Message", { who: data.id_pengajuan }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -80,7 +82,7 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete(`/api/pengajuan/${data.no_pengajuan}`).then(
+          API.delete(`/api/pengajuan/${data.id_pengajuan}`).then(
             ({ status, data }) => {
               if (status == 200 || status == 201) {
                 // reponse dari be jika berhasil

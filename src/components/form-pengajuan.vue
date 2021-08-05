@@ -96,6 +96,7 @@
 <script>
 import API from "@/services/api.service";
 export default {
+  props: ["isEdit", "body"],
   data() {
     return {
       form: {},
@@ -115,14 +116,20 @@ export default {
       mustahik: [],
     };
   },
+
+  watch: {
+    body: function(newVal) {
+      console.log(newVal);
+      this.form = newVal;
+    },
+  },
   created() {
     this.getMustahik();
   },
   methods: {
     getMustahik() {
       API.get("/api/mustahik").then(({ status, data }) => {
-        console.log(data);
-        if (status == 200 || status == 201) {
+        if (status === 200 || status === 201) {
           // reponse dari be jika berhasil
 
           if (data.status) {
@@ -136,7 +143,6 @@ export default {
         }
       });
     },
-
     onsubmit() {
       console.log(this.form);
       this.$emit("submit", this.form);
