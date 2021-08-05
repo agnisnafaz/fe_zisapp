@@ -171,7 +171,7 @@ const routes = [
         },
       },
       {
-        path: "pengajuan/edit",
+        path: "pengajuan/edit/:id",
         name: "editpengajuan",
         component: () => import("@/pages/pengajuan/editpengajuan.vue"),
         meta: {

@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {
@@ -70,7 +71,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/main/muzaki" });
+              this.$router.push({ path: "/main/pengajuan" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Diedit", {
