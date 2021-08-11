@@ -247,6 +247,14 @@ const routes = [
         },
       },
       {
+        path: "datadonasi",
+        name: "datadonasi",
+        component: () => import("@/pages/data-donasi/datadonasi.vue"),
+        meta: {
+          title: "akad",
+        },
+      },
+      {
         path: "akad/edit/:id",
         name: "editakad",
         component: () => import("@/pages/akad/editakad.vue"),
