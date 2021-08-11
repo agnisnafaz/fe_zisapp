@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <div slot="with-padding">
         <div class="form-row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label>Muzaki</label>
             <v-autocomplete
               :items="muzaki"
@@ -34,37 +34,7 @@
               </template>
             </v-autocomplete>
           </div>
-          <div class="col-md-6">
-            <label>Bank</label>
-            <v-autocomplete
-              :items="bank"
-              item-text="nama_bank"
-              item-value="id_bank"
-              v-model="form.id_bank"
-              auto-select-first
-              outlined
-              required
-              dense
-              small
-            >
-              <template v-slot:item="{ item }">
-                <v-list-item-content>
-                  <v-list-item-title>
-                    {{
-                      item.nama_bank + " - " + item.no_rek
-                    }}</v-list-item-title
-                  >
-                </v-list-item-content>
-              </template>
-              <template v-slot:selection="{ item }">
-                <v-list-item-content>
-                  <v-list-item-title>
-                    {{ item.nama_bank + " - " + item.no_rek }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </template>
-            </v-autocomplete>
-          </div>
+
           <div class="col-md-4">
             <label>No Bukti Fisik</label>
             <b-form-input
@@ -107,6 +77,32 @@
               dense
               small
             >
+              <template v-slot:item="{ item }">
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{
+                      item.nama_program +
+                        " - " +
+                        item.nama_bank +
+                        " " +
+                        item.no_rek
+                    }}</v-list-item-title
+                  >
+                </v-list-item-content>
+              </template>
+              <template v-slot:selection="{ item }">
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{
+                      item.nama_program +
+                        " - " +
+                        item.nama_bank +
+                        " " +
+                        item.no_rek
+                    }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </template>
             </v-autocomplete>
           </div>
           <div class="col-md-4 ">
