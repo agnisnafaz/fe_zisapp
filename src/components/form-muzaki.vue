@@ -7,11 +7,12 @@
             <b-form class="needs-validation" @submit.prevent="onsubmit">
               <div class="form-row">
                 <div class="col-md-12 mb-3">
-                  <label for="c_form_last_name">NPWP</label>
+                  <label for="c_form_last_name">NPWZ</label>
                   <b-form-input
+                    disabled
                     type="text"
-                    placeholder="NPWP"
-                    v-model="form.npwp"
+                    placeholder="npwz"
+                    v-model="form.npwz"
                   ></b-form-input>
                 </div>
               </div>
