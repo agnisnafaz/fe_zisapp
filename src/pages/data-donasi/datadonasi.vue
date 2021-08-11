@@ -37,7 +37,7 @@ export default {
         { text: "Tgl.Transaksi", value: "date" },
         { text: "Muzaki", value: "nama_muzaki" },
         { text: "Total Donasi", value: "total_donasi" },
-        { text: "Banak", value: "nama_bank" },
+        { text: "Bank", value: "nama_bank" },
       ],
       data: [],
     };

@@ -8,8 +8,8 @@
             <v-autocomplete
               :items="muzaki"
               item-text="npwz"
-              item-value="id_muzaki"
-              v-model="form.id_muzaki"
+              return-object
+              v-model="muzakiselected"
               auto-select-first
               outlined
               required
@@ -148,7 +148,9 @@ export default {
   data() {
     return {
       programselected: {},
+      muzakiselected: {},
       headers: [
+        { text: "Muzaki", value: "nama_muzaki" },
         { text: "Program", value: "nama_program" },
         { text: "Keterangan", value: "keterangan" },
         { text: "Jumlah", value: "jumlah_donasi" },
@@ -168,6 +170,11 @@ export default {
       bank: [],
       program: [],
     };
+  },
+  watch: {
+    muzakiselected: function(muzaki) {
+      this.form.id_muzaki = muzaki.id_muzaki;
+    },
   },
   created() {
     this.getMuzaki();
@@ -234,6 +241,7 @@ export default {
         parseInt(this.form_detail.jumlah_donasi);
       this.detail_donasi.push({
         idx: this.detail_donasi.length++,
+        nama_muzaki: this.muzakiselected.nama_muzaki,
         nama_program: this.programselected.nama_program,
         id_program: this.programselected.id_program,
         kode_program: this.programselected.kode_program,
