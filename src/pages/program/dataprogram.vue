@@ -48,6 +48,8 @@ export default {
       headers: [
         { text: "Kode", value: "kode_program" },
         { text: "Program", value: "nama_program" },
+        { text: "Bank", value: "nama_bank" },
+
         { text: "AKSI", value: "action" },
       ],
       formProgram: false,
