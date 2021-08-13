@@ -35,7 +35,7 @@ export default {
     return {
       headers: [
         { text: "NO", value: "id_muzaki" },
-        { text: "NPWP", value: "npwz" },
+        { text: "NPWZ", value: "npwz" },
         { text: "Nama", value: "nama_muzaki" },
         { text: "Jenis Kelamin", value: "jk" },
         { text: "AKSI", value: "action" },
