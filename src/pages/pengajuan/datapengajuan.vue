@@ -18,7 +18,6 @@
                 :hideadd="false"
                 :hideupdate="true"
                 @add="$router.push({ path: '/main/pengajuan/add' })"
-                @edit="editPengajuan"
                 @delete="onDelete"
               />
             </div>
@@ -65,9 +64,6 @@ export default {
           //notifikasi gagal
         }
       });
-    },
-    editPengajuan(data) {
-      this.$router.push({ path: "/main/pengajuan/edit/" + data.id_pengajuan });
     },
 
     onDelete(data) {

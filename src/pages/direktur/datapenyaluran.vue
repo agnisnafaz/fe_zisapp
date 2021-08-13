@@ -16,8 +16,7 @@
                 :headers="headers"
                 :hidesimpan="true"
                 :hideadd="true"
-                @add="$router.push({ path: '/main/direktur/realisasi' })"
-                @edit="$router.push({ path: '/main/pengajuan/edit' })"
+                @edit="editPengajuan"
                 @delete="onDelete"
               />
             </div>
@@ -64,7 +63,11 @@ export default {
         }
       });
     },
-
+    editPengajuan(data) {
+      this.$router.push({
+        path: "/main/direktur/realisasi/" + data.id_pengajuan,
+      });
+    },
     onDelete(data) {
       this.$swal({
         text: this.$t("Delete Message", { who: "" }),

@@ -170,15 +170,6 @@ const routes = [
           reqiresAuth: true,
         },
       },
-      {
-        path: "pengajuan/edit/:id",
-        name: "editpengajuan",
-        component: () => import("@/pages/pengajuan/editpengajuan.vue"),
-        meta: {
-          title: "Pengajuan",
-          reqiresAuth: true,
-        },
-      },
 
       {
         path: "pengajuan/add",
@@ -199,7 +190,7 @@ const routes = [
         },
       },
       {
-        path: "direktur/realisasi",
+        path: "direktur/realisasi/:id",
         name: "realisasidirektur",
         component: () => import("@/pages/direktur/realisasipenyaluran.vue"),
         meta: {
