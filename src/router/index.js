@@ -255,6 +255,15 @@ const routes = [
         },
       },
       {
+        path: "profil/update",
+        name: "updateprofil",
+        component: () => import("@/pages/profil/edit-profil.vue"),
+        meta: {
+          title: "Update Profil",
+        },
+      },
+
+      {
         path: "akad/edit/:id",
         name: "editakad",
         component: () => import("@/pages/akad/editakad.vue"),

@@ -144,7 +144,7 @@
           </div>
           <ul class="profile-dropdown onhover-show-div">
             <li>
-              <a href="#"
+              <a @click="$router.push({ path: '/main/profil/update' })"
                 ><feather type="user"></feather><span>{{ "Profil" }}</span></a
               >
             </li>
