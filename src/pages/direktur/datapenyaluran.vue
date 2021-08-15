@@ -15,8 +15,8 @@
                 :items="data"
                 :headers="headers"
                 :hidesimpan="true"
-                @add="$router.push({ path: '/main/direktur/realisasi' })"
-                @edit="$router.push({ path: '/main/pengajuan/edit' })"
+                :hideadd="true"
+                @edit="editPengajuan"
                 @delete="onDelete"
               />
             </div>
@@ -29,13 +29,15 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {
       headers: [
-        { text: "No.Pengajuan", value: "id" },
-        { text: "Kegiatan", value: "id" },
-        { text: "Status", value: "id" },
+        { text: "No.Pengajuan", value: "no_pengajuan" },
+        { text: "Kegiatan", value: "pengajuan_kegiatan" },
+        { text: "Jumlah", value: "jumlah_pengajuan" },
+        { text: "Status", value: "status_pengajuan" },
         { text: "AKSI", value: "action" },
       ],
       data: [],
@@ -45,8 +47,27 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {},
+    getData() {
+      API.get("/api/pengajuan").then(({ status, data }) => {
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
 
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
+    editPengajuan(data) {
+      this.$router.push({
+        path: "/main/direktur/realisasi/" + data.id_pengajuan,
+      });
+    },
     onDelete(data) {
       this.$swal({
         text: this.$t("Delete Message", { who: "" }),

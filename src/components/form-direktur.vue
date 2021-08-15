@@ -19,32 +19,32 @@
               <div class="form-row">
                 <div class="col-md-12 mb-1">
                   <label for="c_form_nama">Mustahik</label>
+
                   <v-autocomplete
                     disabled
                     :items="mustahik"
                     item-text="nama_mustahik"
-                    item-value="kode_mustahik"
-                    v-model="form.kode_mustahik"
+                    item-value="id_mustahik"
+                    v-model="form.id_mustahik"
                     auto-select-first
                     outlined
-                    required
                     small
                   >
                     <template v-slot:item="{ item }">
-                      <v-list-tile-content>
-                        <!-- Highlight output item.name -->
-                        <v-list-tile-title>
-                          {{ item.kode_mustahik + " - " + item.nama_mustahik }}
-                        </v-list-tile-title>
-                      </v-list-tile-content>
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          {{
+                            item.kode_mustahik + " - " + item.nama_mustahik
+                          }}</v-list-item-title
+                        >
+                      </v-list-item-content>
                     </template>
                     <template v-slot:selection="{ item }">
-                      <v-list-tile-content>
-                        <!-- Highlight output item.name -->
-                        <v-list-tile-title>
+                      <v-list-item-content>
+                        <v-list-item-title>
                           {{ item.kode_mustahik + " - " + item.nama_mustahik }}
-                        </v-list-tile-title>
-                      </v-list-tile-content>
+                        </v-list-item-title>
+                      </v-list-item-content>
                     </template>
                   </v-autocomplete>
                 </div>
@@ -54,7 +54,7 @@
                   <label for="c_form_kegiatan">Keterangan</label>
                   <b-form-input
                     disabled
-                    v-model="form.detail_keterangan"
+                    v-model="form.pengajuan_kegiatan"
                     type="text"
                     placeholder="Keterangan"
                   ></b-form-input>
@@ -63,7 +63,7 @@
                   <label for="c_form_jumlah">Jumlah</label>
                   <b-form-input
                     disabled
-                    v-model="form.jumlah_donasi"
+                    v-model="form.jumlah_pengajuan"
                     type="text"
                     placeholder="Jumlah"
                   ></b-form-input>
@@ -130,11 +130,23 @@
 <script>
 import API from "@/services/api.service";
 export default {
+  props: ["isEdit", "body"],
   data() {
     return {
       form: {},
-      optionasnaf: [],
-      optionjenispengajuan: [],
+      optionasnaf: [
+        { value: "1", text: "Fakir Miskin" },
+        { value: "2", text: "Riqob" },
+        { value: "3", text: "Ibnu Sabil" },
+        { value: "4", text: "Ghorimin" },
+        { value: "5", text: "Amil" },
+        { value: "6", text: "Fisabilillah" },
+        { value: "7", text: "Lan-lain" },
+      ],
+      optionjenispengajuan: [
+        { value: "1", text: "Konsumtif" },
+        { value: "2", text: "Produktif" },
+      ],
       optionstatuspengajuan: [
         { value: "0", text: "Ditolak" },
         { value: "1", text: "Diterima" },
@@ -145,10 +157,15 @@ export default {
   created() {
     this.getMustahik();
   },
+  watch: {
+    body: function(newVal) {
+      console.log(newVal);
+      this.form = newVal;
+    },
+  },
   methods: {
     getMustahik() {
       API.get("/api/mustahik").then(({ status, data }) => {
-        console.log(data);
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -163,6 +180,7 @@ export default {
         }
       });
     },
+
     onsubmit() {},
   },
 };

@@ -30,14 +30,15 @@
 </template>
 
 <script>
+import API from "@/services/api.service";
 export default {
   data: () => {
     return {
       headers: [
-        { text: "Tgl.Transaksi", value: "date" },
+        { text: "Tgl.Transaksi", value: "tgl_donasi" },
         { text: "Muzaki", value: "nama_muzaki" },
         { text: "Total Donasi", value: "total_donasi" },
-        { text: "Banak", value: "nama_bank" },
+        { text: "Bank", value: "nama_bank" },
       ],
       data: [],
     };
@@ -46,7 +47,23 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {},
+    getData() {
+      API.get("/api/donasi").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
 
     onDelete(data) {
       this.$swal({

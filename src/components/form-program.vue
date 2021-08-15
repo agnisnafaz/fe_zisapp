@@ -26,6 +26,37 @@
                   required
                 ></v-text-field>
               </v-col>
+              <div class="col-md-12">
+                <label>Bank</label>
+                <v-autocomplete
+                  :items="bank"
+                  item-text="nama_bank"
+                  item-value="id_bank"
+                  v-model="form.id_bank"
+                  auto-select-first
+                  outlined
+                  required
+                  dense
+                  small
+                >
+                  <template v-slot:item="{ item }">
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        {{
+                          item.nama_bank + " - " + item.no_rek
+                        }}</v-list-item-title
+                      >
+                    </v-list-item-content>
+                  </template>
+                  <template v-slot:selection="{ item }">
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        {{ item.nama_bank + " - " + item.no_rek }}
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-autocomplete>
+              </div>
             </v-row>
           </v-container>
           <small>*indicates required field</small>
@@ -46,6 +77,7 @@
   </v-dialog>
 </template>
 <script>
+import API from "@/services/api.service";
 export default {
   props: ["show", "body"],
   data: () => {
@@ -53,8 +85,10 @@ export default {
       form: {
         kode_program: "",
         nama_program: "",
+        nama_bank: "",
         active: 1,
       },
+      bank: [],
     };
   },
   watch: {
@@ -62,7 +96,26 @@ export default {
       this.form = newVal;
     },
   },
+  created() {
+    this.getBank();
+  },
   methods: {
+    getBank() {
+      API.get("/api/bank").then(({ status, data }) => {
+        if (status === 200 || status === 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.bank = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
     submit() {
       this.$emit("submit", this.form);
     },

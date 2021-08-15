@@ -3,13 +3,13 @@
     <div class="col-sm-12">
       <div slot="with-padding">
         <div class="form-row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label>Muzaki</label>
             <v-autocomplete
               :items="muzaki"
               item-text="npwz"
-              item-value="id_muzaki"
-              v-model="form.id_muzaki"
+              return-object
+              v-model="muzakiselected"
               auto-select-first
               outlined
               required
@@ -34,37 +34,7 @@
               </template>
             </v-autocomplete>
           </div>
-          <div class="col-md-6">
-            <label>Bank</label>
-            <v-autocomplete
-              :items="bank"
-              item-text="nama_bank"
-              item-value="id_bank"
-              v-model="form.id_bank"
-              auto-select-first
-              outlined
-              required
-              dense
-              small
-            >
-              <template v-slot:item="{ item }">
-                <v-list-item-content>
-                  <v-list-item-title>
-                    {{
-                      item.nama_bank + " - " + item.no_rek
-                    }}</v-list-item-title
-                  >
-                </v-list-item-content>
-              </template>
-              <template v-slot:selection="{ item }">
-                <v-list-item-content>
-                  <v-list-item-title>
-                    {{ item.nama_bank + " - " + item.no_rek }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </template>
-            </v-autocomplete>
-          </div>
+
           <div class="col-md-4">
             <label>No Bukti Fisik</label>
             <b-form-input
@@ -107,6 +77,32 @@
               dense
               small
             >
+              <template v-slot:item="{ item }">
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{
+                      item.nama_program +
+                        " - " +
+                        item.nama_bank +
+                        " " +
+                        item.no_rek
+                    }}</v-list-item-title
+                  >
+                </v-list-item-content>
+              </template>
+              <template v-slot:selection="{ item }">
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{
+                      item.nama_program +
+                        " - " +
+                        item.nama_bank +
+                        " " +
+                        item.no_rek
+                    }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </template>
             </v-autocomplete>
           </div>
           <div class="col-md-4 ">
@@ -148,7 +144,9 @@ export default {
   data() {
     return {
       programselected: {},
+      muzakiselected: {},
       headers: [
+        { text: "Muzaki", value: "nama_muzaki" },
         { text: "Program", value: "nama_program" },
         { text: "Keterangan", value: "keterangan" },
         { text: "Jumlah", value: "jumlah_donasi" },
@@ -168,6 +166,11 @@ export default {
       bank: [],
       program: [],
     };
+  },
+  watch: {
+    muzakiselected: function(muzaki) {
+      this.form.id_muzaki = muzaki.id_muzaki;
+    },
   },
   created() {
     this.getMuzaki();
@@ -234,6 +237,7 @@ export default {
         parseInt(this.form_detail.jumlah_donasi);
       this.detail_donasi.push({
         idx: this.detail_donasi.length++,
+        nama_muzaki: this.muzakiselected.nama_muzaki,
         nama_program: this.programselected.nama_program,
         id_program: this.programselected.id_program,
         kode_program: this.programselected.kode_program,

@@ -1,18 +1,22 @@
 <template>
   <div>
-    <Breadcrumbs title="Pengajuan" />
+    <Breadcrumbs title="User" />
     <!-- Container-fluid starts-->
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Status Pengajuan</h5>
+              <h5>Update Profil</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormDirektur @submit="OnEdit" :body="body" :isEdit="true">
-              </FormDirektur>
+              <FormProfilUser
+                @submit="OnEdit"
+                :body="body"
+                :isEdit="true"
+                :hidestatus="hidestatus"
+              ></FormProfilUser>
             </div>
           </div>
         </div>
@@ -27,17 +31,18 @@ import API from "@/services/api.service";
 export default {
   data: () => {
     return {
+      hidestatus: true,
       body: {},
     };
   },
   created() {
     if (this.$route.params.id) {
-      this.getPengajuanById(this.$route.params.id);
+      this.getUserById(this.$route.params.id);
     }
   },
   methods: {
-    getPengajuanById(id) {
-      API.get(`/api/pengajuan/${id}`)
+    getUserById(id) {
+      API.get(`/api/pengguna/${id}`)
         .then(({ status, data }) => {
           console.log(data);
           if (status == 200 || status == 201) {
@@ -56,8 +61,10 @@ export default {
         });
     },
     OnEdit(form) {
-      API.put(`/api/pengajuan/${this.$route.params.id}`, form)
+      console.log(form);
+      API.put(`/api/pengguna/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
+          console.log(data);
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
@@ -69,10 +76,10 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/main/pengajuan" });
+              this.$router.push({ path: "/main/user" });
             } else {
               //notifikasi gagal
-              this.$toasted.show("Data Gagal Diedit", {
+              this.$toasted.show("Data Gagal Disimpan", {
                 theme: "bubble",
                 position: "top-right",
                 type: "error", //"success" kalau su
