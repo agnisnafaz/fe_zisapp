@@ -7,9 +7,28 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>{{ nama_muzaki }}</h5>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="media">
+                    <div class="media-left">
+                      <img
+                        src="../../assets/images/logo/logo.png"
+                        alt=""
+                        class="media-object img-60"
+                      />
+                    </div>
+                    <div class="media-body m-l-20">
+                      <h5 class="media-heading">{{ nama_muzaki }}</h5>
+                      <p>
+                        {{ npwz }}
+                        <br /><span class="digits">(+62)81-226-809-435</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>{{ npwz }}</div>
+
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
               <data-table
@@ -33,10 +52,12 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Tgl.Transaksi", value: "tgl_transaksi" },
+        { text: "Id.Donasi", value: "id_donasi" },
+        { text: "Tgl.Transaksi", value: "tgl_donasi" },
+
         { text: "Program", value: "nama_program" },
-        { text: "Bank Tujuan", value: "nama_bank" },
-        { text: "Total Donasi", value: "total_donasi" },
+        { text: "Keterangan", value: "keterangan" },
+        { text: "Jumlah Donasi", value: "jumlah_donasi" },
       ],
       data: [],
       npwz: "",
@@ -51,11 +72,11 @@ export default {
   },
   methods: {
     getDetailDonasiById(id) {
-      API.get(`/api/donasi/${id}`)
+      API.get(`/api/detaildonasi/${id}`)
         .then(({ status, data }) => {
           if (status == 200 || status == 201) {
             if (data.status) {
-              this.body = data.data;
+              this.data = data.data;
             }
           }
         })
@@ -73,7 +94,8 @@ export default {
         .then(({ status, data }) => {
           if (status == 200 || status == 201) {
             if (data.status) {
-              this.body = data.data;
+              this.nama_muzaki = data.data[0].nama_muzaki;
+              this.npwz = data.data[0].npwz;
             }
           }
         })

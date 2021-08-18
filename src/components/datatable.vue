@@ -16,6 +16,14 @@
         color="primary"
         >{{ "simpan" }}</v-btn
       >
+      <v-btn
+        class="ml-0"
+        data-testid="button"
+        v-show="!hidecetak"
+        @click="$emit('Cetak', true)"
+        color="primary"
+        >{{ "Cetak" }}</v-btn
+      >
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -83,6 +91,7 @@ export default {
     "hidedelete",
     "hideupdate",
     "hidesimpan",
+    "hidecetak",
   ],
   data() {
     return {
