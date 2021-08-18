@@ -35,10 +35,11 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Tgl.Transaksi", value: "tgl_donasi" },
+        { text: "NPWZ", value: "npwz" },
         { text: "Muzaki", value: "nama_muzaki" },
+        { text: "Jenis Kelamin", value: "jk" },
+        { text: "Alamat", value: "alamat_muzaki" },
         { text: "Total Donasi", value: "total_donasi" },
-        { text: "Bank", value: "nama_bank" },
       ],
       data: [],
     };

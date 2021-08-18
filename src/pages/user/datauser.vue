@@ -36,6 +36,7 @@ export default {
       headers: [
         { text: "Kode", value: "kode_pengguna" },
         { text: "Nama", value: "nama_pengguna" },
+        { text: "Username", value: "username" },
         { text: "Status", value: "status_pengguna" },
         { text: "Level", value: "leveluser" },
 

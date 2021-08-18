@@ -44,6 +44,9 @@
       <template v-slot:[`item.kategori_mustahik`]="{ item }">
         {{ getKetgoriMustahik(item.kategori_musatahik) }}
       </template>
+      <template v-slot:[`item.npwz`]="{ item }">
+        <router-link :to="getDetailDonasi(item)"> {{ item.npwz }}</router-link>
+      </template>
 
       <template v-slot:[`item.action`]="{ item }">
         <b-button-toolbar
@@ -111,6 +114,9 @@ export default {
       if (cat == 1) return "fakir miskin";
       if (cat == 2) return "fisaabilillah";
       if (cat == 3) return "fakir miskin";
+    },
+    getDetailDonasi(donasi) {
+      return `/main/datadonasi/detail/${donasi.id_donasi}`;
     },
   },
 };

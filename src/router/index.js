@@ -242,7 +242,15 @@ const routes = [
         name: "datadonasi",
         component: () => import("@/pages/data-donasi/datadonasi.vue"),
         meta: {
-          title: "akad",
+          title: "Data Donasi",
+        },
+      },
+      {
+        path: "datadonasi/detail/:id",
+        name: "detaildonasi",
+        component: () => import("@/pages/data-donasi/detaildonasi.vue"),
+        meta: {
+          title: "Data Donasi",
         },
       },
       {
