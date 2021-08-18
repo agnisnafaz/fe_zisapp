@@ -115,9 +115,6 @@
               </div>
               <div>
                 <b-button type="submit" variant="primary">Proses</b-button>
-                <b-button type="submit" variant="danger" class="ml-3"
-                  >Reset</b-button
-                >
               </div>
             </b-form>
           </div>

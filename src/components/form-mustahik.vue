@@ -100,9 +100,8 @@ export default {
     return {
       form: {},
       optionkategori: [
-        { value: "1", text: "fakir miskin" },
-        { value: "2", text: "fisaabilillah" },
-        { value: "3", text: "fakir miskin" },
+        { value: "1", text: "Perorangan" },
+        { value: "2", text: "Lembaga" },
       ],
       optionstatus: [
         { value: "1", text: "aktif" },
