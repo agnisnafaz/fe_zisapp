@@ -15,6 +15,7 @@
                 :items="data"
                 :headers="headers"
                 :hidesimpan="true"
+                :hidecetak="true"
                 @add="$router.push({ path: '/main/user/add' })"
                 @edit="editUser"
                 @delete="onDelete"

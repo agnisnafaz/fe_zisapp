@@ -17,15 +17,6 @@
             <b-button type="submit" variant="primary">Export</b-button>
           </div>
         </div>
-
-        <data-table
-          :items="form.detail_donasi"
-          :headers="headers"
-          :hidesimpan="false"
-          :hideadd="false"
-          @simpan="onSimpan"
-          @delete="onDelete"
-        />
       </div>
     </div>
   </div>

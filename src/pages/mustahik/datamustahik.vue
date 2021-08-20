@@ -18,6 +18,7 @@
                 :items="data"
                 :headers="headers"
                 :hidesimpan="true"
+                :hidecetak="true"
                 @add="$router.push({ path: '/main/mustahik/add' })"
                 @edit="editMustahik"
                 @delete="onDelete"
