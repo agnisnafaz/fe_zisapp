@@ -233,6 +233,15 @@ const routes = [
         },
       },
       {
+        path: "cetaktandaterima",
+        name: "cetaktandaterima",
+        component: () => import("@/pages/cetakdonasi/cetak-tandaterima.vue"),
+        meta: {
+          title: "ZISAPP | Cetak",
+        },
+      },
+
+      {
         path: "profil/update",
         name: "updateprofil",
         component: () => import("@/pages/profil/edit-profil.vue"),

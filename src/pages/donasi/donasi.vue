@@ -94,7 +94,17 @@ export default {
                 duration: 2000,
               });
 
+             // this.$router.push({
+             //   path: "/main/cetakdonasi",
+              //  query: {
+               //   nama_muzaki: `${data.data.nama_muzaki}`,
+               //   id_donasi: `${data.data.id_donasi}`,
+               //   npwz: `${data.data.npwz}`,
+                //  nama_pengguna: `${data.data.nama_pengguna}`,
+                //},
+            //  });
               window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?nama_muzaki=${data.data.nama_muzaki}&id_donasi=1629034820&npwz=1011110001&nama_pengguna=${data.data.nama_pengguna}`;
+
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
