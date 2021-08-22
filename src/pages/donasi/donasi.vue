@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormDonasi @submit="onTambah" :body="{}"></FormDonasi>
+              <FormDonasi @submit="onSimpan" :body="{}"/>
             </div>
           </div>
         </div>
@@ -28,53 +28,6 @@ export default {
     return {};
   },
   methods: {
-    onTambah(form) {
-      console.log(form);
-      API.post("/api/donasi", form)
-        .then(({ status, data }) => {
-          console.log(data);
-          if (status == 200 || status == 201) {
-            // reponse dari be jika berhasil
-
-            if (data.status) {
-              //berhasil
-              this.$toasted.show("Data Berhasil Disimpan", {
-                theme: "bubble",
-                position: "top-right",
-                type: "success", //"success" kalau su
-                duration: 2000,
-              });
-              //pindah ke cetak
-              // this.$router.push({ path: "/main/donasi" });
-            } else {
-              //notifikasi gagal
-              this.$toasted.show("Data Gagal Disimpan", {
-                theme: "bubble",
-                position: "top-right",
-                type: "error", //"success" kalau su
-                duration: 2000,
-              });
-            }
-          } else {
-            //notifikasi gagal
-            this.$toasted.show("Data Gagal Disimpan", {
-              theme: "bubble",
-              position: "top-right",
-              type: "error", //"success" kalau su
-              duration: 2000,
-            });
-          }
-        })
-        .catch(() => {
-          //gagal
-          this.$toasted.show("Data Gagal Disimpan", {
-            theme: "bubble",
-            position: "top-right",
-            type: "error", //"success" kalau su
-            duration: 2000,
-          });
-        });
-    },
     onDelete(data) {
       this.$swal({
         text: this.$t("Delete Message", { who: data.id_program }),
@@ -128,7 +81,8 @@ export default {
       console.log(form);
       API.post("/api/donasi", form)
         .then(({ status, data }) => {
-          if (status == 200 || status == 201) {
+          console.log("Tes",window);
+          if (status === 200 || status === 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
@@ -139,15 +93,18 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({
-                path: "/main/cetakdonasi",
-                query: {
-                  nama_muzaki: `${data.data.nama_muzaki}`,
-                  id_donasi: `${data.data.id_donasi}`,
-                  npwz: `${data.data.npwz}`,
-                  nama_pengguna: `${data.data.nama_pengguna}`,
-                },
-              });
+
+             // this.$router.push({
+             //   path: "/main/cetakdonasi",
+              //  query: {
+               //   nama_muzaki: `${data.data.nama_muzaki}`,
+               //   id_donasi: `${data.data.id_donasi}`,
+               //   npwz: `${data.data.npwz}`,
+                //  nama_pengguna: `${data.data.nama_pengguna}`,
+                //},
+            //  });
+              window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?nama_muzaki=${data.data.nama_muzaki}&id_donasi=1629034820&npwz=1011110001&nama_pengguna=${data.data.nama_pengguna}`;
+
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
