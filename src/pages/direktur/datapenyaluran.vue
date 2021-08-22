@@ -16,6 +16,7 @@
                 :headers="headers"
                 :hidesimpan="true"
                 :hideadd="true"
+                :hidecetak="true"
                 @edit="editPengajuan"
                 @delete="onDelete"
               />

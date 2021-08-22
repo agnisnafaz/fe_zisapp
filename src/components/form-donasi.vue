@@ -128,6 +128,7 @@
           :headers="headers"
           :hidesimpan="false"
           :hideadd="false"
+          :hidecetak="true"
           @simpan="onSimpan"
           @add="onTambah"
           @delete="onDelete"

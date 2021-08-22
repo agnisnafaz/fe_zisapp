@@ -17,15 +17,6 @@
             <b-button type="submit" variant="primary">Export</b-button>
           </div>
         </div>
-
-        <data-table
-          :items="form.detail_donasi"
-          :headers="headers"
-          :hidesimpan="false"
-          :hideadd="false"
-          @simpan="onSimpan"
-          @delete="onDelete"
-        />
       </div>
     </div>
   </div>
@@ -40,13 +31,6 @@ export default {
       headers: [],
       form: {},
     };
-  },
-  created() {
-    this.getMuzaki();
-    this.getProgram();
-    this.getBank();
-    const user = getUser();
-    this.form.id_pengguna = user.id_pengguna;
   },
 
   methods: {

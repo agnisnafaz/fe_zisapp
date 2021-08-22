@@ -16,6 +16,7 @@
                 :items="data"
                 :headers="headers"
                 :hidesimpan="true"
+                :hidecetak="true"
                 @add="
                   {
                     formProgram = true;
