@@ -254,7 +254,7 @@ export default {
         return item != null;
       });
 
-      console.log(this.form);
+
       this.$emit("submit", this.form);
     },
 
