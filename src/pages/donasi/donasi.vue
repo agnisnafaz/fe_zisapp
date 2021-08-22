@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormDonasi @submit="onSimpan" :body="{}"/>
+              <FormDonasi @submit="onSimpan" :body="{}" />
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default {
       console.log(form);
       API.post("/api/donasi", form)
         .then(({ status, data }) => {
-          console.log("Tes",window);
+          console.log("Tes", window);
           if (status === 200 || status === 201) {
             // reponse dari be jika berhasil
 
@@ -94,17 +94,17 @@ export default {
                 duration: 2000,
               });
 
-             // this.$router.push({
-             //   path: "/main/cetakdonasi",
+              // this.$router.push({
+              //   path: "/main/cetakdonasi",
               //  query: {
-               //   nama_muzaki: `${data.data.nama_muzaki}`,
-               //   id_donasi: `${data.data.id_donasi}`,
-               //   npwz: `${data.data.npwz}`,
-                //  nama_pengguna: `${data.data.nama_pengguna}`,
-                //},
-            //  });
-              window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?nama_muzaki=${data.data.nama_muzaki}&id_donasi=1629034820&npwz=1011110001&nama_pengguna=${data.data.nama_pengguna}`;
-
+              //   nama_muzaki: `${data.data.nama_muzaki}`,
+              //   id_donasi: `${data.data.id_donasi}`,
+              //   npwz: `${data.data.npwz}`,
+              //  nama_pengguna: `${data.data.nama_pengguna}`,
+              //},
+              //  });
+              console.log(data);
+              window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?id_donasi=${data.data.id_donasi}`;
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
