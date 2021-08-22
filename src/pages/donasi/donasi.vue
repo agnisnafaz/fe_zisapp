@@ -45,7 +45,7 @@ export default {
                 duration: 2000,
               });
               //pindah ke cetak
-             // this.$router.push({ path: "/main/donasi" });
+              // this.$router.push({ path: "/main/donasi" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
@@ -128,7 +128,6 @@ export default {
       console.log(form);
       API.post("/api/donasi", form)
         .then(({ status, data }) => {
-          console.log(data);
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
@@ -140,7 +139,8 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/main/donasi" });
+              console.log(window);
+              window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?nama_muzaki=${data.data.nama_muzaki}&id_donasi=1629034820&npwz=1011110001&nama_pengguna=${data.data.nama_pengguna}`;
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {

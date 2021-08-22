@@ -32,13 +32,6 @@ export default {
       form: {},
     };
   },
-  created() {
-    this.getMuzaki();
-    this.getProgram();
-    this.getBank();
-    const user = getUser();
-    this.form.id_pengguna = user.id_pengguna;
-  },
 
   methods: {
     onsubmit() {},

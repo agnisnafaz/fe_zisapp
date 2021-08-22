@@ -45,7 +45,7 @@ const routes = [
         name: "dashboard",
         component: () => import("@/pages/dashboard/dashboard.vue"),
         meta: {
-          title: "Default Dashboard | Endless - Premium Admin Template",
+          title: "Dashboard | ZISAPP",
           reqiresAuth: true,
         },
       },
@@ -55,7 +55,7 @@ const routes = [
         name: "user",
         component: () => import("@/pages/user/datauser.vue"),
         meta: {
-          title: "Data User",
+          title: "ZISAPP | Data User",
           reqiresAuth: true,
         },
       },
@@ -64,7 +64,7 @@ const routes = [
         name: "adduser",
         component: () => import("@/pages/user/adduser.vue"),
         meta: {
-          title: "Tambah User",
+          title: "ZISAPP | Tambah User",
           reqiresAuth: true,
         },
       },
@@ -73,7 +73,7 @@ const routes = [
         name: "edituser",
         component: () => import("@/pages/user/edituser.vue"),
         meta: {
-          title: "Edit User",
+          title: "ZISAPP | Edit User",
           reqiresAuth: true,
         },
       },
@@ -83,7 +83,7 @@ const routes = [
         name: "muzaki",
         component: () => import("@/pages/muzaki/datamuzaki.vue"),
         meta: {
-          title: "Data Muzaki",
+          title: "ZISAPP | Data Muzaki",
           reqiresAuth: true,
         },
       },
@@ -92,7 +92,7 @@ const routes = [
         name: "addmuzaki",
         component: () => import("@/pages/muzaki/addmuzaki.vue"),
         meta: {
-          title: "Tambah Muzaki",
+          title: "ZISAPP | Tambah Muzaki",
           reqiresAuth: true,
         },
       },
@@ -101,7 +101,7 @@ const routes = [
         name: "editmuzaki",
         component: () => import("@/pages/muzaki/editmuzaki.vue"),
         meta: {
-          title: "Edit Muzaki",
+          title: "ZISAPP | Edit Muzaki",
           reqiresAuth: true,
         },
       },
@@ -110,7 +110,7 @@ const routes = [
         name: "mustahik",
         component: () => import("@/pages/mustahik/datamustahik.vue"),
         meta: {
-          title: "Data Mustahik",
+          title: "ZISAPP | Data Mustahik",
           reqiresAuth: true,
         },
       },
@@ -119,7 +119,7 @@ const routes = [
         name: "addmustahik",
         component: () => import("@/pages/mustahik/addmustahik.vue"),
         meta: {
-          title: "Tambah Mustahik",
+          title: "ZISAPP | Tambah Mustahik",
           reqiresAuth: true,
         },
       },
@@ -128,7 +128,7 @@ const routes = [
         name: "editmustahik",
         component: () => import("@/pages/mustahik/editmustahik.vue"),
         meta: {
-          title: "Edit Mustahik",
+          title: "ZISAPP | Edit Mustahik",
           reqiresAuth: true,
         },
       },
@@ -138,7 +138,7 @@ const routes = [
         name: "bank",
         component: () => import("@/pages/bank/databank.vue"),
         meta: {
-          title: "Data Bank",
+          title: "ZISAPP | Data Bank",
           reqiresAuth: true,
         },
       },
@@ -147,7 +147,7 @@ const routes = [
         name: "program",
         component: () => import("@/pages/program/dataprogram.vue"),
         meta: {
-          title: "Data Program",
+          title: "ZISAPP | Data Program",
           reqiresAuth: true,
         },
       },
@@ -157,7 +157,7 @@ const routes = [
         name: "donasi",
         component: () => import("@/pages/donasi/donasi.vue"),
         meta: {
-          title: "Donasi",
+          title: "ZISAPP | Donasi",
           reqiresAuth: true,
         },
       },
@@ -166,7 +166,7 @@ const routes = [
         name: "pengajuan",
         component: () => import("@/pages/pengajuan/datapengajuan.vue"),
         meta: {
-          title: "Pengajuan",
+          title: "ZISAPP | Pengajuan",
           reqiresAuth: true,
         },
       },
@@ -176,7 +176,7 @@ const routes = [
         name: "addpengajuan",
         component: () => import("@/pages/pengajuan/addpengajuan.vue"),
         meta: {
-          title: "Pengajuan",
+          title: "ZISAPP | Pengajuan",
           reqiresAuth: true,
         },
       },
@@ -185,7 +185,7 @@ const routes = [
         name: "datapenyaluran",
         component: () => import("@/pages/direktur/datapenyaluran.vue"),
         meta: {
-          title: "Data Penyaluran",
+          title: "ZISAPP | Data Penyaluran",
           reqiresAuth: true,
         },
       },
@@ -194,7 +194,7 @@ const routes = [
         name: "realisasidirektur",
         component: () => import("@/pages/direktur/realisasipenyaluran.vue"),
         meta: {
-          title: "Data Penyaluran",
+          title: "ZISAPP | Data Penyaluran",
           reqiresAuth: true,
         },
       },
@@ -203,7 +203,7 @@ const routes = [
         name: "editpenyaluran",
         component: () => import("@/pages/direktur/realisasipenyaluran.vue"),
         meta: {
-          title: "Edit Penyaluran",
+          title: "ZISAPP | Edit Penyaluran",
           reqiresAuth: true,
         },
       },
@@ -212,29 +212,8 @@ const routes = [
         name: "laporan",
         component: () => import("@/pages/laporan/laporan.vue"),
         meta: {
-          title: "Laporan",
+          title: "ZISAPP | Laporan",
           reqiresAuth: true,
-        },
-      },
-
-      /**
-       *!ini buat contoh
-       */
-      {
-        path: "akad",
-        name: "akad",
-        component: () => import("@/pages/akad/akad.vue"),
-        meta: {
-          title: "akad",
-        },
-      },
-
-      {
-        path: "akad/add",
-        name: "addakad",
-        component: () => import("@/pages/akad/addakad.vue"),
-        meta: {
-          title: "akad",
         },
       },
       {
@@ -242,7 +221,7 @@ const routes = [
         name: "datadonasi",
         component: () => import("@/pages/data-donasi/datadonasi.vue"),
         meta: {
-          title: "Data Donasi",
+          title: "ZISAPP | Data Donasi",
         },
       },
       {
@@ -250,7 +229,7 @@ const routes = [
         name: "detaildonasi",
         component: () => import("@/pages/data-donasi/detaildonasi.vue"),
         meta: {
-          title: "Data Donasi",
+          title: "ZISAPP | Data Donasi",
         },
       },
       {
@@ -258,16 +237,7 @@ const routes = [
         name: "updateprofil",
         component: () => import("@/pages/profil/edit-profil.vue"),
         meta: {
-          title: "Update Profil",
-        },
-      },
-
-      {
-        path: "akad/edit/:id",
-        name: "editakad",
-        component: () => import("@/pages/akad/editakad.vue"),
-        meta: {
-          title: "akad",
+          title: "ZISAPP | Update Profil",
         },
       },
     ],
@@ -276,6 +246,9 @@ const routes = [
     path: "/login",
     name: "login",
     component: () => import("@/pages/auth/login.vue"),
+    meta: {
+      title: "ZISAPP | Login",
+    },
   },
 ];
 
