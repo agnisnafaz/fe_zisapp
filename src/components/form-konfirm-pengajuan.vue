@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <px-card :actions="false">
           <div slot="with-padding">
-            <b-form class="needs-validation" @submit="onsubmit">
+            <b-form class="needs-validation" @submit.prevent="onsubmit">
               <div class="form-row">
                 <div class="col-md-12 mb-1">
                   <label for="c_form_no-pengajuan">No. Pengajuan</label>
@@ -191,7 +191,9 @@ export default {
       });
     },
 
-    onsubmit() {},
+    onsubmit() {
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>

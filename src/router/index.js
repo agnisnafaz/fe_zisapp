@@ -181,7 +181,7 @@ const routes = [
         },
       },
       {
-        path: "pengajuan/konfirmasi",
+        path: "pengajuan/konfirmasi/:id",
         name: "konfirmasipengajuan",
         component: () => import("@/pages/pengajuan/konfirmasi.vue"),
         meta: {

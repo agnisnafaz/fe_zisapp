@@ -20,9 +20,7 @@
                 :hidecetak="true"
                 @add="$router.push({ path: '/main/pengajuan/add' })"
                 @delete="onDelete"
-                @konfirmasi="
-                  $router.push({ path: '/main/pengajuan/konfirmasi' })
-                "
+                @konfirmasi="onKonfirmasi"
               />
             </div>
           </div>
@@ -67,6 +65,11 @@ export default {
         } else {
           //notifikasi gagal
         }
+      });
+    },
+    onKonfirmasi(data) {
+      this.$router.push({
+        path: "/main/pengajuan/konfirmasi/" + data.id_pengajuan,
       });
     },
 
@@ -119,7 +122,7 @@ export default {
         }
       });
     },
-    OnKonfirm(form) {
+    OnEdit(form) {
       API.put(`/api/pengajuan/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
           console.log(data);
