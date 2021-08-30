@@ -17,6 +17,7 @@
                 :hidesimpan="true"
                 :hideadd="true"
                 :hidecetak="true"
+                :hidekonfirm="true"
                 @edit="editPengajuan"
                 @delete="onDelete"
               />

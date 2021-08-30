@@ -7,15 +7,12 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Edit</h5>
+              <h5>Konfirmasi Pengajuan</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormPengajuan
-                @submit="OnEdit"
-                :body="body"
-                :isEdit="true"
-              ></FormPengajuan>
+              <FormKonfirmasi @submit="OnEdit" :body="body" :isEdit="true">
+              </FormKonfirmasi>
             </div>
           </div>
         </div>
@@ -42,6 +39,7 @@ export default {
     getPengajuanById(id) {
       API.get(`/api/pengajuan/${id}`)
         .then(({ status, data }) => {
+          console.log(data);
           if (status == 200 || status == 201) {
             if (data.status) {
               this.body = data.data;

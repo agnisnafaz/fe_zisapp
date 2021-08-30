@@ -24,6 +24,7 @@
         color="primary"
         >{{ "Cetak" }}</v-btn
       >
+
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -75,6 +76,13 @@
               small
               >{{ $t("Delete") }}</v-btn
             >
+            <v-btn
+              v-show="!hidekonfirm"
+              @click="$emit('konfirmasi', item)"
+              outlined
+              small
+              >{{ $t("Konfirmasi") }}</v-btn
+            >
           </b-button-group>
         </b-button-toolbar>
       </template>
@@ -92,6 +100,7 @@ export default {
     "hideupdate",
     "hidesimpan",
     "hidecetak",
+    "hidekonfirm",
   ],
   data() {
     return {

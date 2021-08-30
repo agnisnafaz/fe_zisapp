@@ -92,6 +92,7 @@
                 <div class="col-md-4 ">
                   <label for="c_form_jumlah">Jumlah Realisasi</label>
                   <b-form-input
+                    disabled
                     v-model="form.jumlah_realisasi"
                     type="text"
                     placeholder="Jumlah"
@@ -100,6 +101,7 @@
                 <div class="col-md-4 ">
                   <label>Tanggal Realisasi</label>
                   <b-form-datepicker
+                    disabled
                     id="datepicker"
                     v-model="form.tgl_realisasi"
                   >
@@ -109,13 +111,23 @@
                 <div class="col-md-4 ">
                   <label for="c_form_jumlah">Status</label>
                   <b-form-select
+                    disabled
                     v-model="form.status_pengajuan"
                     :options="optionstatuspengajuan"
                   ></b-form-select>
                 </div>
               </div>
-              <div>
-                <b-button type="submit" variant="primary">Proses</b-button>
+              <div class="form-row">
+                <div class="col-md-12 ">
+                  <label>Bukti Penerimaan</label>
+                  <b-form-file
+                    placeholder="Pilih File"
+                    drop-placeholder="Pilih File"
+                  ></b-form-file>
+                </div>
+              </div>
+              <div class="mt-5">
+                <b-button type="submit" variant="primary">Simpan</b-button>
               </div>
             </b-form>
           </div>

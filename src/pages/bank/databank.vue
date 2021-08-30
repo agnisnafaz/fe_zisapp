@@ -17,6 +17,7 @@
                 :headers="headers"
                 :hidesimpan="true"
                 :hidecetak="true"
+                :hidekonfirm="true"
                 @add="
                   {
                     formBank = true;

@@ -20,6 +20,9 @@
                 :hidecetak="true"
                 @add="$router.push({ path: '/main/pengajuan/add' })"
                 @delete="onDelete"
+                @konfirmasi="
+                  $router.push({ path: '/main/pengajuan/konfirmasi' })
+                "
               />
             </div>
           </div>
@@ -115,6 +118,51 @@ export default {
           );
         }
       });
+    },
+    OnKonfirm(form) {
+      API.put(`/api/pengajuan/${this.$route.params.id}`, form)
+        .then(({ status, data }) => {
+          console.log(data);
+          if (status == 200 || status == 201) {
+            // reponse dari be jika berhasil
+
+            if (data.status) {
+              //berhasil
+              this.$toasted.show("Data Terkonfirmasi", {
+                theme: "bubble",
+                position: "top-right",
+                type: "success", //"success" kalau su
+                duration: 2000,
+              });
+              this.$router.push({ path: "/main/pengajuan" });
+            } else {
+              //notifikasi gagal
+              this.$toasted.show("Data Gagal", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
+            }
+          } else {
+            //notifikasi gagal
+            this.$toasted.show("Data Gagal Diedit", {
+              theme: "bubble",
+              position: "top-right",
+              type: "error", //"success" kalau su
+              duration: 2000,
+            });
+          }
+        })
+        .catch((error) => {
+          //gagal
+          this.$toasted.show("Data Gagal Diedit", {
+            theme: "bubble",
+            position: "top-right",
+            type: "error", //"success" kalau su
+            duration: 2000,
+          });
+        });
     },
   },
 };
