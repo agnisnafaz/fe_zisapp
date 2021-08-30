@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <px-card :actions="false">
           <div slot="with-padding">
-            <b-form class="needs-validation" @submit="onsubmit">
+            <b-form class="needs-validation" @submit.prevent="onsubmit">
               <div class="form-row">
                 <div class="col-md-12 mb-1">
                   <label for="c_form_no-pengajuan">No. Pengajuan</label>
@@ -115,7 +115,7 @@
                 </div>
               </div>
               <div>
-                <b-button type="submit" variant="primary">Proses</b-button>
+                <b-button type="submit" variant="primary">Simpan</b-button>
               </div>
             </b-form>
           </div>
@@ -179,7 +179,10 @@ export default {
       });
     },
 
-    onsubmit() {},
+    onsubmit() {
+      console.log(this.form);
+      this.$emit("submit", this.form);
+    },
   },
 };
 </script>
