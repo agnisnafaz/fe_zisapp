@@ -38,15 +38,17 @@
       <template v-slot:[`item.jk`]="{ item }">
         {{ getJK(item.jk) }}
       </template>
+      <template v-slot:[`item.status_pengajuan`]="{ item }">
+        {{ getStatus(item.status_pengajuan) }}
+      </template>
+
       <template v-slot:[`item.asnaf`]="{ item }">
         {{ getAsnaf(item.asnaf) }}
       </template>
       <template v-slot:[`item.status_pengguna`]="{ item }">
         {{ item.status_pengguna == 1 ? "Aktif" : "Tidak Aktif" }}
       </template>
-      <template v-slot:[`item.status_pengajuan`]="{ item }">
-        {{ item.status_pengajuan == 1 ? "Diterima" : "Ditolak" }}
-      </template>
+
       <template v-slot:[`item.leveluser`]="{ item }">{{
         getLevel(item.leveluser)
       }}</template>
@@ -135,6 +137,12 @@ export default {
     },
     getDetailDonasi(donasi) {
       return `/main/datadonasi/detail/${donasi.id_donasi}`;
+    },
+    getStatus(val) {
+      if (val == 1) return "Proses";
+      if (val == 2) return "Diterima";
+      if (val == 3) return "Ditolak";
+      if (val == 4) return "Selesai";
     },
   },
 };

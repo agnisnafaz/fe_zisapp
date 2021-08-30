@@ -123,6 +123,7 @@
                   <b-form-file
                     placeholder="Pilih File"
                     drop-placeholder="Pilih File"
+                    @change="onPilihFile"
                   ></b-form-file>
                 </div>
               </div>
@@ -144,6 +145,7 @@ export default {
   data() {
     return {
       form: {},
+      selectedFile: null,
       optionasnaf: [
         { value: "1", text: "Fakir Miskin" },
         { value: "2", text: "Riqob" },
@@ -190,8 +192,24 @@ export default {
         }
       });
     },
+    onPilihFile(event) {
+      console.log(event);
+      this.selectedFile = event.target.files[0];
+    },
 
     onsubmit() {
+      let formdata = new FormData();
+      formdata.append("image", this.selectedFile);
+      formdata.append("no_pengajuan", this.form.no_pengajuan);
+      formdata.append("nama_mustahik", this.form.nama_mustahik);
+      formdata.append("pengajuan_kegiatan", this.form.pengajuan_kegiatan);
+      formdata.append("jumlah_pengajuan", this.form.jumlah_pengajuan);
+      formdata.append("jenis_pengajuan", this.form.jenis_pengajuan);
+      formdata.append("asnaf", this.form.asnaf);
+      formdata.append("jumlah_realisasi", this.form.jumlah_realisasi);
+      formdata.append("status_pengajuan", this.form.status_pengajuan);
+
+      formdata.append("tgl_realisasi", this.form.tgl_realisasi);
       this.$emit("submit", this.form);
     },
   },

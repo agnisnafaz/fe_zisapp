@@ -146,8 +146,10 @@ export default {
         { value: "2", text: "Produktif" },
       ],
       optionstatuspengajuan: [
-        { value: "0", text: "Ditolak" },
-        { value: "1", text: "Diterima" },
+        { value: "1", text: "Proses" },
+        { value: "2", text: "Diterima" },
+        { value: "3", text: "Ditolak" },
+        { value: "4", text: "Selesai" },
       ],
       mustahik: [],
     };

@@ -56,14 +56,14 @@ export default {
         });
     },
     OnEdit(form) {
-      API.put(`/api/pengajuan/${this.$route.params.id}`, form)
+      API.post(`/api/pengajuanupload/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
               //berhasil
-              this.$toasted.show("Data Berhasil Diedit", {
+              this.$toasted.show("Data Berhasil Disimpan", {
                 theme: "bubble",
                 position: "top-right",
                 type: "success", //"success" kalau su
@@ -72,7 +72,7 @@ export default {
               this.$router.push({ path: "/main/pengajuan" });
             } else {
               //notifikasi gagal
-              this.$toasted.show("Data Gagal Diedit", {
+              this.$toasted.show("Data Gagal Disimpan", {
                 theme: "bubble",
                 position: "top-right",
                 type: "error", //"success" kalau su
@@ -81,7 +81,7 @@ export default {
             }
           } else {
             //notifikasi gagal
-            this.$toasted.show("Data Gagal Diedit", {
+            this.$toasted.show("Data Gagal Disimpan", {
               theme: "bubble",
               position: "top-right",
               type: "error", //"success" kalau su
@@ -91,7 +91,7 @@ export default {
         })
         .catch((error) => {
           //gagal
-          this.$toasted.show("Data Gagal Diedit", {
+          this.$toasted.show("Data Gagal Disimpan", {
             theme: "bubble",
             position: "top-right",
             type: "error", //"success" kalau su
