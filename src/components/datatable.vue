@@ -59,10 +59,15 @@
         getLevel(item.leveluser)
       }}</template>
       <template v-slot:[`item.kategori_mustahik`]="{ item }">
-        {{ getKetgoriMustahik(item.kategori_musatahik) }}
+        {{ item.kategori_musatahik }}
       </template>
       <template v-slot:[`item.npwz`]="{ item }">
-        <router-link :to="getDetailDonasi(item)"> {{ item.npwz }}</router-link>
+        <div v-if="cekHalaman">{{ item.npwz }}</div>
+        <div v-else>
+          <router-link :to="getDetailDonasi(item)">
+            {{ item.npwz }}</router-link
+          >
+        </div>
       </template>
 
       <template v-slot:[`item.action`]="{ item }">
@@ -121,11 +126,19 @@ export default {
       theme: (state) => state.layout.isDark,
     }),
   },
+  created() {
+    this.cekHalaman();
+  },
   methods: {
     getAsnaf(val) {
       if (val == 1) return "fakir miskin";
-      if (val == 2) return "fisaabilillah";
-      if (val == 3) return "fakir miskin";
+      if (val == 2) return "Riqob";
+      if (val == 3) return "Ibnu Sabil";
+      if (val == 4) return "Ghorimin";
+      if (val == 5) return "Amil";
+      if (val == 6) return "Fisabilillah";
+      if (val == 7) return "Amil";
+      if (val == 8) return "Lain-lain";
     },
     getJK(val) {
       console.log(val);
@@ -138,9 +151,9 @@ export default {
       if (level == 3) return "Direktur";
     },
     getKetgoriMustahik(cat) {
-      if (cat == 1) return "fakir miskin";
-      if (cat == 2) return "fisaabilillah";
-      if (cat == 3) return "fakir miskin";
+      if (cat == 1) return "Perorangan";
+      if (cat == 2) return "Lembaga";
+      return "tidak diketahui";
     },
     getDetailDonasi(donasi) {
       return `/main/datadonasi/detail/${donasi.id_donasi}`;
@@ -159,6 +172,10 @@ export default {
         });
       }
       return "0,00.00";
+    },
+    cekHalaman() {
+      console.log(this.$router.currentRoute.path);
+      return this.$router.currentRoute.path == "/main/muzaki";
     },
   },
 };
