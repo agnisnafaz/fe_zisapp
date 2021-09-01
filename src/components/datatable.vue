@@ -41,6 +41,12 @@
       <template v-slot:[`item.status_pengajuan`]="{ item }">
         {{ getStatus(item.status_pengajuan) }}
       </template>
+      <template v-slot:[`item.total_donasi`]="{ item }">
+        Rp {{ formatCurrency(item.total_donasi) }}
+      </template>
+      <template v-slot:[`item.jumlah_pengajuan`]="{ item }">
+        Rp {{ formatCurrency(item.jumlah_pengajuan) }}
+      </template>
 
       <template v-slot:[`item.asnaf`]="{ item }">
         {{ getAsnaf(item.asnaf) }}
@@ -83,6 +89,7 @@
               @click="$emit('konfirmasi', item)"
               outlined
               small
+              :disabled="item.status_pengajuan == 4"
               >{{ $t("Konfirmasi") }}</v-btn
             >
           </b-button-group>
@@ -143,6 +150,15 @@ export default {
       if (val == 2) return "Diterima";
       if (val == 3) return "Ditolak";
       if (val == 4) return "Selesai";
+    },
+    formatCurrency(total) {
+      if (total) {
+        const parse = parseFloat(total);
+        return parse.toFixed(2).replace(/./g, function(c, i, a) {
+          return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+        });
+      }
+      return "0,00.00";
     },
   },
 };

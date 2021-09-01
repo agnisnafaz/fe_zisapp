@@ -56,6 +56,7 @@ export default {
         });
     },
     OnEdit(form) {
+      console.log("String", form);
       API.post(`/api/pengajuanupload/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
           if (status == 200 || status == 201) {
