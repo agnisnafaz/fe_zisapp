@@ -128,9 +128,7 @@ export default {
       kantorlayanan: [],
     };
   },
-  created() {
-    this.getKantorLayanan();
-  },
+
   watch: {
     body: function(newVal) {
       console.log(newVal);

@@ -43,7 +43,6 @@ export default {
         { text: "Nama", value: "nama_mustahik" },
         { text: "Asnaf", value: "asnaf" },
         { text: "Kategori", value: "kategori_mustahik" },
-
         { text: "AKSI", value: "action" },
       ],
       data: [],

@@ -108,9 +108,13 @@ export default {
         { value: "2", text: "tidak aktif" },
       ],
       optionasnaf: [
-        { value: "1", text: "fakir miskin" },
-        { value: "2", text: "fisaabilillah" },
-        { value: "3", text: "fakir miskin" },
+        { value: "1", text: "Fakir Miskin" },
+        { value: "2", text: "Riqob" },
+        { value: "3", text: "Ibnu Sabil" },
+        { value: "4", text: "Ghorimin" },
+        { value: "5", text: "Amil" },
+        { value: "6", text: "Fisabilillah" },
+        { value: "7", text: "Lan-lain" },
       ],
     };
   },
