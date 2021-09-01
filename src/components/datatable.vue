@@ -24,6 +24,7 @@
         color="primary"
         >{{ "Cetak" }}</v-btn
       >
+
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -37,15 +38,17 @@
       <template v-slot:[`item.jk`]="{ item }">
         {{ getJK(item.jk) }}
       </template>
+      <template v-slot:[`item.status_pengajuan`]="{ item }">
+        {{ getStatus(item.status_pengajuan) }}
+      </template>
+
       <template v-slot:[`item.asnaf`]="{ item }">
         {{ getAsnaf(item.asnaf) }}
       </template>
       <template v-slot:[`item.status_pengguna`]="{ item }">
         {{ item.status_pengguna == 1 ? "Aktif" : "Tidak Aktif" }}
       </template>
-      <template v-slot:[`item.status_pengajuan`]="{ item }">
-        {{ item.status_pengajuan == 1 ? "Diterima" : "Ditolak" }}
-      </template>
+
       <template v-slot:[`item.leveluser`]="{ item }">{{
         getLevel(item.leveluser)
       }}</template>
@@ -75,6 +78,13 @@
               small
               >{{ $t("Delete") }}</v-btn
             >
+            <v-btn
+              v-show="!hidekonfirm"
+              @click="$emit('konfirmasi', item)"
+              outlined
+              small
+              >{{ $t("Konfirmasi") }}</v-btn
+            >
           </b-button-group>
         </b-button-toolbar>
       </template>
@@ -92,6 +102,7 @@ export default {
     "hideupdate",
     "hidesimpan",
     "hidecetak",
+    "hidekonfirm",
   ],
   data() {
     return {
@@ -126,6 +137,12 @@ export default {
     },
     getDetailDonasi(donasi) {
       return `/main/datadonasi/detail/${donasi.id_donasi}`;
+    },
+    getStatus(val) {
+      if (val == 1) return "Proses";
+      if (val == 2) return "Diterima";
+      if (val == 3) return "Ditolak";
+      if (val == 4) return "Selesai";
     },
   },
 };

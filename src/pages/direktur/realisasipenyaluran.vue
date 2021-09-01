@@ -69,7 +69,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/main/pengajuan" });
+              this.$router.push({ path: "/main/direktur" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Diedit", {

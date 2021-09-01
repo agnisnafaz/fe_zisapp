@@ -181,6 +181,15 @@ const routes = [
         },
       },
       {
+        path: "pengajuan/konfirmasi/:id",
+        name: "konfirmasipengajuan",
+        component: () => import("@/pages/pengajuan/konfirmasi.vue"),
+        meta: {
+          title: "ZISAPP | Pengajuan",
+          reqiresAuth: true,
+        },
+      },
+      {
         path: "direktur",
         name: "datapenyaluran",
         component: () => import("@/pages/direktur/datapenyaluran.vue"),
