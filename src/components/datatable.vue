@@ -59,7 +59,7 @@
         getLevel(item.leveluser)
       }}</template>
       <template v-slot:[`item.kategori_mustahik`]="{ item }">
-        {{ item.kategori_musatahik }}
+        {{ getKetgoriMustahik(item.kategori_mustahik) }}
       </template>
       <template v-slot:[`item.npwz`]="{ item }">
         <div v-if="cekHalaman">{{ item.npwz }}</div>
@@ -153,7 +153,6 @@ export default {
     getKetgoriMustahik(cat) {
       if (cat == 1) return "Perorangan";
       if (cat == 2) return "Lembaga";
-      return "tidak diketahui";
     },
     getDetailDonasi(donasi) {
       return `/main/datadonasi/detail/${donasi.id_donasi}`;
