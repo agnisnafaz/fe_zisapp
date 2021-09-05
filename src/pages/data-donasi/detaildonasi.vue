@@ -52,7 +52,8 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Id.Donasi", value: "id_donasi" },
+        { text: "No", value: "no" },
+
         { text: "Tgl.Transaksi", value: "tgl_donasi" },
 
         { text: "Program", value: "nama_program" },
