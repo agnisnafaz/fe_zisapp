@@ -41,6 +41,9 @@
       <template v-slot:[`item.status_pengajuan`]="{ item }">
         {{ getStatus(item.status_pengajuan) }}
       </template>
+      <template v-slot:[`item.no`]="{ index }">
+        {{ index + 1 }}
+      </template>
       <template v-slot:[`item.total_donasi`]="{ item }">
         Rp {{ formatCurrency(item.total_donasi) }}
       </template>
@@ -62,7 +65,9 @@
         {{ getKetgoriMustahik(item.kategori_mustahik) }}
       </template>
       <template v-slot:[`item.npwz`]="{ item }">
-          <a :class="{'text-color':link}" @click="cekHalaman(item)">{{item.npwz}}</a>
+        <a :class="{ 'text-color': link }" @click="cekHalaman(item)">{{
+          item.npwz
+        }}</a>
       </template>
 
       <template v-slot:[`item.action`]="{ item }">
@@ -114,7 +119,7 @@ export default {
   data() {
     return {
       search: "",
-      link:'blue'
+      link: "blue",
     };
   },
   computed: {
@@ -122,9 +127,7 @@ export default {
       theme: (state) => state.layout.isDark,
     }),
   },
-  created() {
-    this.cekHalaman();
-  },
+  created() {},
   methods: {
     getAsnaf(val) {
       if (val == 1) return "fakir miskin";
@@ -169,12 +172,11 @@ export default {
       return "0,00.00";
     },
     cekHalaman(data) {
-      
-      if(this.$router.currentRoute.path == "/main/muzaki"){
-        this.link = 'black'
-        return
+      if (this.$router.currentRoute.path == "/main/muzaki") {
+        this.link = "black";
+        return;
       }
-      return this.$router.push({path:this.getDetailDonasi(data)});
+      return this.$router.push({ path: this.getDetailDonasi(data) });
     },
   },
 };
