@@ -62,11 +62,13 @@
         {{ getKetgoriMustahik(item.kategori_mustahik) }}
       </template>
       <template v-slot:[`item.npwz`]="{ item }">
-        <div v-if="cekHalaman">{{ item.npwz }}</div>
-        <div v-else>
-          <router-link :to="getDetailDonasi(item)">
-            {{ item.npwz }}</router-link
-          >
+        <div>
+          <div v-show="cekHalaman">{{ item.npwz }}</div>
+          <div v-show="!cekHalaman">
+            <router-link :to="getDetailDonasi(item)">
+              {{ item.npwz }}</router-link
+            >
+          </div>
         </div>
       </template>
 
@@ -173,7 +175,7 @@ export default {
       return "0,00.00";
     },
     cekHalaman() {
-      console.log(this.$router.currentRoute.path);
+      console.log(this.$router.currentRoute.path == "/main/muzaki");
       return this.$router.currentRoute.path == "/main/muzaki";
     },
   },
