@@ -154,7 +154,7 @@ export default {
       if (cat == 2) return "Lembaga";
     },
     getDetailDonasi(donasi) {
-      return `/main/datadonasi/detail/${donasi.id_donasi}`;
+      return `/main/datadonasi/detail/${donasi.npwz}`;
     },
     getStatus(val) {
       if (val == 1) return "Proses";
