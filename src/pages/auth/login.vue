@@ -25,7 +25,7 @@
                   <div>
                     <b-card no-body class=" p-50">
                       <b-card-text>
-                        <form class="theme-form" @submit.prevent="Login">
+                        <form class="theme-form" @submit.prevent="login">
                           <p align="center">
                             <font face="Times New Roman" color="black" size="5"
                               >LOGIN</font

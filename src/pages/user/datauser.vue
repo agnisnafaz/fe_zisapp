@@ -73,7 +73,7 @@ export default {
     },
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: "" }),
+        text: this.$t("Delete Message", { who: data.nama_muzaki }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -82,9 +82,41 @@ export default {
         reverseButtons: true,
       }).then(({ value }) => {
         if (value) {
-          Api.delete("/api/pengguna").then((result) => {
-            console.log(result);
-          });
+          //delete disini
+          API.delete(`/api/pengguna/${data.id_pengguna}`).then(
+            ({ status, data }) => {
+              if (status == 200 || status == 201) {
+                // reponse dari be jika berhasil
+
+                if (data.status) {
+                  //berhasil
+                  this.$toasted.show("Data Berhasil Dihapus", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "success", //"success" kalau su
+                    duration: 2000,
+                  });
+                } else {
+                  //notifikasi gagal
+                  this.$toasted.show("Data Gagal Dihapus", {
+                    theme: "bubble",
+                    position: "top-right",
+                    type: "error", //"success" kalau su
+                    duration: 2000,
+                  });
+                }
+                this.getData();
+              } else {
+                //notifikasi gagal
+                this.$toasted.show("Data Gagal Dihapus", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "error", //"success" kalau su
+                  duration: 2000,
+                });
+              }
+            }
+          );
         }
       });
     },
