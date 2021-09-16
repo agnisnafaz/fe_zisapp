@@ -25,7 +25,7 @@
                   <div>
                     <b-card no-body class=" p-50">
                       <b-card-text>
-                        <form class="theme-form">
+                        <form class="theme-form" @submit.prevent="Login">
                           <p align="center">
                             <font face="Times New Roman" color="black" size="5"
                               >LOGIN</font
@@ -78,8 +78,7 @@
                           <div class="form-group mb-0">
                             <button
                               class="btn btn-primary btn-block"
-                              type="button"
-                              @click="login"
+                              type="submit"
                             >
                               Login
                             </button>
