@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     getDetailDonasiById(id) {
-      API.get(`/api/detaildonasi/${id}`)
+      API.get(`/api/donasibynpwz/${id}`)
         .then(({ status, data }) => {
           if (status == 200 || status == 201) {
             if (data.status) {
