@@ -38,9 +38,11 @@
       <template v-slot:[`item.jk`]="{ item }">
         {{ getJK(item.jk) }}
       </template>
-      <template v-slot:[`item.status_pengajuan`]="{ item }">
-        {{ getStatus(item.status_pengajuan) }}
+      <template  v-slot:[`item.status_pengajuan`]="{ item }">
+        {{ getStatusConfirmation(item.status_pengajuan) }}
       </template>
+  
+     
       <template v-slot:[`item.no`]="{ index }">
         {{ index + 1 }}
       </template>
@@ -94,7 +96,7 @@
               @click="$emit('konfirmasi', item)"
               outlined
               small
-              :disabled="item.status_pengajuan == 4"
+              :disabled="getStatusProses(item.status_pengajuan)"
               >{{ $t("Konfirmasi") }}</v-btn
             >
           </b-button-group>
@@ -145,23 +147,36 @@ export default {
       if (val == 2) return "Perempuan";
     },
     getLevel(level) {
-      if (level == 1) return "Admin";
-      if (level == 2) return "Front Office";
-      if (level == 3) return "Direktur";
+      if (level == 1) return "Direktur";
+      if (level == 2) return "Akuntan";
+      if (level == 3) return "Program";
+      if (level == 4) return "ZISR";
+      if (level == 5) return "Front Office";
+      if (level == 6) return "Admin";
     },
+    
     getKetgoriMustahik(cat) {
       if (cat == 1) return "Perorangan";
       if (cat == 2) return "Lembaga";
     },
     getDetailDonasi(donasi) {
-      return `/main/datadonasi/detail/${donasi.id_donasi}`;
+      return `/main/datadonasi/detail/${donasi.npwz}`;
     },
-    getStatus(val) {
+    
+    getStatusConfirmation(val) {
       if (val == 1) return "Proses";
       if (val == 2) return "Diterima";
       if (val == 3) return "Ditolak";
       if (val == 4) return "Selesai";
     },
+    
+    getStatusProses(status) {
+      if (status == 1) return true;
+      if (status == 2) return false;
+      if (status == 3) return true;
+      if (status == 4) return true;
+    },
+
     formatCurrency(total) {
       if (total) {
         const parse = parseFloat(total);

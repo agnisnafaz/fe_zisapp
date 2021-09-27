@@ -86,21 +86,26 @@
 
 <script>
 import API from "@/services/api.service";
+
 export default {
   props: ["hidestatus", "body", "isEdit"],
   data() {
     return {
       form: {},
       optionlevel: [
-        { value: "1", text: "admin" },
-        { value: "2", text: "customer service" },
-        { value: "3", text: "direktur" },
+        { value: "1", text: "Direktur" },
+        { value: "2", text: "Akuntan" },
+        { value: "3", text: "Program" },
+        { value: "4", text: "ZISR"},
+        { value: "5", text: "FO"},
+        { value: "6", text: "Admin"},
       ],
       optionstatus: [
         { value: "1", text: "aktif" },
         { value: "2", text: "tidak aktif" },
       ],
       kantorlayanan: [],
+      password: ''
     };
   },
 

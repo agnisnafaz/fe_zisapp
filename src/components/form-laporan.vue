@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="col-md-6">
+           <div class="col-md-6">
             <label>Program</label>
             <v-autocomplete
               :items="program"
@@ -31,14 +31,18 @@
               <template v-slot:item="{ item }">
                 <v-list-item-content>
                   <v-list-item-title>
-                    {{ item.nama_program }}</v-list-item-title
+                    {{
+                      item.nama_program 
+                    }}</v-list-item-title
                   >
                 </v-list-item-content>
               </template>
               <template v-slot:selection="{ item }">
                 <v-list-item-content>
                   <v-list-item-title>
-                    {{ item.nama_program }}
+                    {{
+                      item.nama_program 
+                    }}
                   </v-list-item-title>
                 </v-list-item-content>
               </template>
