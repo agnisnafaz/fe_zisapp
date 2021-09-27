@@ -129,6 +129,10 @@
           :hidesimpan="false"
           :hideadd="false"
           :hidecetak="true"
+          :hidekonfirm="true"
+          :hideupdate="true"
+          :hidedelete="true"
+          
           @simpan="onSimpan"
           @add="onTambah"
           @delete="onDelete"
@@ -151,7 +155,7 @@ export default {
         { text: "Program", value: "nama_program" },
         { text: "Keterangan", value: "keterangan" },
         { text: "Jumlah", value: "jumlah_donasi" },
-        { text: "AKSI", value: "action" },
+      
       ],
       detail_donasi: [],
       form: {
