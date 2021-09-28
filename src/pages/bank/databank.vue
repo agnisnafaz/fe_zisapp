@@ -18,6 +18,7 @@
                 :hidesimpan="true"
                 :hidecetak="true"
                 :hidekonfirm="true"
+                :hidedetail="true"
                 @add="
                   {
                     formBank = true;

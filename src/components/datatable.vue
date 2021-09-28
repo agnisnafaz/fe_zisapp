@@ -101,6 +101,13 @@
               :disabled="getStatusProses(item.status_pengajuan)"
               >{{ $t("Konfirmasi") }}</v-btn
             >
+            <v-btn
+              v-show="!hidedetail"
+              @click="$emit('detail', item)"
+              outlined
+              small
+              >{{ $t("Detail") }}</v-btn
+            >
           </b-button-group>
         </b-button-toolbar>
       </template>
@@ -119,6 +126,7 @@ export default {
     "hidesimpan",
     "hidecetak",
     "hidekonfirm",
+    "hidedetail",
   ],
   data() {
     return {
@@ -141,7 +149,8 @@ export default {
       if (val == 5) return "Amil";
       if (val == 6) return "Fisabilillah";
       if (val == 7) return "Amil";
-      if (val == 8) return "Lain-lain";
+      if (val == 8) return "Muallaf";
+      if (val == 9) return "Lain-lain";
     },
     getJK(val) {
       console.log(val);

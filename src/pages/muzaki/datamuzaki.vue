@@ -17,6 +17,7 @@
                 :hidesimpan="true"
                 :hidecetak="true"
                 :hidekonfirm="true"
+                :hidedetail="true"
                 @add="$router.push({ path: '/main/muzaki/add' })"
                 @edit="editMuzaki"
                 @delete="onDelete"

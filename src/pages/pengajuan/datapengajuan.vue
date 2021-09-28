@@ -18,6 +18,7 @@
                 :hideadd="false"
                 :hideupdate="true"
                 :hidecetak="true"
+                :hidedetail="true"
                 @add="$router.push({ path: '/main/pengajuan/add' })"
                 @delete="onDelete"
                 @konfirmasi="onKonfirmasi"

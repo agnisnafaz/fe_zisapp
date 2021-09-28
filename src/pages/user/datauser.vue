@@ -17,6 +17,7 @@
                 :hidesimpan="true"
                 :hidecetak="true"
                 :hidekonfirm="true"
+                :hidedetail="true"
                 @add="$router.push({ path: '/main/user/add' })"
                 @edit="editUser"
                 @delete="onDelete"
@@ -71,7 +72,7 @@ export default {
     editUser(data) {
       this.$router.push({ path: "/main/user/edit/" + data.id_pengguna });
     },
-     onDelete(data) {
+    onDelete(data) {
       this.$swal({
         text: this.$t("Delete Message", { who: data.nama_muzaki }),
         showCancelButton: true,

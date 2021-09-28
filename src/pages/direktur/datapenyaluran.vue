@@ -21,6 +21,7 @@
                 :hidedelete="true"
                 @edit="editPengajuan"
                 @delete="onDelete"
+                @detail="detailPengajuan"
               />
             </div>
           </div>
@@ -71,6 +72,12 @@ export default {
         path: "/main/direktur/realisasi/" + data.id_pengajuan,
       });
     },
+    detailPengajuan(data) {
+      this.$router.push({
+        path: "/main/pengajuan/konfirmasi/" + data.id_pengajuan,
+      });
+    },
+
     onDelete(data) {
       this.$swal({
         text: this.$t("Delete Message", { who: "" }),
