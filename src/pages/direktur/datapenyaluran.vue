@@ -39,7 +39,7 @@ export default {
       headers: [
         { text: "No.Pengajuan", value: "no_pengajuan" },
         { text: "Kegiatan", value: "pengajuan_kegiatan" },
-        { text: "Jumlah", value: "jumlah_pengajuan" },
+        { text: "Jumlah Realisasi", value: "jumlah_realisasi" },
         { text: "Status", value: "status_pengajuan" },
         { text: "AKSI", value: "action" },
       ],

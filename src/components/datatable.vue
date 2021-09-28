@@ -38,11 +38,10 @@
       <template v-slot:[`item.jk`]="{ item }">
         {{ getJK(item.jk) }}
       </template>
-      <template  v-slot:[`item.status_pengajuan`]="{ item }">
+      <template v-slot:[`item.status_pengajuan`]="{ item }">
         {{ getStatusConfirmation(item.status_pengajuan) }}
       </template>
-  
-     
+
       <template v-slot:[`item.no`]="{ index }">
         {{ index + 1 }}
       </template>
@@ -51,6 +50,9 @@
       </template>
       <template v-slot:[`item.jumlah_pengajuan`]="{ item }">
         Rp {{ formatCurrency(item.jumlah_pengajuan) }}
+      </template>
+      <template v-slot:[`item.jumlah_realisasi`]="{ item }">
+        Rp {{ formatCurrency(item.jumlah_realisasi) }}
       </template>
 
       <template v-slot:[`item.asnaf`]="{ item }">
@@ -154,7 +156,7 @@ export default {
       if (level == 5) return "Front Office";
       if (level == 6) return "Admin";
     },
-    
+
     getKetgoriMustahik(cat) {
       if (cat == 1) return "Perorangan";
       if (cat == 2) return "Lembaga";
@@ -162,14 +164,14 @@ export default {
     getDetailDonasi(donasi) {
       return `/main/datadonasi/detail/${donasi.npwz}`;
     },
-    
+
     getStatusConfirmation(val) {
       if (val == 1) return "Proses";
       if (val == 2) return "Diterima";
       if (val == 3) return "Ditolak";
       if (val == 4) return "Selesai";
     },
-    
+
     getStatusProses(status) {
       if (status == 1) return true;
       if (status == 2) return false;

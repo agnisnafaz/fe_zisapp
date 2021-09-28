@@ -121,6 +121,7 @@
                 <div class="col-md-12 ">
                   <label>Bukti Penerimaan</label>
                   <b-form-file
+                    disabled
                     placeholder="Pilih File"
                     drop-placeholder="Pilih File"
                     @change="onPilihFile"
@@ -131,6 +132,7 @@
                 <div class="col-md-12 ">
                   <label>Deskripsi Kegiatan</label>
                   <b-form-input
+                    disabled
                     type="text"
                     placeholder="Deskripsi "
                     v-model="form.deskripsi_kegiatan"

@@ -53,9 +53,7 @@ export default {
     return {
       headers: [
         { text: "No", value: "no" },
-
         { text: "Tgl.Transaksi", value: "tgl_donasi" },
-
         { text: "Program", value: "nama_program" },
         { text: "Keterangan", value: "keterangan" },
         { text: "Jumlah Donasi", value: "jumlah_donasi" },
