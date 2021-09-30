@@ -107,7 +107,7 @@ export default {
         { value: "4", text: "Ghorimin" },
         { value: "5", text: "Amil" },
         { value: "6", text: "Fisabilillah" },
-        { value: "7", text: "Muallaf"},
+        { value: "7", text: "Muallaf" },
         { value: "8", text: "Lan-lain" },
       ],
       optionjenispengajuan: [
