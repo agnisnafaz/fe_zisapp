@@ -7,7 +7,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Data Bank</h5>
+              <h5>Data Akun</h5>
             </div>
             <div class="card-body">
               <!-- KONTENNYA DISINI -->
@@ -21,7 +21,7 @@
                 :hidedetail="true"
                 @add="
                   {
-                    formBank = true;
+                    formAkun = true;
                     isEdit = false;
                   }
                 "
@@ -34,10 +34,10 @@
       </div>
     </div>
     <!-- Container-fluid Ends-->
-    <FormBank
-      :show="formBank"
+    <FormAkun
+      :show="formAkun"
       :body="body"
-      @tutup="formBank = false"
+      @tutup="formAkun = false"
       @submit="onSubmit"
     />
   </div>
@@ -49,11 +49,11 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "No. Rekening", value: "no_rek" },
-        { text: "Bank", value: "nama_bank" },
+        { text: "Kategori Akun", value: "kat_akun" },
+        { text: "Sub Kategori Akun", value: "sub_kat_akun" },
         { text: "AKSI", value: "action" },
       ],
-      formBank: false,
+      formAkun: false,
       body: {},
       isEdit: false,
       data: [],
@@ -65,7 +65,7 @@ export default {
   methods: {
     onEdit(data) {
       console.log(data);
-      this.formBank = true;
+      this.formAkun = true;
       this.isEdit = true;
       this.body = data;
     },
@@ -78,7 +78,7 @@ export default {
               // reponse dari be jika berhasil
 
               if (data.status) {
-                this.formBank = false;
+                this.formAkun = false;
                 this.body = {};
                 //berhasil
                 this.$toasted.show("Data Berhasil Diedit", {
@@ -110,12 +110,12 @@ export default {
           }
         );
       } else {
-        API.post("/api/bank", form).then(({ status, data }) => {
+        API.post("/api/akun", form).then(({ status, data }) => {
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
-              this.formBank = false;
+              this.formAkun = false;
               this.body = {};
               //berhasil
               this.$toasted.show("Data Berhasil Disimpan", {
@@ -148,7 +148,7 @@ export default {
       }
     },
     getData() {
-      API.get("/api/bank").then(({ status, data }) => {
+      API.get("/api/akun").then(({ status, data }) => {
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -177,7 +177,7 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete(`/api/bank/${data.id_bank}`).then(({ status, data }) => {
+          API.delete(`/api/akun/${data.id_akun}`).then(({ status, data }) => {
             if (status == 200 || status == 201) {
               // reponse dari be jika berhasil
               if (data.status) {

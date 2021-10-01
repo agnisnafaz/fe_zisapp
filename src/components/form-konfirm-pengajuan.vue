@@ -127,6 +127,16 @@
                   ></b-form-file>
                 </div>
               </div>
+              <div class="form-row">
+                <div class="col-md-12 ">
+                  <label>Deskripsi Kegiatan</label>
+                  <b-form-input
+                    type="text"
+                    placeholder="Deskripsi "
+                    v-model="form.deskripsi_kegiatan"
+                  ></b-form-input>
+                </div>
+              </div>
               <div class="mt-5">
                 <b-button type="submit" variant="primary">Simpan</b-button>
               </div>
@@ -153,7 +163,8 @@ export default {
         { value: "4", text: "Ghorimin" },
         { value: "5", text: "Amil" },
         { value: "6", text: "Fisabilillah" },
-        { value: "7", text: "Lan-lain" },
+        { value: "7", text: "Muallaf" },
+        { value: "8", text: "Lan-lain" },
       ],
       optionjenispengajuan: [
         { value: "1", text: "Konsumtif" },

@@ -43,7 +43,20 @@
         {
           "path": "/main/program",
           "title": "Program",
-          "type": "link"
+          "type": "sub",
+          "active": false,
+          "children": [
+            {
+              "path": "/main/akun",
+              "title": "Akun",
+              "type": "link"
+            },
+            {
+              "path": "/main/subakun",
+              "title": "Sub Akun",
+              "type": "link"
+            }
+          ]
         }
       ]
     },

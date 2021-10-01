@@ -17,8 +17,6 @@
                 :hideadd="true"
                 :hidesimpan="true"
                 :hidecetak="true"
-                @add="$router.push({ path: '/main/direktur/realisasi' })"
-                @edit="$router.push({ path: '/main/pengajuan/edit' })"
                 @delete="onDelete"
               />
             </div>

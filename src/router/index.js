@@ -151,6 +151,15 @@ const routes = [
           reqiresAuth: true,
         },
       },
+      {
+        path: "akun",
+        name: "akun",
+        component: () => import("@/pages/akun/akun.vue"),
+        meta: {
+          title: "ZISAPP | Data Akun",
+          reqiresAuth: true,
+        },
+      },
 
       {
         path: "donasi",
@@ -201,7 +210,7 @@ const routes = [
       {
         path: "direktur/realisasi/:id",
         name: "realisasidirektur",
-        component: () => import("@/pages/direktur/realisasipenyaluran.vue"),
+        component: () => import("@/pages/direktur/editpenyaluran.vue"),
         meta: {
           title: "ZISAPP | Data Penyaluran",
           reqiresAuth: true,
@@ -210,9 +219,18 @@ const routes = [
       {
         path: "direktur/edit",
         name: "editpenyaluran",
-        component: () => import("@/pages/direktur/realisasipenyaluran.vue"),
+        component: () => import("@/pages/direktur/editpenyaluran.vue"),
         meta: {
           title: "ZISAPP | Edit Penyaluran",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "direktur/detail",
+        name: "deatailpenyaluran",
+        component: () => import("@/pages/direktur/detailpenyaluran.vue"),
+        meta: {
+          title: "ZISAPP | Detail Penyaluran",
           reqiresAuth: true,
         },
       },

@@ -131,8 +131,8 @@
           :hidecetak="true"
           :hidekonfirm="true"
           :hideupdate="true"
-          :hidedelete="true"
-          
+          :hidedelete="false"
+          :hidedetail="true"
           @simpan="onSimpan"
           @add="onTambah"
           @delete="onDelete"
@@ -155,7 +155,7 @@ export default {
         { text: "Program", value: "nama_program" },
         { text: "Keterangan", value: "keterangan" },
         { text: "Jumlah", value: "jumlah_donasi" },
-      
+        { text: "AKSI", value: "action" },
       ],
       detail_donasi: [],
       form: {
@@ -258,7 +258,6 @@ export default {
         return item != null;
       });
 
-
       this.$emit("submit", this.form);
     },
 
@@ -266,7 +265,7 @@ export default {
       var index = this.detail_donasi
         .map((donasi) => donasi.idx)
         .indexOf(data.idx);
-      this.detail_donasi.splice(index);
+      this.detail_donasi.splice(index, 1);
     },
   },
 };

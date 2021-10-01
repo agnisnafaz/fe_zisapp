@@ -16,14 +16,6 @@
         color="primary"
         >{{ "simpan" }}</v-btn
       >
-      <v-btn
-        class="ml-0"
-        data-testid="button"
-        v-show="!hidecetak"
-        @click="$emit('Cetak', true)"
-        color="primary"
-        >{{ "Cetak" }}</v-btn
-      >
 
       <v-spacer></v-spacer>
       <v-text-field
@@ -38,11 +30,10 @@
       <template v-slot:[`item.jk`]="{ item }">
         {{ getJK(item.jk) }}
       </template>
-      <template  v-slot:[`item.status_pengajuan`]="{ item }">
+      <template v-slot:[`item.status_pengajuan`]="{ item }">
         {{ getStatusConfirmation(item.status_pengajuan) }}
       </template>
-  
-     
+
       <template v-slot:[`item.no`]="{ index }">
         {{ index + 1 }}
       </template>
@@ -51,6 +42,9 @@
       </template>
       <template v-slot:[`item.jumlah_pengajuan`]="{ item }">
         Rp {{ formatCurrency(item.jumlah_pengajuan) }}
+      </template>
+      <template v-slot:[`item.jumlah_realisasi`]="{ item }">
+        Rp {{ formatCurrency(item.jumlah_realisasi) }}
       </template>
 
       <template v-slot:[`item.asnaf`]="{ item }">
@@ -99,6 +93,20 @@
               :disabled="getStatusProses(item.status_pengajuan)"
               >{{ $t("Konfirmasi") }}</v-btn
             >
+            <v-btn
+              v-show="!hidedetail"
+              @click="$emit('detail', item)"
+              outlined
+              small
+              >{{ $t("Detail") }}</v-btn
+            >
+            <v-btn
+              v-show="!hidecetak"
+              @click="$emit('cetak', item)"
+              outlined
+              small
+              >{{ $t("Cetak") }}</v-btn
+            >
           </b-button-group>
         </b-button-toolbar>
       </template>
@@ -117,6 +125,7 @@ export default {
     "hidesimpan",
     "hidecetak",
     "hidekonfirm",
+    "hidedetail",
   ],
   data() {
     return {
@@ -139,7 +148,8 @@ export default {
       if (val == 5) return "Amil";
       if (val == 6) return "Fisabilillah";
       if (val == 7) return "Amil";
-      if (val == 8) return "Lain-lain";
+      if (val == 8) return "Muallaf";
+      if (val == 9) return "Lain-lain";
     },
     getJK(val) {
       console.log(val);
@@ -154,7 +164,7 @@ export default {
       if (level == 5) return "Front Office";
       if (level == 6) return "Admin";
     },
-    
+
     getKetgoriMustahik(cat) {
       if (cat == 1) return "Perorangan";
       if (cat == 2) return "Lembaga";
@@ -162,14 +172,14 @@ export default {
     getDetailDonasi(donasi) {
       return `/main/datadonasi/detail/${donasi.npwz}`;
     },
-    
+
     getStatusConfirmation(val) {
       if (val == 1) return "Proses";
       if (val == 2) return "Diterima";
       if (val == 3) return "Ditolak";
       if (val == 4) return "Selesai";
     },
-    
+
     getStatusProses(status) {
       if (status == 1) return true;
       if (status == 2) return false;

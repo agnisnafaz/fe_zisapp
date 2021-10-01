@@ -78,10 +78,8 @@ export default {
       });
     },
     onSimpan(form) {
-      console.log(form);
       API.post("/api/donasi", form)
         .then(({ status, data }) => {
-          console.log("Tes", window);
           if (status === 200 || status === 201) {
             // reponse dari be jika berhasil
 
@@ -103,7 +101,7 @@ export default {
               //  nama_pengguna: `${data.data.nama_pengguna}`,
               //},
               //  });
-              console.log(data);
+
               window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?id_donasi=${data.data.id_donasi}`;
             } else {
               //notifikasi gagal
