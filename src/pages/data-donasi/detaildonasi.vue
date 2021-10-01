@@ -34,8 +34,14 @@
               <data-table
                 :items="data"
                 :headers="headers"
-                :hideadd="true"
                 :hidesimpan="true"
+                :hideadd="true"
+                :hidecetak="false"
+                :hidekonfirm="true"
+                :hideupdate="true"
+                :hidedelete="true"
+                :hidedetail="true"
+                @cetak="onCetak"
               />
             </div>
           </div>
@@ -57,6 +63,7 @@ export default {
         { text: "Program", value: "nama_program" },
         { text: "Keterangan", value: "keterangan" },
         { text: "Jumlah Donasi", value: "jumlah_donasi" },
+        { text: "AKSI", value: "action" },
       ],
       data: [],
       npwz: "",
@@ -70,6 +77,61 @@ export default {
     }
   },
   methods: {
+    onCetak(form) {
+      API.post("/api/donasi", form)
+        .then(({ status, data }) => {
+          if (status === 200 || status === 201) {
+            // reponse dari be jika berhasil
+
+            if (data.status) {
+              //berhasil
+              this.$toasted.show("Data Berhasil Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "success", //"success" kalau su
+                duration: 2000,
+              });
+
+              // this.$router.push({
+              //   path: "/main/cetakdonasi",
+              //  query: {
+              //   nama_muzaki: `${data.data.nama_muzaki}`,
+              //   id_donasi: `${data.data.id_donasi}`,
+              //   npwz: `${data.data.npwz}`,
+              //  nama_pengguna: `${data.data.nama_pengguna}`,
+              //},
+              //  });
+
+              window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?id_donasi=${data.data.id_donasi}`;
+            } else {
+              //notifikasi gagal
+              this.$toasted.show("Data Gagal Disimpan", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
+            }
+          } else {
+            //notifikasi gagal
+            this.$toasted.show("Data Gagal Disimpan", {
+              theme: "bubble",
+              position: "top-right",
+              type: "error", //"success" kalau su
+              duration: 2000,
+            });
+          }
+        })
+        .catch(() => {
+          //gagal
+          this.$toasted.show("Data Gagal Disimpan", {
+            theme: "bubble",
+            position: "top-right",
+            type: "error", //"success" kalau su
+            duration: 2000,
+          });
+        });
+    },
     getDetailDonasiById(id) {
       API.get(`/api/donasibynpwz/${id}`)
         .then(({ status, data }) => {

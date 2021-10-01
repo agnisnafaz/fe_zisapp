@@ -41,6 +41,7 @@ import FormDirektur from "@/components/form-direktur.vue";
 import FormLaporan from "@/components/form-laporan.vue";
 import FormProfilUser from "@/components/form-profil-user";
 import FormKonfirmasi from "@/components/form-konfirm-pengajuan";
+import FormAkun from "@/components/form-akun";
 
 import PxCard from "@/components/Pxcard.vue";
 import { Icon } from "leaflet";
@@ -68,6 +69,7 @@ Vue.component("FormDirektur", FormDirektur);
 Vue.component("FormLaporan", FormLaporan);
 Vue.component("FormProfilUser", FormProfilUser);
 Vue.component("FormKonfirmasi", FormKonfirmasi);
+Vue.component("FormAkun", FormAkun);
 
 Vue.component("apexchart", VueApexCharts);
 

@@ -16,14 +16,6 @@
         color="primary"
         >{{ "simpan" }}</v-btn
       >
-      <v-btn
-        class="ml-0"
-        data-testid="button"
-        v-show="!hidecetak"
-        @click="$emit('Cetak', true)"
-        color="primary"
-        >{{ "Cetak" }}</v-btn
-      >
 
       <v-spacer></v-spacer>
       <v-text-field
@@ -107,6 +99,13 @@
               outlined
               small
               >{{ $t("Detail") }}</v-btn
+            >
+            <v-btn
+              v-show="!hidecetak"
+              @click="$emit('cetak', item)"
+              outlined
+              small
+              >{{ $t("Cetak") }}</v-btn
             >
           </b-button-group>
         </b-button-toolbar>

@@ -151,6 +151,15 @@ const routes = [
           reqiresAuth: true,
         },
       },
+      {
+        path: "akun",
+        name: "akun",
+        component: () => import("@/pages/akun/akun.vue"),
+        meta: {
+          title: "ZISAPP | Data Akun",
+          reqiresAuth: true,
+        },
+      },
 
       {
         path: "donasi",
