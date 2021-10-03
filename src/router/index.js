@@ -160,6 +160,15 @@ const routes = [
           reqiresAuth: true,
         },
       },
+      {
+        path: "subkatakun",
+        name: "subkatakun",
+        component: () => import("@/pages/sub-akun/subakun.vue"),
+        meta: {
+          title: "ZISAPP | Data Sub Akun",
+          reqiresAuth: true,
+        },
+      },
 
       {
         path: "donasi",

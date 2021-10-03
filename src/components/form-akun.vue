@@ -12,15 +12,15 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <label for="c_form_jeniskelamin">Kategori Akun</label>
+                <label for="c_form_kat_akun">Kategori Akun</label>
                 <b-form-select
-                  v-model="form.kat_akun"
+                  v-model="form.kat_akuns"
                   :options="optionkatakun"
                 ></b-form-select>
               </v-col>
               <v-col cols="12">
                 <v-text-field
-                  v-model="form.subkat_akun"
+                  v-model="form.sub_kat_akuns"
                   label="Sub Kategori Akun"
                   required
                 ></v-text-field>
@@ -50,8 +50,8 @@ export default {
   data: () => {
     return {
       form: {
-        kat_akun: "",
-        subkat_akun: "",
+        kat_akuns: "",
+        sub_kat_akun: "",
 
         active: 1,
       },

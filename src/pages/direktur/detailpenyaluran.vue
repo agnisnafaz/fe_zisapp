@@ -7,12 +7,16 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Status Pengajuan</h5>
+              <h5>Detail Pengajuan</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormDirektur @submit="OnEdit" :body="body" :isEdit="true">
-              </FormDirektur>
+              <Form-detail-pengajuan
+                @submit="OnEdit"
+                :body="body"
+                :isEdit="true"
+              >
+              </Form-detail-pengajuan>
             </div>
           </div>
         </div>
@@ -24,7 +28,9 @@
 
 <script>
 import API from "@/services/api.service";
+import formDetailPengajuan from "@/components/form-detail-pengajuan.vue";
 export default {
+  components: { formDetailPengajuan },
   data: () => {
     return {
       body: {},
@@ -56,23 +62,24 @@ export default {
         });
     },
     OnEdit(form) {
-      API.put(`/api/pengajuan/${this.$route.params.id}`, form)
+      console.log("String", form);
+      API.post(`/api/pengajuanupload/${this.$route.params.id}`, form)
         .then(({ status, data }) => {
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
               //berhasil
-              this.$toasted.show("Data Berhasil Diedit", {
+              this.$toasted.show("Data Berhasil Disimpan", {
                 theme: "bubble",
                 position: "top-right",
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/main/direktur" });
+              this.$router.push({ path: "/main/pengajuan" });
             } else {
               //notifikasi gagal
-              this.$toasted.show("Data Gagal Diedit", {
+              this.$toasted.show("Data Gagal Disimpan", {
                 theme: "bubble",
                 position: "top-right",
                 type: "error", //"success" kalau su
@@ -81,7 +88,7 @@ export default {
             }
           } else {
             //notifikasi gagal
-            this.$toasted.show("Data Gagal Diedit", {
+            this.$toasted.show("Data Gagal Disimpan", {
               theme: "bubble",
               position: "top-right",
               type: "error", //"success" kalau su
@@ -91,7 +98,7 @@ export default {
         })
         .catch((error) => {
           //gagal
-          this.$toasted.show("Data Gagal Diedit", {
+          this.$toasted.show("Data Gagal Disimpan", {
             theme: "bubble",
             position: "top-right",
             type: "error", //"success" kalau su

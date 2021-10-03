@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Breadcrumbs title="Data Akun" />
+    <Breadcrumbs title="Program" />
     <!-- Container-fluid starts-->
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Data Akun</h5>
+              <h5>Sub Akun</h5>
             </div>
             <div class="card-body">
               <!-- KONTENNYA DISINI -->
@@ -21,7 +21,7 @@
                 :hidedetail="true"
                 @add="
                   {
-                    formAkun = true;
+                    formSubAkun = true;
                     isEdit = false;
                   }
                 "
@@ -34,10 +34,10 @@
       </div>
     </div>
     <!-- Container-fluid Ends-->
-    <FormAkun
-      :show="formAkun"
+    <FormSubAkun
+      :show="formSubAkun"
       :body="body"
-      @tutup="formAkun = false"
+      @tutup="formSubAkun = false"
       @submit="onSubmit"
     />
   </div>
@@ -49,11 +49,11 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Kategori Akun", value: "kat_akun" },
         { text: "Sub Kategori Akun", value: "sub_kat_akun" },
+        { text: "Sub Sub Kategori Akun", value: "sub_sub_kat_akun" },
         { text: "AKSI", value: "action" },
       ],
-      formAkun: false,
+      formSubAkun: false,
       body: {},
       isEdit: false,
       data: [],
@@ -65,20 +65,20 @@ export default {
   methods: {
     onEdit(data) {
       console.log(data);
-      this.formAkun = true;
+      this.formSubAkun = true;
       this.isEdit = true;
       this.body = data;
     },
     onSubmit(form) {
       if (this.isEdit) {
-        API.put(`/api/katakun/${this.body.id_kat_akun}`, form).then(
+        API.put(`/api/subkat/${this.body.id_sub_kat_akun}`, form).then(
           ({ status, data }) => {
             console.log(data);
             if (status == 200 || status == 201) {
               // reponse dari be jika berhasil
 
               if (data.status) {
-                this.formAkun = false;
+                this.formSubAkun = false;
                 this.body = {};
                 //berhasil
                 this.$toasted.show("Data Berhasil Diedit", {
@@ -110,12 +110,12 @@ export default {
           }
         );
       } else {
-        API.post("/api/katakun", form).then(({ status, data }) => {
+        API.post("/api/subkat", form).then(({ status, data }) => {
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
-              this.formAkun = false;
+              this.formSubAkun = false;
               this.body = {};
               //berhasil
               this.$toasted.show("Data Berhasil Disimpan", {
@@ -148,7 +148,7 @@ export default {
       }
     },
     getData() {
-      API.get("/api/katakun").then(({ status, data }) => {
+      API.get("/api/subkat").then(({ status, data }) => {
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -167,7 +167,7 @@ export default {
 
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: `${data.nama_bank}` }),
+        text: this.$t("Delete Message", { who: `${data.id_sub_kat_akun}` }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -177,7 +177,7 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete(`/api/katakun/${data.id_kat_akun}`).then(
+          API.delete(`/api/subkat/${data.id_sub_kat_akun}`).then(
             ({ status, data }) => {
               if (status == 200 || status == 201) {
                 // reponse dari be jika berhasil
