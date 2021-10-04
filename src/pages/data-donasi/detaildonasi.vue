@@ -21,7 +21,7 @@
                       <h5 class="media-heading">{{ nama_muzaki }}</h5>
                       <p>
                         {{ npwz }}
-                        <br /><span class="digits">(+62)81-226-809-435</span>
+                        <br /><span class="digits">{{ telepon_muzaki }}</span>
                       </p>
                     </div>
                   </div>
@@ -41,7 +41,7 @@
                 :hideupdate="true"
                 :hidedelete="true"
                 :hidedetail="true"
-                @cetak="onCetak"
+                @cetak="Cetak"
               />
             </div>
           </div>
@@ -68,6 +68,7 @@ export default {
       data: [],
       npwz: "",
       nama_muzaki: "",
+      telepon_muzaki: "",
     };
   },
   created() {
@@ -77,15 +78,18 @@ export default {
     }
   },
   methods: {
+    cetak(data){
+      window.location.href = `http://localhost:8000/api/tandaterima1/cetak_tanda1?id_donasi=${data.id_donasi}`;
+      },
     onCetak(form) {
-      API.post("/api/donasi", form)
+      API.get(`/api/tandaterima1/cetak_tanda1/${data.data.id_donasi}`, form)
         .then(({ status, data }) => {
           if (status === 200 || status === 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
               //berhasil
-              this.$toasted.show("Data Berhasil Disimpan", {
+              this.$toasted.show("Data Berhasil Dicetak", {
                 theme: "bubble",
                 position: "top-right",
                 type: "success", //"success" kalau su
@@ -99,13 +103,13 @@ export default {
               //   id_donasi: `${data.data.id_donasi}`,
               //   npwz: `${data.data.npwz}`,
               //  nama_pengguna: `${data.data.nama_pengguna}`,
-              //},
+              // },
               //  });
 
-              window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?id_donasi=${data.data.id_donasi}`;
+               window.location.href = `http://localhost:8000/api/tandaterima1/cetak_tanda1?id_donasi=${data.data.id_donasi}`;
             } else {
               //notifikasi gagal
-              this.$toasted.show("Data Gagal Disimpan", {
+              this.$toasted.show("Data Gagal Dicetak", {
                 theme: "bubble",
                 position: "top-right",
                 type: "error", //"success" kalau su
@@ -114,7 +118,7 @@ export default {
             }
           } else {
             //notifikasi gagal
-            this.$toasted.show("Data Gagal Disimpan", {
+            this.$toasted.show("Data Gagal Dicetak", {
               theme: "bubble",
               position: "top-right",
               type: "error", //"success" kalau su
@@ -124,7 +128,7 @@ export default {
         })
         .catch(() => {
           //gagal
-          this.$toasted.show("Data Gagal Disimpan", {
+          this.$toasted.show("Data Gagal Dicetak", {
             theme: "bubble",
             position: "top-right",
             type: "error", //"success" kalau su
@@ -157,6 +161,7 @@ export default {
             if (data.status) {
               this.nama_muzaki = data.data[0].nama_muzaki;
               this.npwz = data.data[0].npwz;
+              this.telepon_muzaki = data.data.id_donasi;
             }
           }
         })

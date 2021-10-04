@@ -102,7 +102,7 @@ export default {
               //},
               //  });
 
-              window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?id_donasi=${data.data.id_donasi}`;
+              window.location.href = `http://localhost:8000/api/tandaterima/cetak_tanda?id_donasi=${data.data}`;
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
