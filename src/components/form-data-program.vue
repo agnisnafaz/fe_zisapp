@@ -115,6 +115,9 @@ export default {
     subakunprogramselected: function(subakunprogram) {
       this.form.id_sub_akun_program = subakunprogram.id_sub_akun_program;
     },
+    bankselected: function(bank) {
+      this.form.id_bank = bank.id_bank;
+    },
   },
   created() {
     this.getSubAkunProgram();
