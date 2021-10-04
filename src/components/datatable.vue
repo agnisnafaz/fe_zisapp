@@ -53,6 +53,9 @@
       <template v-slot:[`item.status_pengguna`]="{ item }">
         {{ item.status_pengguna == 1 ? "Aktif" : "Tidak Aktif" }}
       </template>
+      <template v-slot:[`item.kategori`]="{ item }">
+        {{ getKategori(item.kategori) }}
+      </template>
 
       <template v-slot:[`item.leveluser`]="{ item }">{{
         getLevel(item.leveluser)
@@ -64,6 +67,23 @@
         <a :class="{ 'text-color': link }" @click="cekHalaman(item)">{{
           item.npwz
         }}</a>
+      </template>
+      <template v-slot:[`item.nama_akun`]="{ item }">
+        <a :class="{ 'text-color': link }" @click="getNamaAkun(item)">{{
+          item.nama_akun
+        }}</a>
+      </template>
+      <template v-slot:[`item.nama_sub_akun`]="{ item }">
+        <a :class="{ 'text-color': link }" @click="getNamaSubAkun(item)">{{
+          item.nama_sub_akun
+        }}</a>
+      </template>
+      <template v-slot:[`item.nama_sub_akun_program`]="{ item }">
+        <a
+          :class="{ 'text-color': link }"
+          @click="getNamaSubAkunProgram(item)"
+          >{{ item.nama_sub_akun_program }}</a
+        >
       </template>
 
       <template v-slot:[`item.action`]="{ item }">
@@ -151,6 +171,16 @@ export default {
       if (val == 8) return "Muallaf";
       if (val == 9) return "Lain-lain";
     },
+    getKategori(val) {
+      if (val == 1) return "Aset Lancar";
+      if (val == 2) return "Aset Tidak Lancar";
+      if (val == 3) return "Liabilitas";
+      if (val == 4) return "Saldo Pendanaan";
+      if (val == 5) return "Penerimaan Dana";
+      if (val == 6) return "Penyaluran Dana";
+      if (val == 7) return "Biaya Pengelolaan";
+    },
+
     getJK(val) {
       console.log(val);
       if (val == 1) return "Laki-Laki";
@@ -202,6 +232,19 @@ export default {
         return;
       }
       return this.$router.push({ path: this.getDetailDonasi(data) });
+    },
+    getNamaAkun(data) {
+      this.$router.push({ path: `/main/program/subakun/${data.id_akun}` });
+    },
+    getNamaSubAkun(data) {
+      this.$router.push({
+        path: `/main/program/subsubakun/${data.id_sub_akun}`,
+      });
+    },
+    getNamaSubAkunProgram(data) {
+      this.$router.push({
+        path: `/main/program/dataprogram/${data.id_sub_akun_program}`,
+      });
     },
   },
 };

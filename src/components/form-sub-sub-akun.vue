@@ -7,32 +7,17 @@
   >
     <template v-slot:default="dialog">
       <v-card>
-        <v-toolbar color="primary" dark>Form Program</v-toolbar>
+        <v-toolbar color="primary" dark>Form Sub Akun</v-toolbar>
         <v-card-text>
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-text-field
-                  disabled
-                  v-model="form.kode_program"
-                  label="Kode Program"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  v-model="form.nama_program"
-                  label="Nama Program"
-                  required
-                ></v-text-field>
-              </v-col>
-              <div class="col-md-12">
-                <label>Bank</label>
+                <label>Sub Akun</label>
                 <v-autocomplete
-                  :items="bank"
-                  item-text="nama_bank"
-                  item-value="id_bank"
-                  v-model="form.id_bank"
+                  :items="subakun"
+                  item-text="nama_sub_akun"
+                  return-object
+                  v-model="subakunselected"
                   auto-select-first
                   outlined
                   required
@@ -42,21 +27,26 @@
                   <template v-slot:item="{ item }">
                     <v-list-item-content>
                       <v-list-item-title>
-                        {{
-                          item.nama_bank + " - " + item.no_rek
-                        }}</v-list-item-title
+                        {{ item.nama_sub_akun }}</v-list-item-title
                       >
                     </v-list-item-content>
                   </template>
                   <template v-slot:selection="{ item }">
                     <v-list-item-content>
                       <v-list-item-title>
-                        {{ item.nama_bank + " - " + item.no_rek }}
+                        {{ item.nama_sub_akun }}
                       </v-list-item-title>
                     </v-list-item-content>
                   </template>
                 </v-autocomplete>
-              </div>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="form.nama_sub_akun_program"
+                  label="Nama Sub Program Akun"
+                  required
+                ></v-text-field>
+              </v-col>
             </v-row>
           </v-container>
           <small>*indicates required field</small>
@@ -82,32 +72,32 @@ export default {
   props: ["show", "body"],
   data: () => {
     return {
+      subakunselected: {},
       form: {
-        kode_program: "",
-        nama_program: "",
-        nama_bank: "",
+        sub_akun_programs: "",
         active: 1,
       },
-      bank: [],
+      subakun: [],
     };
   },
   watch: {
-    body: function(newVal) {
-      this.form = newVal;
+    subakunselected: function(subakun) {
+      this.form.id_sub_akun = subakun.id_sub_akun;
     },
   },
   created() {
-    this.getBank();
+    this.getSubAkun();
   },
+
   methods: {
-    getBank() {
-      API.get("/api/bank").then(({ status, data }) => {
+    getSubAkun() {
+      API.get("/api/subakun").then(({ status, data }) => {
         if (status === 200 || status === 201) {
           // reponse dari be jika berhasil
 
           if (data.status) {
             //berhasil
-            this.bank = data.data;
+            this.subakun = data.data;
           } else {
             //notifikasi gagal
           }

@@ -7,17 +7,17 @@
   >
     <template v-slot:default="dialog">
       <v-card>
-        <v-toolbar color="primary" dark>Form Akun</v-toolbar>
+        <v-toolbar color="primary" dark>Form Data Program</v-toolbar>
         <v-card-text>
           <v-container>
             <v-row>
               <v-col cols="12">
-                <label>Akun</label>
+                <label>Sub Akun Program</label>
                 <v-autocomplete
-                  :items="akun"
-                  item-text="nama_akun"
+                  :items="subakunprogram"
+                  item-text="nama_sub_akun_program"
                   return-object
-                  v-model="akunselected"
+                  v-model="subakunprogramselected"
                   auto-select-first
                   outlined
                   required
@@ -27,14 +27,14 @@
                   <template v-slot:item="{ item }">
                     <v-list-item-content>
                       <v-list-item-title>
-                        {{ item.nama_akun }}</v-list-item-title
+                        {{ item.nama_sub_akun_program }}</v-list-item-title
                       >
                     </v-list-item-content>
                   </template>
                   <template v-slot:selection="{ item }">
                     <v-list-item-content>
                       <v-list-item-title>
-                        {{ item.nama_akun }}
+                        {{ item.nama_sub_akun_program }}
                       </v-list-item-title>
                     </v-list-item-content>
                   </template>
@@ -42,8 +42,8 @@
               </v-col>
               <v-col cols="12">
                 <v-text-field
-                  v-model="form.nama_sub_akun"
-                  label="Nama Sub Akun"
+                  v-model="form.nama_program"
+                  label="Program"
                   required
                 ></v-text-field>
               </v-col>
@@ -72,32 +72,32 @@ export default {
   props: ["show", "body"],
   data: () => {
     return {
-      akunselected: {},
+      subakunprogramselected: {},
       form: {
-        nama_sub_akun: "",
+        nama_program: "",
         active: 1,
       },
-      akun: [],
+      subakunprogram: [],
     };
   },
   watch: {
-    akunselected: function(akun) {
-      this.form.id_akun = akun.id_akun;
+    subakunprogramselected: function(subakunprogram) {
+      this.form.id_sub_akun_program = subakunprogram.id_sub_akun_program;
     },
   },
   created() {
-    this.getAkun();
+    this.getSubAkunProgram();
   },
 
   methods: {
-    getAkun() {
-      API.get("/api/akun").then(({ status, data }) => {
+    getSubAkunProgram() {
+      API.get("/api/subakunprogram").then(({ status, data }) => {
         if (status === 200 || status === 201) {
           // reponse dari be jika berhasil
 
           if (data.status) {
             //berhasil
-            this.akun = data.data;
+            this.subakunprogram = data.data;
           } else {
             //notifikasi gagal
           }

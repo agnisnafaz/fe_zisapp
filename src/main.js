@@ -36,14 +36,17 @@ import FormUser from "@/components/form-user.vue";
 import FormBank from "@/components/form-bank.vue";
 import FormDonasi from "@/components/form-donasi.vue";
 import FormPengajuan from "@/components/form-pengajuan.vue";
-import FormProgram from "@/components/form-program.vue";
+import FormProgram from "@/components/form-akun.vue";
 import FormDirektur from "@/components/form-direktur.vue";
 import FormLaporan from "@/components/form-laporan.vue";
 import FormProfilUser from "@/components/form-profil-user";
 import FormKonfirmasi from "@/components/form-konfirm-pengajuan";
 import FormAkun from "@/components/form-akun";
-import Formdetailpengajuan from "@/components/form-detail-pengajuan";
 import FormSubAkun from "@/components/form-sub-akun";
+import FormSubSubAkun from "@/components/form-sub-sub-akun";
+import FormDataProgram from "@/components/form-data-program";
+
+import FormDetailPengajuan from "@/components/form-detail-pengajuan";
 
 import PxCard from "@/components/Pxcard.vue";
 import { Icon } from "leaflet";
@@ -72,8 +75,11 @@ Vue.component("FormLaporan", FormLaporan);
 Vue.component("FormProfilUser", FormProfilUser);
 Vue.component("FormKonfirmasi", FormKonfirmasi);
 Vue.component("FormAkun", FormAkun);
-Vue.component("Form-detail-pengajuan", Formdetailpengajuan);
 Vue.component("FormSubAkun", FormSubAkun);
+Vue.component("FormSubSubAkun", FormSubSubAkun);
+Vue.component("FormDataProgram", FormDataProgram);
+
+Vue.component("FormDetailPengajuan", FormDetailPengajuan);
 
 Vue.component("apexchart", VueApexCharts);
 

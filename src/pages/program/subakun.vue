@@ -7,7 +7,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Sub Akun</h5>
+              <h5>Data Sub Akun</h5>
             </div>
             <div class="card-body">
               <!-- KONTENNYA DISINI -->
@@ -49,8 +49,8 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Sub Kategori Akun", value: "sub_kat_akun" },
-        { text: "Sub Sub Kategori Akun", value: "sub_sub_kat_akun" },
+        { text: "Sub Akun", value: "nama_sub_akun" },
+
         { text: "AKSI", value: "action" },
       ],
       formSubAkun: false,
@@ -71,7 +71,7 @@ export default {
     },
     onSubmit(form) {
       if (this.isEdit) {
-        API.put(`/api/subkat/${this.body.id_sub_kat_akun}`, form).then(
+        API.put(`/api/subakun/${this.body.id_sub_akun}`, form).then(
           ({ status, data }) => {
             console.log(data);
             if (status == 200 || status == 201) {
@@ -110,7 +110,7 @@ export default {
           }
         );
       } else {
-        API.post("/api/subkat", form).then(({ status, data }) => {
+        API.post("/api/subakun", form).then(({ status, data }) => {
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
@@ -148,7 +148,7 @@ export default {
       }
     },
     getData() {
-      API.get("/api/subkat").then(({ status, data }) => {
+      API.get("/api/subakun").then(({ status, data }) => {
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -167,7 +167,7 @@ export default {
 
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: `${data.id_sub_kat_akun}` }),
+        text: this.$t("Delete Message", { who: `${data.id_sub_akun}` }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -177,7 +177,7 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete(`/api/subkat/${data.id_sub_kat_akun}`).then(
+          API.delete(`/api/subakun/${data.id_sub_akun}`).then(
             ({ status, data }) => {
               if (status == 200 || status == 201) {
                 // reponse dari be jika berhasil

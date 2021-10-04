@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Breadcrumbs title="Data Akun" />
+    <Breadcrumbs title="Program" />
     <!-- Container-fluid starts-->
     <div class="container-fluid">
       <div class="row">
@@ -34,7 +34,7 @@
       </div>
     </div>
     <!-- Container-fluid Ends-->
-    <FormAkun
+    <FormProgram
       :show="formAkun"
       :body="body"
       @tutup="formAkun = false"
@@ -49,8 +49,8 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Kategori Akun", value: "kat_akun" },
-        { text: "Sub Kategori Akun", value: "sub_kat_akun" },
+        { text: "Akun", value: "nama_akun" },
+
         { text: "AKSI", value: "action" },
       ],
       formAkun: false,
@@ -71,7 +71,7 @@ export default {
     },
     onSubmit(form) {
       if (this.isEdit) {
-        API.put(`/api/katakun/${this.body.id_kat_akun}`, form).then(
+        API.put(`/api/akun/${this.body.id_akun}`, form).then(
           ({ status, data }) => {
             console.log(data);
             if (status == 200 || status == 201) {
@@ -110,7 +110,7 @@ export default {
           }
         );
       } else {
-        API.post("/api/katakun", form).then(({ status, data }) => {
+        API.post("/api/akun", form).then(({ status, data }) => {
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
@@ -148,7 +148,7 @@ export default {
       }
     },
     getData() {
-      API.get("/api/katakun").then(({ status, data }) => {
+      API.get("/api/akun").then(({ status, data }) => {
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -167,7 +167,7 @@ export default {
 
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: `${data.nama_bank}` }),
+        text: this.$t("Delete Message", { who: `${data.nama_akun}` }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -177,28 +177,18 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete(`/api/katakun/${data.id_kat_akun}`).then(
-            ({ status, data }) => {
-              if (status == 200 || status == 201) {
-                // reponse dari be jika berhasil
-                if (data.status) {
-                  this.getData();
-                  //berhasil
-                  this.$toasted.show("Data Berhasil Dihapus", {
-                    theme: "bubble",
-                    position: "top-right",
-                    type: "success", //"success" kalau su
-                    duration: 2000,
-                  });
-                } else {
-                  //notifikasi gagal
-                  this.$toasted.show("Data Gagal Dihapus", {
-                    theme: "bubble",
-                    position: "top-right",
-                    type: "error", //"success" kalau su
-                    duration: 2000,
-                  });
-                }
+          API.delete(`/api/akun/${data.id_akun}`).then(({ status, data }) => {
+            if (status == 200 || status == 201) {
+              // reponse dari be jika berhasil
+              if (data.status) {
+                this.getData();
+                //berhasil
+                this.$toasted.show("Data Berhasil Dihapus", {
+                  theme: "bubble",
+                  position: "top-right",
+                  type: "success", //"success" kalau su
+                  duration: 2000,
+                });
               } else {
                 //notifikasi gagal
                 this.$toasted.show("Data Gagal Dihapus", {
@@ -208,8 +198,16 @@ export default {
                   duration: 2000,
                 });
               }
+            } else {
+              //notifikasi gagal
+              this.$toasted.show("Data Gagal Dihapus", {
+                theme: "bubble",
+                position: "top-right",
+                type: "error", //"success" kalau su
+                duration: 2000,
+              });
             }
-          );
+          });
         }
       });
     },
