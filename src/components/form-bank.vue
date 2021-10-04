@@ -15,6 +15,7 @@
                 <v-text-field
                   v-model="form.no_rek"
                   label="No. Rekening"
+                  type="number"
                   required
                 ></v-text-field>
               </v-col>

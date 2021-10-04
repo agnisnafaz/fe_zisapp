@@ -34,7 +34,7 @@
       </div>
     </div>
     <!-- Container-fluid Ends-->
-    <FormAkun
+    <FormProgram
       :show="formAkun"
       :body="body"
       @tutup="formAkun = false"
@@ -49,8 +49,8 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Kategori Akun", value: "kat_akun" },
-        { text: "Sub Kategori Akun", value: "sub_kat_akun" },
+        { text: "Akun", value: "nama_akun" },
+
         { text: "AKSI", value: "action" },
       ],
       formAkun: false,
@@ -71,7 +71,7 @@ export default {
     },
     onSubmit(form) {
       if (this.isEdit) {
-        API.put(`/api/bank/${this.body.id_bank}`, form).then(
+        API.put(`/api/akun/${this.body.id_akun}`, form).then(
           ({ status, data }) => {
             console.log(data);
             if (status == 200 || status == 201) {
@@ -167,7 +167,7 @@ export default {
 
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: `${data.nama_bank}` }),
+        text: this.$t("Delete Message", { who: `${data.nama_akun}` }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",

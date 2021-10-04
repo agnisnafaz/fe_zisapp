@@ -145,18 +145,36 @@ const routes = [
       {
         path: "program",
         name: "program",
-        component: () => import("@/pages/program/dataprogram.vue"),
+        component: () => import("@/pages/program/dataakun.vue"),
         meta: {
-          title: "ZISAPP | Data Program",
+          title: "ZISAPP | Data Akun",
           reqiresAuth: true,
         },
       },
       {
-        path: "akun",
-        name: "akun",
-        component: () => import("@/pages/akun/akun.vue"),
+        path: "program/subakun/:id",
+        name: "subakun",
+        component: () => import("@/pages/program/subakun.vue"),
         meta: {
-          title: "ZISAPP | Data Akun",
+          title: "ZISAPP | Data Sub Akun",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "program/subsubakun/:id",
+        name: "subsubakun",
+        component: () => import("@/pages/program/subsubakun.vue"),
+        meta: {
+          title: "ZISAPP | Data Sub Sub Akun",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "program/dataprogram/:id",
+        name: "dataprogram",
+        component: () => import("@/pages/program/dataprogram.vue"),
+        meta: {
+          title: "ZISAPP | Data Nama Program",
           reqiresAuth: true,
         },
       },
@@ -212,22 +230,14 @@ const routes = [
         name: "realisasidirektur",
         component: () => import("@/pages/direktur/editpenyaluran.vue"),
         meta: {
-          title: "ZISAPP | Data Penyaluran",
-          reqiresAuth: true,
-        },
-      },
-      {
-        path: "direktur/edit",
-        name: "editpenyaluran",
-        component: () => import("@/pages/direktur/editpenyaluran.vue"),
-        meta: {
           title: "ZISAPP | Edit Penyaluran",
           reqiresAuth: true,
         },
       },
+
       {
-        path: "direktur/detail",
-        name: "deatailpenyaluran",
+        path: "direktur/detailpenyaluran/:id",
+        name: "detailpenyaluran",
         component: () => import("@/pages/direktur/detailpenyaluran.vue"),
         meta: {
           title: "ZISAPP | Detail Penyaluran",

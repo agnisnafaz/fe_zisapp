@@ -7,7 +7,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Data Program</h5>
+              <h5>Data Sub Akun</h5>
             </div>
             <div class="card-body">
               <!-- KONTENNYA DISINI -->
@@ -21,7 +21,7 @@
                 :hidedetail="true"
                 @add="
                   {
-                    formDataProgram = true;
+                    formSubAkun = true;
                     isEdit = false;
                   }
                 "
@@ -34,10 +34,10 @@
       </div>
     </div>
     <!-- Container-fluid Ends-->
-    <FormDataProgram
-      :show="formDataProgram"
+    <FormSubAkun
+      :show="formSubAkun"
       :body="body"
-      @tutup="formDataProgram = false"
+      @tutup="formSubAkun = false"
       @submit="onSubmit"
     />
   </div>
@@ -49,11 +49,11 @@ export default {
   data: () => {
     return {
       headers: [
-        { text: "Program", value: "nama_program" },
-        { text: "Bank", value: "nama_bank" },
+        { text: "Sub Akun", value: "nama_sub_akun" },
+
         { text: "AKSI", value: "action" },
       ],
-      formDataProgram: false,
+      formSubAkun: false,
       body: {},
       isEdit: false,
       data: [],
@@ -65,20 +65,20 @@ export default {
   methods: {
     onEdit(data) {
       console.log(data);
-      this.formDataProgram = true;
+      this.formSubAkun = true;
       this.isEdit = true;
       this.body = data;
     },
     onSubmit(form) {
       if (this.isEdit) {
-        API.put(`/api/program/${this.body.id_program}`, form).then(
+        API.put(`/api/subakun/${this.body.id_sub_akun}`, form).then(
           ({ status, data }) => {
             console.log(data);
             if (status == 200 || status == 201) {
               // reponse dari be jika berhasil
 
               if (data.status) {
-                this.formDataProgram = false;
+                this.formSubAkun = false;
                 this.body = {};
                 //berhasil
                 this.$toasted.show("Data Berhasil Diedit", {
@@ -110,12 +110,12 @@ export default {
           }
         );
       } else {
-        API.post("/api/program", form).then(({ status, data }) => {
+        API.post("/api/subakun", form).then(({ status, data }) => {
           if (status == 200 || status == 201) {
             // reponse dari be jika berhasil
 
             if (data.status) {
-              this.formDataProgram = false;
+              this.formSubAkun = false;
               this.body = {};
               //berhasil
               this.$toasted.show("Data Berhasil Disimpan", {
@@ -148,7 +148,7 @@ export default {
       }
     },
     getData() {
-      API.get("/api/program").then(({ status, data }) => {
+      API.get("/api/subakun").then(({ status, data }) => {
         if (status == 200 || status == 201) {
           // reponse dari be jika berhasil
 
@@ -167,7 +167,7 @@ export default {
 
     onDelete(data) {
       this.$swal({
-        text: this.$t("Delete Message", { who: `${data.id_sub_akun_program}` }),
+        text: this.$t("Delete Message", { who: `${data.id_sub_akun}` }),
         showCancelButton: true,
         confirmButtonText: "Hapus",
         confirmButtonColor: "#4466f2",
@@ -177,7 +177,7 @@ export default {
       }).then(({ value }) => {
         if (value) {
           //delete disini
-          API.delete(`/api/program/${data.id_program}`).then(
+          API.delete(`/api/subakun/${data.id_sub_akun}`).then(
             ({ status, data }) => {
               if (status == 200 || status == 201) {
                 // reponse dari be jika berhasil

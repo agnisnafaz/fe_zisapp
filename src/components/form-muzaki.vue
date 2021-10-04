@@ -55,7 +55,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="c_form_telepon">Telepon</label>
                   <b-form-input
-                    type="text"
+                    type="number"
                     placeholder="Telepon"
                     v-model="form.telepon_muzaki"
                   ></b-form-input>

@@ -74,7 +74,7 @@ export default {
     },
     detailPengajuan(data) {
       this.$router.push({
-        path: "/main/pengajuan/konfirmasi/" + data.id_pengajuan,
+        path: "/main/direktur/detailpenyaluran/" + data.id_pengajuan,
       });
     },
 

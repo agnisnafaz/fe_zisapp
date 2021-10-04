@@ -81,11 +81,7 @@
                 <v-list-item-content>
                   <v-list-item-title>
                     {{
-                      item.nama_program +
-                        " - " +
-                        item.nama_bank +
-                        " " +
-                        item.no_rek
+                      item.nama_program + " - " + item.nama_bank
                     }}</v-list-item-title
                   >
                 </v-list-item-content>
@@ -93,13 +89,7 @@
               <template v-slot:selection="{ item }">
                 <v-list-item-content>
                   <v-list-item-title>
-                    {{
-                      item.nama_program +
-                        " - " +
-                        item.nama_bank +
-                        " " +
-                        item.no_rek
-                    }}
+                    {{ item.nama_program + " - " + item.nama_bank }}
                   </v-list-item-title>
                 </v-list-item-content>
               </template>

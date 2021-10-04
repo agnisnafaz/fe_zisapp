@@ -12,16 +12,9 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <label for="c_form_jeniskelamin">Kategori Akun</label>
-                <b-form-select
-                  v-model="form.kat_akun"
-                  :options="optionkatakun"
-                ></b-form-select>
-              </v-col>
-              <v-col cols="12">
                 <v-text-field
-                  v-model="form.subkat_akun"
-                  label="Sub Kategori Akun"
+                  v-model="form.nama_akun"
+                  label="Nama Akun"
                   required
                 ></v-text-field>
               </v-col>
@@ -45,25 +38,15 @@
   </v-dialog>
 </template>
 <script>
+import API from "@/services/api.service";
 export default {
   props: ["show", "body"],
   data: () => {
     return {
       form: {
-        kat_akun: "",
-        subkat_akun: "",
-
+        nama_akun: "",
         active: 1,
       },
-      optionkatakun: [
-        { value: "1", text: "Aset Lancar" },
-        { value: "2", text: "Aset Tidak Lancar" },
-        { value: "3", text: "Liabilitas" },
-        { value: "4", text: "Saldo Pendanaan" },
-        { value: "5", text: "Penerimaan Dana" },
-        { value: "6", text: "Penyaluran  Dana" },
-        { value: "7", text: "Biaya Pengelolaan" },
-      ],
     };
   },
   watch: {
@@ -71,6 +54,7 @@ export default {
       this.form = newVal;
     },
   },
+
   methods: {
     submit() {
       this.$emit("submit", this.form);
