@@ -12,6 +12,35 @@
           <v-container>
             <v-row>
               <v-col cols="12">
+                <label>Bank</label>
+                <v-autocomplete
+                  :items="bank"
+                  item-text="nama_bank"
+                  return-object
+                  v-model="bankselected"
+                  auto-select-first
+                  outlined
+                  required
+                  dense
+                  small
+                >
+                  <template v-slot:item="{ item }">
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        {{ item.nama_bank }}</v-list-item-title
+                      >
+                    </v-list-item-content>
+                  </template>
+                  <template v-slot:selection="{ item }">
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        {{ item.nama_bank }}
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-autocomplete>
+              </v-col>
+              <v-col cols="12">
                 <label>Sub Akun Program</label>
                 <v-autocomplete
                   :items="subakunprogram"
@@ -73,11 +102,13 @@ export default {
   data: () => {
     return {
       subakunprogramselected: {},
+      bankselected: {},
       form: {
         nama_program: "",
         active: 1,
       },
       subakunprogram: [],
+      bank: [],
     };
   },
   watch: {
@@ -87,6 +118,7 @@ export default {
   },
   created() {
     this.getSubAkunProgram();
+    this.getBank();
   },
 
   methods: {
@@ -98,6 +130,22 @@ export default {
           if (data.status) {
             //berhasil
             this.subakunprogram = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
+    getBank() {
+      API.get("/api/bank").then(({ status, data }) => {
+        if (status === 200 || status === 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.bank = data.data;
           } else {
             //notifikasi gagal
           }

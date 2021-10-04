@@ -80,14 +80,16 @@
               <template v-slot:item="{ item }">
                 <v-list-item-content>
                   <v-list-item-title>
-                    {{ item.nama_program }}</v-list-item-title
+                    {{
+                      item.nama_program + " - " + item.nama_bank
+                    }}</v-list-item-title
                   >
                 </v-list-item-content>
               </template>
               <template v-slot:selection="{ item }">
                 <v-list-item-content>
                   <v-list-item-title>
-                    {{ item.nama_program }}
+                    {{ item.nama_program + " - " + item.nama_bank }}
                   </v-list-item-title>
                 </v-list-item-content>
               </template>

@@ -50,7 +50,7 @@ export default {
     return {
       headers: [
         { text: "Program", value: "nama_program" },
-
+        { text: "Bank", value: "nama_bank" },
         { text: "AKSI", value: "action" },
       ],
       formDataProgram: false,
