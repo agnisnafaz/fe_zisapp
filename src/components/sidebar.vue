@@ -99,12 +99,14 @@
             <label
               :class="'badge badge-' + menuItem.badgeType"
               v-if="menuItem.badgeType"
+              v-show="checkPrivilege(menuItem.privileges)"
               >{{ menuItem.badgeValue }}</label
             >
             <a
               href="javascript:void(0)"
               class="sidebar-link sidebar-title"
               v-if="menuItem.type == 'sub'"
+              v-show="checkPrivilege(menuItem.privileges)"
               @click="setNavActive(menuItem, index)"
             >
               <feather :type="menuItem.icon" class="top"></feather>
@@ -120,6 +122,7 @@
               :to="menuItem.path"
               class="sidebar-link sidebar-title"
               v-if="menuItem.type == 'link'"
+              v-show="checkPrivilege(menuItem.privileges)"
               router-link-exact-active
             >
               <feather :type="menuItem.icon" class="top"></feather>
@@ -136,6 +139,7 @@
               :href="menuItem.path"
               class="sidebar-link sidebar-title"
               v-if="menuItem.type == 'extLink'"
+              v-show="checkPrivilege(menuItem.privileges)"
               @click="setNavActive(menuItem, index)"
             >
               <feather :type="menuItem.icon" class="top"></feather>
@@ -153,6 +157,7 @@
               target="_blank"
               class="sidebar-link sidebar-title"
               v-if="menuItem.type == 'extTabLink'"
+              v-show="checkPrivilege(menuItem.privileges)"
               @click="setNavActive(menuItem, index)"
             >
               <feather :type="menuItem.icon" class="top"></feather>
@@ -180,6 +185,7 @@
                   class="submenu-title"
                   href="javascript:void(0)"
                   v-if="childrenItem.type == 'sub'"
+                  v-show="checkPrivilege(childrenItem.privileges)"
                   @click="setNavActive(childrenItem, index)"
                 >
                   {{ childrenItem.title }}
@@ -201,6 +207,7 @@
                   class="submenu-title"
                   :to="childrenItem.path"
                   v-if="childrenItem.type == 'link'"
+                  v-show="checkPrivilege(childrenItem.privileges)"
                   router-link-exact-active
                 >
                   {{ childrenItem.title }}
@@ -220,6 +227,7 @@
                 <a
                   :href="childrenItem.path"
                   v-if="childrenItem.type == 'extLink'"
+                  v-show="checkPrivilege(childrenItem.privileges)"
                   class="submenu-title"
                 >
                   {{ childrenItem.title }}
@@ -242,6 +250,7 @@
                   :href="childrenItem.path"
                   target="_blank"
                   v-if="childrenItem.type == 'extTabLink'"
+                  v-show="checkPrivilege(childrenItem.privileges)"
                 >
                   {{ childrenItem.title }}
                   <label
@@ -270,6 +279,7 @@
                     <router-link
                       :to="childrenSubItem.path"
                       v-if="childrenSubItem.type == 'link'"
+                      v-show="checkPrivilege(childrenSubItem.privileges)"
                       router-link-exact-active
                     >
                       {{ childrenSubItem.title }}
@@ -291,6 +301,7 @@
                     <a
                       @click="showForm(childrenSubItem.path)"
                       v-if="childrenSubItem.type == 'button'"
+                      v-show="checkPrivilege(childrenSubItem.privileges)"
                       router-link-exact-active
                     >
                       {{ childrenSubItem.title }}
@@ -313,6 +324,7 @@
                     <router-link
                       :to="childrenSubItem.path"
                       v-if="childrenSubItem.type == 'extLink'"
+                      v-show="checkPrivilege(childrenSubItem.privileges)"
                       router-link-exact-active
                     >
                       {{ childrenSubItem.title }}
@@ -334,6 +346,7 @@
                     <router-link
                       :to="childrenSubItem.path"
                       v-if="childrenSubItem.type == 'extLink'"
+                      v-show="checkPrivilege(childrenSubItem.privileges)"
                       router-link-exact-active
                     >
                       {{ childrenSubItem.title }}
@@ -379,6 +392,7 @@
   </div>
 </template>
 <script>
+import { getUser } from "@/services/jwt.service";
 import { mapState } from "vuex";
 export default {
   name: "Sidebar",
@@ -451,6 +465,20 @@ export default {
     });
   },
   methods: {
+    checkPrivilege(privilege) {
+      console.log(this.menuItems);
+      //cek apakah menu bisa dilihat untuk semua level?
+      const punyaSemuaIzin = privilege.includes(0);
+      if (punyaSemuaIzin) return true;
+
+      //cek apakah menu boleh diliat oleh user yang sedang login?
+      const user = getUser();
+      const userPunyaIzin = privilege.includes(user.leveluser);
+      if (userPunyaIzin) return true;
+
+      //ternyata user gak punya izin
+      return false;
+    },
     showForm(form) {
       this.$store.commit("showForm", form);
     },
