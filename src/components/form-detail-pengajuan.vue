@@ -119,13 +119,7 @@
               </div>
               <div class="form-row">
                 <div class="col-md-12 ">
-                  <label>Bukti Penerimaan</label>
-                  <b-form-file
-                    disabled
-                    placeholder="Pilih File"
-                    drop-placeholder="Pilih File"
-                    @change="onPilihFile"
-                  ></b-form-file>
+                  <img :src="form.buktirealisasi" width="500" height="600" />
                 </div>
               </div>
               <div class="form-row">
@@ -140,7 +134,7 @@
                 </div>
               </div>
               <div class="mt-5">
-                <b-button type="submit" variant="primary">Simpan</b-button>
+                <b-button type="submit" variant="primary">Tutup</b-button>
               </div>
             </b-form>
           </div>
@@ -213,19 +207,7 @@ export default {
     },
 
     onsubmit() {
-      let formdata = new FormData();
-      formdata.append("image", this.selectedFile);
-      formdata.append("no_pengajuan", this.form.no_pengajuan);
-      formdata.append("nama_mustahik", this.form.nama_mustahik);
-      formdata.append("pengajuan_kegiatan", this.form.pengajuan_kegiatan);
-      formdata.append("jumlah_pengajuan", this.form.jumlah_pengajuan);
-      formdata.append("jenis_pengajuan", this.form.jenis_pengajuan);
-      formdata.append("asnaf", this.form.asnaf);
-      formdata.append("jumlah_realisasi", this.form.jumlah_realisasi);
-      formdata.append("status_pengajuan", this.form.status_pengajuan);
-
-      formdata.append("tgl_realisasi", this.form.tgl_realisasi);
-      this.$emit("submit", formdata);
+      this.$router.push({ path: `/main/direktur` });
     },
   },
 };

@@ -46,6 +46,7 @@ export default {
             }
           }
         })
+
         .catch((e) => {
           this.$toasted.show("Data Tidak Ditemukan", {
             theme: "bubble",
