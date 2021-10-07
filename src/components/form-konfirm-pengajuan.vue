@@ -221,6 +221,7 @@ export default {
       formdata.append("asnaf", this.form.asnaf);
       formdata.append("jumlah_realisasi", this.form.jumlah_realisasi);
       formdata.append("status_pengajuan", this.form.status_pengajuan);
+      formdata.append("deskripsi_kegiatan", this.form.deskripsi_kegiatan);
 
       formdata.append("tgl_realisasi", this.form.tgl_realisasi);
       this.$emit("submit", formdata);

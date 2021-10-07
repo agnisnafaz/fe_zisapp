@@ -4,46 +4,55 @@
       "headTitle1": "Umum",
       "headTitle2": "Dashboards,features & data.",
       "type": "headtitle",
-      "path": "General"
+      "path": "General",
+      "privileges": [0]
     },
     {
       "path": "/main/dashboard",
       "title": "Umum",
       "icon": "codesandbox",
       "type": "link",
-      "active": false
+      "active": false,
+      "privileges": [0]
     },
     {
       "title": "Master Data",
       "icon": "database",
       "type": "sub",
       "active": false,
+      "privileges": [1, 6],
+
       "children": [
         {
           "path": "/main/user",
           "title": "User",
-          "type": "link"
+          "type": "link",
+          "privileges": [1, 6]
         },
         {
           "path": "/main/muzaki",
           "title": "Muzaki",
-          "type": "link"
+          "type": "link",
+          "privileges": [1, 6]
         },
         {
           "path": "/main/mustahik",
           "title": "Mustahik",
-          "type": "link"
+          "type": "link",
+          "privileges": [1, 6]
         },
 
         {
           "path": "/main/bank",
           "title": "Bank",
-          "type": "link"
+          "type": "link",
+          "privileges": [1, 6]
         },
         {
           "path": "/main/program",
           "title": "Program",
-          "type": "link"
+          "type": "link",
+          "privileges": [1, 6]
         }
       ]
     },
@@ -52,24 +61,28 @@
       "icon": "briefcase",
       "type": "sub",
       "active": false,
+      "privileges": [5, 6],
       "children": [
         {
           "title": "Donasi",
           "path": "/main/donasi",
           "type": "link",
-          "active": false
+          "active": false,
+          "privileges": [5, 6]
         },
         {
           "title": "Pengajuan",
           "path": "/main/pengajuan",
           "type": "link",
-          "active": false
+          "active": false,
+          "privileges": [5, 6]
         },
         {
           "title": "Data Donasi",
           "path": "/main/datadonasi",
           "type": "link",
-          "active": false
+          "active": false,
+          "privileges": [5, 6]
         }
       ]
     },
@@ -79,7 +92,8 @@
       "title": "Direktur",
       "icon": "user",
       "type": "link",
-      "active": false
+      "active": false,
+      "privileges": [1, 6]
     },
 
     {
@@ -87,7 +101,8 @@
       "title": "Laporan",
       "icon": "printer",
       "type": "link",
-      "active": false
+      "active": false,
+      "privileges": [1, 2, 3, 4, 5, 6, 7]
     }
   ]
 }
