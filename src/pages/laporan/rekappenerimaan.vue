@@ -7,11 +7,11 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Laporan</h5>
+              <h5>Rekap Penerimaan</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormLaporan @submit="onTambah" :body="{}"></FormLaporan>
+              <FormLaporanKas @submit="onCetak" :body="{}"></FormLaporanKas>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@ export default {
     return {};
   },
   methods: {
-    onTambah(form) {
+    onCetak(form) {
       console.log(form);
       API.post("/api/donasi", form)
         .then(({ status, data }) => {

@@ -245,9 +245,18 @@ const routes = [
         },
       },
       {
-        path: "laporan",
-        name: "laporan",
-        component: () => import("@/pages/laporan/laporan.vue"),
+        path: "rekapkaszisr",
+        name: "laporanzisr",
+        component: () => import("@/pages/laporan/laporankas.vue"),
+        meta: {
+          title: "ZISAPP | Laporan",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "rekappenerimaan",
+        name: "laporanzisr",
+        component: () => import("@/pages/laporan/rekappenerimaan.vue"),
         meta: {
           title: "ZISAPP | Laporan",
           reqiresAuth: true,

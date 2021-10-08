@@ -7,7 +7,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Update Profil</h5>
+              <h5>Edit Profil</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
@@ -15,7 +15,6 @@
                 @submit="OnEdit"
                 :body="body"
                 :isEdit="true"
-                :hidestatus="hidestatus"
               ></FormProfilUser>
             </div>
           </div>
@@ -31,7 +30,6 @@ import API from "@/services/api.service";
 export default {
   data: () => {
     return {
-      hidestatus: true,
       body: {},
     };
   },

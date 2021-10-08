@@ -97,12 +97,25 @@
     },
 
     {
-      "path": "/main/laporan",
       "title": "Laporan",
       "icon": "printer",
-      "type": "link",
+      "type": "sub",
       "active": false,
-      "privileges": [1, 2, 3, 4, 5, 6, 7]
+      "privileges": [1, 2, 3, 4, 5, 6, 7],
+      "children": [
+        {
+          "path": "/main/rekapkaszisr",
+          "title": "Penerimaan Kas ZISR/FO",
+          "type": "link",
+          "privileges": [1, 6]
+        },
+        {
+          "path": "/main/rekappenerimaan",
+          "title": "Rekap Penerimaan",
+          "type": "link",
+          "privileges": [1, 6]
+        }
+      ]
     }
   ]
 }
