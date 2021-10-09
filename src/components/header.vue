@@ -138,13 +138,13 @@
             <div class="media-body">
               <span>{{ username }}</span>
               <p class="mb-0 font-roboto">
-                {{ role }} <i class="middle fa fa-angle-down"></i>
+                {{ leveluser }} <i class="middle fa fa-angle-down"></i>
               </p>
             </div>
           </div>
           <ul class="profile-dropdown onhover-show-div">
             <li>
-              <a @click="$router.push({ path: '/main/profil/update' })"
+              <a @click="edit_profil()"
                 ><feather type="user"></feather><span>{{ "Profil" }}</span></a
               >
             </li>
@@ -212,6 +212,7 @@ import { getUser } from "../services/jwt.service";
 import { LOGOUT } from "../store/modules/auth";
 import { localeOptions } from "../constants/config";
 import { dropUser } from "@/services/jwt.service";
+import API from "@/services/api.service";
 // import Bookmark from "./bookmark";
 export default {
   name: "Search",
@@ -232,14 +233,27 @@ export default {
       mixLayout: "light-only",
       localeOptions,
       langIcon: localStorage.getItem("currentLanguageIcon") || "flag-icon-us",
-      username: "Admin",
-      role: "Admin",
-      group: "Admin",
+      username: "",
+      leveluser: "tidak memiliki akses",
+      group: "",
     };
   },
   // components: {
   //   Bookmark,
   // },
+  created() {
+    const user = getUser();
+    if (user) {
+      this.username = user ? user.username : "";
+      if (user.leveluser[0]) {
+        this.leveluser = user.leveluser[0].getLevel;
+      } else {
+        this.leveluser = "tidak memiliki akses";
+      }
+    }
+
+    this.getData();
+  },
 
   computed: {
     ...mapState({
@@ -248,6 +262,34 @@ export default {
     }),
   },
   methods: {
+    getData() {
+      API.get("/api/pengguna").then(({ status, data }) => {
+        console.log(data);
+        if (status == 200 || status == 201) {
+          // reponse dari be jika berhasil
+
+          if (data.status) {
+            //berhasil
+            this.data = data.data;
+          } else {
+            //notifikasi gagal
+          }
+        } else {
+          //notifikasi gagal
+        }
+      });
+    },
+    edit_profil(data) {
+      this.$router.push({ path: "/main/profil/update" + data.id_pengguna });
+    },
+    getLevel(level) {
+      if (level == 1) return "Direktur";
+      if (level == 2) return "Akuntan";
+      if (level == 3) return "Program";
+      if (level == 4) return "ZISR";
+      if (level == 5) return "Front Office";
+      if (level == 6) return "Admin";
+    },
     ...mapActions(["setLang"]),
     toggle_sidebar() {
       this.$store.dispatch("menu/opensidebar");

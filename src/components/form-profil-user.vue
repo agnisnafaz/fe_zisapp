@@ -56,26 +56,10 @@
                 <div class="col-md-6 mb-3">
                   <label for="c_form_password">Password</label>
                   <b-form-input
-                    type="text"
+                    type="password"
                     v-model="form.password"
                     placeholder="Password"
                   ></b-form-input>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-md-6 mb-3">
-                  <label for="c_form_pimpinan">Level</label>
-                  <b-form-select
-                    v-model="form.leveluser"
-                    :options="optionlevel"
-                  ></b-form-select>
-                </div>
-                <div class="col-md-6 mb-3" v-show="hidestatus">
-                  <label for="c_form_statususer">Status</label>
-                  <b-form-select
-                    v-model="form.status_pengguna"
-                    :options="optionstatus"
-                  ></b-form-select>
                 </div>
               </div>
 
@@ -112,20 +96,10 @@
 <script>
 import API from "@/services/api.service";
 export default {
-  props: ["hidestatus", "body", "isEdit"],
+  props: ["body", "isEdit"],
   data() {
     return {
       form: {},
-      optionlevel: [
-        { value: "1", text: "admin" },
-        { value: "2", text: "customer service" },
-        { value: "3", text: "direktur" },
-      ],
-      optionstatus: [
-        { value: "1", text: "aktif" },
-        { value: "2", text: "tidak aktif" },
-      ],
-      kantorlayanan: [],
     };
   },
 
