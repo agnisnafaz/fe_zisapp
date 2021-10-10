@@ -54,16 +54,19 @@
                   ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="c_form_password">Password</label>
+                  <label class="col-form-label">Password</label>
                   <b-form-input
-                    type="text"
                     v-model="form.password"
-                    placeholder="Password"
+                    :type="type"
+                    placeholder="*********"
                   ></b-form-input>
+                  <div class="show-hide" @click="showPassword">
+                    <feather type="eye-off"></feather>
+                  </div>
                 </div>
               </div>
               <div class="form-row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-2">
                   <label for="c_form_pimpinan">Level</label>
                   <b-form-select
                     v-model="form.leveluser"
@@ -95,6 +98,7 @@ export default {
   props: ["hidestatus", "body", "isEdit"],
   data() {
     return {
+      type: "password",
       form: {},
       optionlevel: [
         { value: "1", text: "Direktur" },
@@ -121,6 +125,13 @@ export default {
   },
 
   methods: {
+    showPassword: function() {
+      if (this.type === "password") {
+        this.type = "text";
+      } else {
+        this.type = "password";
+      }
+    },
     onsubmit() {
       this.$emit("submit", this.form);
     },

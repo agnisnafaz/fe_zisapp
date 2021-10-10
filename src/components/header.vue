@@ -144,9 +144,9 @@
           </div>
           <ul class="profile-dropdown onhover-show-div">
             <li>
-              <a @click="edit_profil()"
-                ><feather type="user"></feather><span>{{ "Profil" }}</span></a
-              >
+              <router-link to="/main/profil/update">
+                <feather type="user"></feather><span>{{ "Profil" }}</span>
+              </router-link>
             </li>
             <!-- <li>
               <a href="#"><feather type="mail"></feather><span>Inbox</span></a>
@@ -280,9 +280,7 @@ export default {
         }
       });
     },
-    edit_profil(data) {
-      this.$router.push({ path: "/main/profil/update" + data.id_pengguna });
-    },
+
     getLevel(level) {
       if (level == 1) return "Direktur";
       if (level == 2) return "Akuntan";

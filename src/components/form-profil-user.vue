@@ -54,12 +54,19 @@
                   ></b-form-input>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="c_form_password">Password</label>
-                  <b-form-input
-                    type="password"
+                  <label class="col-form-label">Password</label>
+                  <input
                     v-model="form.password"
-                    placeholder="Password"
-                  ></b-form-input>
+                    class="form-control"
+                    :type="type"
+                    name="login[password]"
+                    required=""
+                    placeholder="*********"
+                  />
+
+                  <div class="show-hide" @click="showPassword">
+                    <span class="show"></span>
+                  </div>
                 </div>
               </div>
 
@@ -99,6 +106,8 @@ export default {
   props: ["body", "isEdit"],
   data() {
     return {
+      type: "password",
+
       form: {},
     };
   },
@@ -111,6 +120,13 @@ export default {
   },
 
   methods: {
+    showPassword: function() {
+      if (this.type === "password") {
+        this.type = "text";
+      } else {
+        this.type = "password";
+      }
+    },
     onsubmit() {
       this.$emit("submit", this.form);
     },
