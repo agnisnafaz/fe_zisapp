@@ -27,6 +27,7 @@
 
 <script>
 import API from "@/services/api.service";
+import { getUser } from "@/services/jwt.service";
 export default {
   data: () => {
     return {
@@ -34,8 +35,9 @@ export default {
     };
   },
   created() {
-    if (this.$route.params.id) {
-      this.getUserById(this.$route.params.id);
+    const user = getUser();
+    if (user != null) {
+      this.getUserById(user.id_pengguna);
     }
   },
   methods: {
@@ -74,7 +76,7 @@ export default {
                 type: "success", //"success" kalau su
                 duration: 2000,
               });
-              this.$router.push({ path: "/main/user" });
+              this.$router.push({ path: "/main/dashboard" });
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Disimpan", {
