@@ -243,10 +243,11 @@ export default {
   // },
   created() {
     const user = getUser();
+    console.log(user);
     if (user) {
       this.username = user ? user.username : "";
-      if (user.leveluser[0]) {
-        this.leveluser = user.leveluser[0].getLevel;
+      if (user.leveluser) {
+        this.leveluser = this.getLevel(user.leveluser);
       } else {
         this.leveluser = "tidak memiliki akses";
       }
