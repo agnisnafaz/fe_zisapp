@@ -61,8 +61,8 @@ export default {
         });
     },
     OnEdit(form) {
-      console.log(form);
-      API.put(`/api/pengguna/${this.$route.params.id}`, form)
+      const user = getUser();
+      API.put(`/api/pengguna/${user.id_pengguna}`, form)
         .then(({ status, data }) => {
           console.log(data);
           if (status == 200 || status == 201) {
@@ -82,7 +82,7 @@ export default {
               this.$toasted.show("Data Gagal Disimpan", {
                 theme: "bubble",
                 position: "top-right",
-                type: "error", //"success" kalau su
+                type: "error",
                 duration: 2000,
               });
             }
@@ -91,7 +91,7 @@ export default {
             this.$toasted.show("Data Gagal Diedit", {
               theme: "bubble",
               position: "top-right",
-              type: "error", //"success" kalau su
+              type: "error",
               duration: 2000,
             });
           }
