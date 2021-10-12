@@ -134,6 +134,7 @@ export default {
     },
     onsubmit() {
       this.$emit("submit", this.form);
+      
     },
   },
 };
