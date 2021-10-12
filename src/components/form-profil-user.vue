@@ -67,7 +67,7 @@
               <div class="col-md-6 mb-3">
                 <label class="col-form-label">Password Baru</label>
                 <input
-                  v-model="form.password"
+                  v-model="passwordbaru"
                   class="form-control"
                   :type="type"
                   name="login[password]"
@@ -113,6 +113,7 @@ export default {
   data() {
     return {
       type: "password",
+      passwordbaru: "",
 
       form: {},
     };
@@ -180,10 +181,12 @@ export default {
           });
       }
     },
-    editPassword(form) {
+    editPassword() {
       const user = getUser();
       if (user) {
-        API.put(`/api/passwordpengguna/${user.id_pengguna}`, form)
+        API.put(`/api/passwordpengguna/${user.id_pengguna}`, {
+          password: this.passwordbaru,
+        })
           .then(({ status, data }) => {
             if (status == 200 || status == 201) {
               // reponse dari be jika berhasil
