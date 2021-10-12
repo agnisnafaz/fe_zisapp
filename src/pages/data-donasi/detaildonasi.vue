@@ -41,7 +41,7 @@
                 :hideupdate="true"
                 :hidedelete="true"
                 :hidedetail="true"
-                @cetak="Cetak"
+                @cetak="cetak"
               />
             </div>
           </div>
@@ -78,9 +78,9 @@ export default {
     }
   },
   methods: {
-    cetak(data){
+    cetak(data) {
       window.location.href = `http://localhost:8000/api/tandaterima1/cetak_tanda1?id_donasi=${data.id_donasi}`;
-      },
+    },
     onCetak(form) {
       API.get(`/api/tandaterima1/cetak_tanda1/${data.data.id_donasi}`, form)
         .then(({ status, data }) => {
@@ -106,7 +106,7 @@ export default {
               // },
               //  });
 
-               window.location.href = `http://localhost:8000/api/tandaterima1/cetak_tanda1?id_donasi=${data.data.id_donasi}`;
+              window.location.href = `http://localhost:8000/api/tandaterima1/cetak_tanda1?id_donasi=${data.data.id_donasi}`;
             } else {
               //notifikasi gagal
               this.$toasted.show("Data Gagal Dicetak", {
