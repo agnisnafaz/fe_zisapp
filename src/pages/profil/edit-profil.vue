@@ -11,11 +11,7 @@
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormProfilUser
-                @submit="OnEdit"
-                :body="body"
-                :isEdit="true"
-              ></FormProfilUser>
+              <FormProfilUser :body="body" :isEdit="true"></FormProfilUser>
             </div>
           </div>
         </div>
@@ -59,53 +55,6 @@ export default {
             duration: 2000,
           });
         });
-    },
-    OnEdit(form) {
-      const user = getUser();
-      if (user) {
-        API.put(`/api/pengguna/${user.id_pengguna}`, form)
-          .then(({ status, data }) => {
-            if (status == 200 || status == 201) {
-              // reponse dari be jika berhasil
-
-              if (data.status) {
-                //berhasil
-                this.$toasted.show("Data Berhasil Diedit", {
-                  theme: "bubble",
-                  position: "top-right",
-                  type: "success", //"success" kalau su
-                  duration: 2000,
-                });
-                this.$router.push({ path: "/main/dashboard" });
-              } else {
-                //notifikasi gagal
-                this.$toasted.show("Data Gagal Disimpan", {
-                  theme: "bubble",
-                  position: "top-right",
-                  type: "error",
-                  duration: 2000,
-                });
-              }
-            } else {
-              //notifikasi gagal
-              this.$toasted.show("Data Gagal Diedit", {
-                theme: "bubble",
-                position: "top-right",
-                type: "error",
-                duration: 2000,
-              });
-            }
-          })
-          .catch((error) => {
-            //gagal
-            this.$toasted.show("Data Gagal Diedit", {
-              theme: "bubble",
-              position: "top-right",
-              type: "error", //"success" kalau su
-              duration: 2000,
-            });
-          });
-      }
     },
   },
 };
