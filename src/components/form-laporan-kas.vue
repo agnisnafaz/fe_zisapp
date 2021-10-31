@@ -9,7 +9,11 @@
             </b-form-datepicker>
           </div>
           <div>
-            <b-button class="mt-10 ml-3" type="submit" variant="primary"
+            <b-button
+              @click="onsubmit"
+              class="mt-10 ml-3"
+              type="submit"
+              variant="primary"
               >Cetak</b-button
             >
           </div>
@@ -30,13 +34,11 @@ export default {
   },
 
   methods: {
-    onsubmit() {},
+    onsubmit() {
+      this.$emit("submit", this.form.tgl_donasi);
+    },
 
     onTambah() {},
-
-    onSimpan() {
-      this.$emit("submit", this.form);
-    },
 
     onDelete() {},
   },

@@ -7,11 +7,11 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>Penerimaan Kas ZISR/FO</h5>
+              <h5>Rekap Penerimaan</h5>
             </div>
             <div class="card-body">
               <!-- TAMBAHIN KONTENYA DISINI -->
-              <FormLaporanKas @submit="Cetak" :body="{}"></FormLaporanKas>
+              <FormcetakA1 @submit="onSimpan" :body="{}"></FormcetakA1>
             </div>
           </div>
         </div>
@@ -28,11 +28,7 @@ export default {
     return {};
   },
   methods: {
-    Cetak(tgl) {
-      this.$router.push({
-        path: `/main/rekapkaszisr/cetakA1/${tgl.tgl_donasi}`,
-      });
-    },
+    onSimpan() {},
   },
 };
 </script>
