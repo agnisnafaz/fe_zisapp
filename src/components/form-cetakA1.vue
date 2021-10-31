@@ -6,119 +6,185 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-body">
-              <div class="invoice">
-                <div>
-                  <div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="media">
-                          <div class="media-left">
-                            <!-- <img
-                              class="media-object img-60"
-                              src="../../assets/images/other-images/logo-login.png"
-                              alt
-                            /> -->
-                          </div>
-                          <!-- <div class="media-body m-l-20">
-                            <h4 class="media-heading">Cuba</h4>
-                            <p>
-                              hello@cuba.in
-                              <br />
-                              <span class="digits">289-335-6503</span>
-                            </p>
-                          </div> -->
-                        </div>
-                        <!-- End Info-->
-                      </div>
-                      <!-- <div class="col-sm-6">
-                        <div class="text-md-right">
-                          <h3>
-                            Invoice
-                            <span class="digits counter">#1069</span>
-                          </h3>
-                          <p>
-                            Issued: May
-                            <span class="digits">27, 2019</span>
-                            <br />Payment Due: June
-                            <span class="digits">27, 2019</span>
+              <div class="CetakA1">
+                <div class="tbel-program" id="table">
+                  <table class="table table-bordered table-striped">
+                    <tbody>
+                      <tr>
+                        <td class="item">
+                          <h6 class="p-2 mb-0">Keterangan</h6>
+                        </td>
+                        <td class="Hours">
+                          <h6 class="p-2 mb-0">Jumlah</h6>
+                        </td>
+                      </tr>
+                      <tr v-for="(keterangan, index) in program" :key="index">
+                        <td>
+                          <p class="itemtext digits">
+                            {{ keterangan.nama_program }}
                           </p>
-                        </div> -->
-                      <!-- End Title-->
-                    </div>
-                  </div>
-                </div>
-                <hr />
-                <!-- End InvoiceTop-->
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="media">
-                      <div class="media-left">
-                        <!-- <img
-                            class="media-object rounded-circle img-60"
-                            src="../../assets/images/user/1.jpg"
-                            alt
-                          /> -->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-8"></div>
-                </div>
-                <!-- End Invoice Mid-->
-                <div>
-                  <div class="tbel-program" id="table">
-                    <table class="table table-bordered table-striped">
-                      <tbody>
-                        <tr>
-                          <td class="item">
-                            <h6 class="p-2 mb-0">Keterangan</h6>
-                          </td>
-                          <td class="Hours">
-                            <h6 class="p-2 mb-0">Jumlah</h6>
-                          </td>
-                        </tr>
-                        <tr v-for="(keterangan, index) in program" :key="index">
-                          <td>
-                            <p class="itemtext digits">
-                              {{ getType(keterangan.type) }}
-                            </p>
-                          </td>
-                          <td>
-                            <p class="itemtext digits">
-                              {{ keterangan.nama_program }}
-                            </p>
-                          </td>
-                          <td>
-                            <p class="itemtext digits">
-                              Rp {{ formatCurrency(keterangan.value) }}
-                            </p>
-                          </td>
-                          <td>
-                            <p class="itemtext digits">
-                              Rp {{ formatCurrency(keterangan.jumlah_donasi) }}
-                            </p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="Rate">
-                            <h6 class="mb-0 p-2">Total</h6>
-                          </td>
-                          <td class="payment digits">
-                            <h6 class="mb-0 p-2">{{ total_donasi }}</h6>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- End Table-->
-                  <div class="row">
-                    <div class="col-md-8"></div>
-                    <div class="col-md-4">
-                      <form class="text-right"></form>
-                    </div>
-                  </div>
+                        </td>
+
+                        <td>
+                          <p class="itemtext digits">
+                            Rp {{ keterangan.total }}
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="Rate">
+                          <h6 class="mb-0 p-2">Total</h6>
+                        </td>
+                        <td class="payment digits">
+                          <h6 class="mb-0 p-2">Rp {{ total_donasi }}</h6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
-              <div class="col-sm-12 text-center mt-3"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-header">
+                <h5>Pecahan Kertas</h5>
+              </div>
+
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">100.000</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.kertas_seratus"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">50.000</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.kertas_limapuluh"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">20.000</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.kertas_duapuluh"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">10.000</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.kertas_sepuluh"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">5.000</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.kertas_limaribu"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">2.000</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.kertas_duaribu"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">1.000</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.kertas_seribu"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-header">
+                <h5>Pecahan Logam</h5>
+              </div>
+
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">1.000</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.logam_seribu"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">500</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.logam_limaratus"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">200</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.logam_duaratus"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col sm="2">
+                  <label for="input-small">100</label>
+                </b-col>
+                <b-col sm="10">
+                  <b-form-input
+                    v-model="form.logam_seratus"
+                    placeholder="Jumlah"
+                  ></b-form-input>
+                </b-col>
+              </b-row>
+              <div>
+                <b-button @click="onsubmit" type="submit" variant="primary"
+                  >Cetak</b-button
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -132,6 +198,8 @@ import API from "@/services/api.service";
 export default {
   data: () => {
     return {
+      form: [],
+
       program: [],
       total_donasi: 0,
       data: [],
@@ -144,11 +212,13 @@ export default {
   },
   methods: {
     getDonasi(id) {
-      API.get(`/api/donasi/${id}`)
+      API.get(`/api/laporanharian?tgl_donasi=${id}`)
         .then(({ status, data }) => {
           if (status == 200 || status == 201) {
             if (data.status) {
-              this.data = data.data;
+              this.program = data.data;
+              this.total_donasi = data.total;
+              console.log(this.program);
             }
           }
         })
@@ -160,6 +230,9 @@ export default {
             duration: 2000,
           });
         });
+    },
+    onsubmit() {
+      this.$emit("submit", this.form);
     },
     printWindow() {
       window.print();

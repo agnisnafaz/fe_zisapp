@@ -30,7 +30,7 @@ export default {
   methods: {
     Cetak(tgl) {
       this.$router.push({
-        path: `/main/rekapkaszisr/cetakA1/${tgl.tgl_donasi}`,
+        path: `/main/rekapkaszisr/cetakA1/${tgl}`,
       });
     },
   },
