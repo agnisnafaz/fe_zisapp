@@ -36,7 +36,7 @@
                           <h6 class="mb-0 p-2">Total</h6>
                         </td>
                         <td class="payment digits">
-                          <h6 class="mb-0 p-2">Rp {{ total_donasi }}</h6>
+                          <h6 class="mb-0 p-2">Rp {{ total_semua }}</h6>
                         </td>
                       </tr>
                     </tbody>
@@ -198,10 +198,23 @@ import API from "@/services/api.service";
 export default {
   data: () => {
     return {
-      form: [],
+      form: {
+        kertas_seratus: 0,
+        kertas_limapuluh: 0,
+        kertas_duapuluh: 0,
+        kertas_sepuluh: 0,
+        kertas_limaribu: 0,
+        kertas_duaribu: 0,
+        kertas_seribu: 0,
+        logam_seribu: 0,
+        logam_limaratus: 0,
+        logam_duaratus: 0,
+        logam_seratus: 0,
+      },
 
       program: [],
-      total_donasi: 0,
+      total_semua: 0,
+
       data: [],
     };
   },
@@ -217,7 +230,7 @@ export default {
           if (status == 200 || status == 201) {
             if (data.status) {
               this.program = data.data;
-              this.total_donasi = data.total;
+              this.total_semua = data.total_semua;
               console.log(this.program);
             }
           }
@@ -232,6 +245,7 @@ export default {
         });
     },
     onsubmit() {
+      this.form = {};
       this.$emit("submit", this.form);
     },
     printWindow() {

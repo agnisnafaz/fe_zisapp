@@ -249,6 +249,11 @@ export default {
       });
 
       this.$emit("submit", this.form);
+      this.form = { total_donasi: 0 };
+      this.detail_donasi = [];
+      this.form_detail = {};
+      this.programselected = {};
+      this.muzakiselected = {};
     },
 
     onDelete(data) {
