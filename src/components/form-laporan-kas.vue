@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import API from "@/services/api.service";
-import { getUser } from "@/services/jwt.service";
 export default {
   data() {
     return {
@@ -37,10 +35,6 @@ export default {
     onsubmit() {
       this.$emit("submit", this.form.tgl_donasi);
     },
-
-    onTambah() {},
-
-    onDelete() {},
   },
 };
 </script>

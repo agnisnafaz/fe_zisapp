@@ -271,6 +271,15 @@ const routes = [
           reqiresAuth: true,
         },
       },
+      {
+        path: "rekappenerimaan/cetakA2/:id",
+        name: "cetakformulira2",
+        component: () => import("@/pages/laporan/cetakA2.vue"),
+        meta: {
+          title: "ZISAPP | Cetak Formulir A2",
+          reqiresAuth: true,
+        },
+      },
 
       {
         path: "datadonasi",

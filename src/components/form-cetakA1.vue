@@ -245,8 +245,8 @@ export default {
         });
     },
     onsubmit() {
-      this.form = {};
       this.$emit("submit", this.form);
+      this.form = {};
     },
     printWindow() {
       window.print();
