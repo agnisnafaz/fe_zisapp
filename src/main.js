@@ -47,6 +47,7 @@ import FormSubSubAkun from "@/components/form-sub-sub-akun";
 import FormDataProgram from "@/components/form-data-program";
 
 import FormDetailPengajuan from "@/components/form-detail-pengajuan";
+import FormcetakA1 from "@/components/form-cetakA1";
 
 import PxCard from "@/components/Pxcard.vue";
 import { Icon } from "leaflet";
@@ -78,6 +79,7 @@ Vue.component("FormAkun", FormAkun);
 Vue.component("FormSubAkun", FormSubAkun);
 Vue.component("FormSubSubAkun", FormSubSubAkun);
 Vue.component("FormDataProgram", FormDataProgram);
+Vue.component("FormcetakA1", FormcetakA1);
 
 Vue.component("FormDetailPengajuan", FormDetailPengajuan);
 

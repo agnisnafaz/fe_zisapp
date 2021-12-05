@@ -9,7 +9,11 @@
             </b-form-datepicker>
           </div>
           <div>
-            <b-button class="mt-10 ml-3" type="submit" variant="primary"
+            <b-button
+              @click="onsubmit"
+              class="mt-10 ml-3"
+              type="submit"
+              variant="primary"
               >Cetak</b-button
             >
           </div>
@@ -20,8 +24,6 @@
 </template>
 
 <script>
-import API from "@/services/api.service";
-import { getUser } from "@/services/jwt.service";
 export default {
   data() {
     return {
@@ -30,15 +32,9 @@ export default {
   },
 
   methods: {
-    onsubmit() {},
-
-    onTambah() {},
-
-    onSimpan() {
-      this.$emit("submit", this.form);
+    onsubmit() {
+      this.$emit("submit", this.form.tgl_donasi);
     },
-
-    onDelete() {},
   },
 };
 </script>
