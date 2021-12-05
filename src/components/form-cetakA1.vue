@@ -245,9 +245,65 @@ export default {
         });
     },
     onsubmit() {
+      this.validate();
       this.$emit("submit", this.form);
       this.form = {};
     },
+    validate(){
+        if(this.form.kertas_seratus === undefined || 
+          this.form.kertas_seratus === null){
+           this.form.kertas_seratus = 0
+        }
+        if(this.form.kertas_limapuluh === undefined||
+          this.form.kertas_limapuluh === null
+        ){
+          this.form.kertas_limapuluh = 0
+        } 
+        if(this.form.kertas_duapuluh === undefined ||
+        this.form.kertas_duapuluh === null
+        ){
+          this.form.kertas_duapuluh=0
+        }
+        if(this.form.kertas_sepuluh === undefined ||
+        this.form.kertas_sepuluh === null
+        ){
+          this.form.kertas_sepuluh=0
+        }
+        if(this.form.kertas_limaribu === undefined ||
+        this.form.kertas_limaribu === null
+        ){
+          this.form.kertas_limaribu=0
+        }
+        if(this.form.kertas_duaribu === undefined ||
+        this.form.kertas_duaribu === null
+        ){
+          this.form.kertas_duaribu=0
+        }
+        if(this.form.kertas_seribu === undefined||
+        this.form.kertas_seribu === null){
+          this.form.kertas_seribu=0
+        }
+        if(this.form.logam_seribu === undefined||
+        this.form.logam_seribu === null
+        ){
+          this.form.logam_seribu=0
+        } 
+        if(this.form.logam_limaratus === undefined ||
+        this.form.logam_limaratus === null
+        ){
+          this.form.logam_limaratus=0
+        }
+        if(this.form.logam_duaratus === undefined ||
+        this.form.logam_duaratus === null
+        ){
+          this.form.logam_duaratus=0
+        }
+        if(this.form.logam_seratus === undefined||
+        this.form.logam_seratus === null
+        ){
+          this.form.logam_seratus=0
+        }
+    }
     printWindow() {
       window.print();
     },
