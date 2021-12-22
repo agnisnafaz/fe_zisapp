@@ -84,7 +84,7 @@
         ></feather>
       </div>
     </div>
-    <div class="left-header col horizontal-wrapper pl-0">
+    <!-- <div class="left-header col horizontal-wrapper pl-0">
       <ul class="horizontal-menu">
         <li class="mega-menu outside">
           <a class="nav-link" href="javascript:void(0);">
@@ -98,7 +98,7 @@
           >
         </li>
       </ul>
-    </div>
+    </div> -->
     <!-- search -->
     <div class="nav-right col-8 pull-right right-header p-0">
       <ul class="nav-menus">

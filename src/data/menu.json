@@ -114,6 +114,12 @@
           "title": "Rekap Penerimaan",
           "type": "link",
           "privileges": [1, 6]
+        },
+        {
+          "path": "/main/rekappenutupan",
+          "title": "Rekap Penutupan",
+          "type": "link",
+          "privileges": [1, 6]
         }
       ]
     }

@@ -280,7 +280,24 @@ const routes = [
           reqiresAuth: true,
         },
       },
-
+      {
+        path: "rekappenutupan",
+        name: "rekappenutupan",
+        component: () => import("@/pages/laporan/rekappenutupan.vue"),
+        meta: {
+          title: "ZISAPP | Laporan",
+          reqiresAuth: true,
+        },
+      },
+      {
+        path: "rekappenutupan/cetakA3/:id",
+        name: "cetakformulira3",
+        component: () => import("@/pages/laporan/cetakA3.vue"),
+        meta: {
+          title: "ZISAPP | Laporan",
+          reqiresAuth: true,
+        },
+      },
       {
         path: "datadonasi",
         name: "datadonasi",
